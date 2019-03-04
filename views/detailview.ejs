@@ -1,0 +1,23 @@
+<div style="width:350px; border: 1px solid black; border-radius: 10px;margin:15px;padding:10px;" <h2>
+  <%= data.postTitle%></h2>
+  <br>
+  <img src="<%= data.postImage%>">
+  <hr>
+  <p><%= data.postText%></p>
+
+  <div id="" style="
+display:flex;
+flex-direction:row;
+">
+    <span><i class="far fa-thumbs-up" style="color:red"></i></span>
+    <span><i class="far fa-thumbs-down"></i>
+    </span><span style="padding-bottom:5px">
+      <x-star-rating></x-star-rating>
+    </span>
+    <span>| views | </span>
+  </div>
+  <% if(data.user_id === data.userid ) { %>
+  <button id="edit<%= data.post_id%>" data-postid="<%= data.post_id%>">Edit</button>
+  <button id="dele<%= data.post_id%>" data-postid="<%= data.post_id%>">Delete</button>
+  <% } %>
+</div>

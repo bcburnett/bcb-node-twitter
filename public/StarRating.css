@@ -1,0 +1,24 @@
+x-star-rating {
+    position:relative;
+    top:-5px;
+    font-family: 'Ionicons';
+    font-size: 20px;
+    display: inline-flex;
+    cursor: pointer;
+}
+
+x-star-rating > .star::after {
+    content: '\f3ae';
+    color: #777;
+}
+
+x-star-rating > .star.full::after {
+    content: '\f2fc';
+    color: #fd0;
+}
+
+.container{
+    width:10rem;
+    background-color: darkgoldenrod;
+    padding: 1rem;
+}

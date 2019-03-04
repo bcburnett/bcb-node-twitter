@@ -1,0 +1,249 @@
+<script>
+  const STORE = {},
+        // initialize constants
+        socket = io.connect("/"),
+        detailview = document.querySelector("#detailView"),
+        welcomeP = document
+          .querySelector("#welcomeP")
+          .getAttribute("data-name"),
+        chatInput = document.querySelector("#chatInput"),
+        chatDiv = document.getElementById("chatdiv"),
+        postFormDiv = document.getElementById("postFormDiv"),
+        postcreate = (document.getElementById("postCreate").onclick = e =>
+          socket.emit("getPostForm")),
+        postDiv = document.getElementById("postsDiv");
+
+  STORE.MODE = "create";
+
+  // handle input form for new posts and updates
+  function doForm() {
+    let postid = document.querySelector("#editform").getAttribute("data-id");
+    console.log(postid)
+    let postText = document.querySelector("#postText"),
+      postCancel = document.querySelector("#postCancel"),
+      postTitle = document.querySelector("#postTitle"),
+      postImage = document.querySelector("#postImage"),
+      postSubmit = document.querySelector("#postSubmit"),
+      postDisplay = document.querySelector("#postDisplay"),
+      postFormDiv = document.querySelector("#postFormDiv"),
+      poster = document.querySelector("#poster").innerHTML;
+    postCancel.onclick = e => (postFormDiv.innerHTML = "");
+
+    postImage.onchange = e => readURL(postImage);
+
+    postSubmit.onclick = e => {
+      let data;
+      let thumbnail;
+      //generate reduced image
+      let elem = document.createElement("canvas");
+      elem.width = postDisplay.clientWidth;
+      elem.height = postDisplay.clientHeight;
+      let ctx = elem.getContext("2d");
+      ctx.drawImage(
+        postDisplay,
+        0,
+        0,
+        postDisplay.clientWidth,
+        postDisplay.clientHeight
+      );
+      data = ctx.canvas.toDataURL();
+      // generate thumbnail
+      elem = document.createElement("canvas");
+      elem.width = postDisplay.clientWidth / 4;
+      elem.height = postDisplay.clientHeight / 4;
+      ctx = elem.getContext("2d");
+      ctx.drawImage(
+        postDisplay,
+        0,
+        0,
+        postDisplay.clientWidth / 4,
+        postDisplay.clientHeight / 4
+      );
+      thumbnail = ctx.canvas.toDataURL();
+      // check for image
+      if (data.length < 10) {
+        data = "default-avatar-large.jpg";
+        thumbnail = "default-avatar-small.jpg";
+      }
+      let responseObject = {
+        poster,
+        postid,
+        text: postText.value,
+        title: postTitle.value,
+        image: data,
+        thumbnail: thumbnail,
+      };
+      console.log(STORE.MODE)
+      if (STORE.MODE === "edit") {
+        socket.emit("editSend", responseObject);
+        postFormDiv.innerHTML = "";
+        STORE.MODE = 'create'
+
+        return;
+      }
+      socket.emit("newPost", responseObject);
+      postFormDiv.innerHTML = "";
+    };
+  }
+    // read the file the user selects for the image and display it in the img tag at the large reduced size
+    function readURL(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          postDisplay.setAttribute("src", e.target.result);
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    function loadPosts (){
+      STORE.posts = [];
+      socket.emit("loadPosts");
+    }
+
+
+  // detail view handle edit or delete
+  detailview.onclick = e => {
+    if (e.target.nodeName !== "BUTTON") return;
+    socket.emit(
+      e.target.getAttribute("id").substring(0, 4),
+      e.target.dataset.postid
+    );
+  };
+
+  //get detail view and display
+  postDiv.onclick = e => {
+    if (e.target.nodeName !== "IMG") return;
+    let elem = e.target;
+    socket.emit("detailview", elem.getAttribute("id"));
+  };
+
+  chatInput.addEventListener('change', e=>{
+    const content = welcomeP + " says " + chatInput.value;
+    socket.emit("hello", content);
+    chatInput.value = '';
+  })
+
+
+  socket.on("hello", data => (chatDiv.innerHTML += `<p> ${data} </p>`));
+
+  socket.on("chat", data => (chatDiv.innerHTML += `<p> ${data} </p>`));
+
+  socket.on("sendPostForm", data => {
+    postFormDiv.innerHTML = data;
+    setTimeout(() => {
+      doForm();
+    }, 0);
+  });
+
+  socket.on("detailview", data => {
+    detailview.innerHTML = data.html;
+    STORE.detailView = data.data;
+  });
+
+  socket.on("edit", data => {
+    postFormDiv.innerHTML = data;
+    STORE.MODE = "edit";
+    // wait till next tick before running function
+    setTimeout(() => {
+      doForm();
+    }, 0);
+  });
+
+  socket.on("reload", () => {
+    postDiv.innerHTML = "";
+    loadPosts();
+  });
+
+  socket.on("dele", () => {
+    detailview.innerHTML = "";
+    postDiv.innerHTML = "";
+    loadPosts();
+  });
+
+  socket.on("newPost", data => {
+    STORE.detailSet = false;
+    if(STORE.detailView){
+      if(data.data.post_id === STORE.detailView.post_id){
+        socket.emit("detailview",data.data.post_id );
+        STORE.detailSet = true;
+      }
+    }
+    if (!STORE.detailSet) {detailview.innerHTML = "";}
+    STORE.detailSet=false
+    STORE.posts.push(data.data)
+    postDiv.innerHTML = data.html + postDiv.innerHTML;
+  });
+  loadPosts();
+</script>
+<script>
+/* eslint-disable require-jsdoc */
+class StarRating extends HTMLElement {
+  get value() {
+    return this.getAttribute('value') || 0;
+  }
+
+  set value(val) {
+    this.setAttribute('value', val);
+    this.highlight(this.value - 1);
+  }
+
+  get number() {
+    return this.getAttribute('number') || 5;
+  }
+
+  set number(val) {
+    this.setAttribute('number', val);
+
+    this.stars = [];
+
+    while (this.firstChild) {
+      this.removeChild(this.firstChild);
+    }
+
+    for (let i = 0; i < this.number; i++) {
+      const s = document.createElement('div');
+      s.className = 'star';
+      this.appendChild(s);
+      this.stars.push(s);
+    }
+
+    this.value = this.value;
+  }
+
+  highlight(index) {
+    this.stars.forEach((star, i) => {
+      star.classList.toggle('full', i <= index);
+    });
+  }
+
+  constructor() {
+    super();
+
+    this.number = this.number;
+
+    this.addEventListener('mousemove', (e) => {
+      const box = this.getBoundingClientRect();
+      const starIndex = Math.floor((e.pageX - box.left) / box.width * this.stars.length);
+      console.log(starIndex);
+      this.highlight(starIndex);
+    });
+
+    this.addEventListener('mouseout', () => {
+      this.value = this.value;
+    });
+
+    this.addEventListener('click', (e) => {
+      const box = this.getBoundingClientRect();
+      const starIndex = Math.floor((e.pageX - box.left) / box.width * this.stars.length);
+
+      this.value = starIndex + 1;
+
+      const rateEvent = new Event('rate');
+      this.dispatchEvent(rateEvent);
+    });
+  }
+}
+
+customElements.define('x-star-rating', StarRating);
+</script>

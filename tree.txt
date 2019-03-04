@@ -1,0 +1,3838 @@
+.
+├── app.js
+├── config
+│   ├── auth.js => ensureAuthenticated
+│   ├── keys.js
+│   └── passport.js => passport.use passport.serializeUser passport.deserializeUser
+├── controllers  to be integrated
+│   ├── contact
+│   │   └── contactController.js
+│   ├── createpost.js
+│   └── socket.js
+├── models => mongoose models
+│   ├── chat
+│   │   └── chatstate.js
+│   ├── chatstate.js => ChatSchema [room,  lastFiveMessage]
+│   ├── posts
+│   │   ├── postModel.js => PostSchema [post_id, user_id, postText, postLink, postTitle, postImage, thumbnail] Post
+│   │   └── postsMasterModel.js
+│   ├── user
+│   │   ├── profile.js
+│   │   ├── userdatafull.js
+│   │   ├── userFlagModel.js
+│   │   ├── userInformationModel.js
+│   │   ├── userMiscModel.js
+│   │   ├── userPreferencesModel.js
+│   │   ├── userSocialModel.js
+│   │   └── userStatusModel.js
+│   └── user.js =>
+├── node_modules
+├── node_passport_login-master.zip
+├── package.json
+├── package-lock.json
+├── public
+│   ├── all.min.css
+│   ├── cat.large.jpg
+│   ├── cat.small.jpg
+│   ├── city.jpg
+│   ├── css
+│   │   ├── all.css
+│   │   ├── all.min.css
+│   │   ├── brands.css
+│   │   ├── brands.min.css
+│   │   ├── fontawesome.css
+│   │   ├── fontawesome.min.css
+│   │   ├── light.css
+│   │   ├── light.min.css
+│   │   ├── regular.css
+│   │   ├── regular.min.css
+│   │   ├── solid.css
+│   │   ├── solid.min.css
+│   │   ├── svg-with-js.css
+│   │   ├── svg-with-js.min.css
+│   │   ├── v4-shims.css
+│   │   └── v4-shims.min.css
+│   ├── dashboard.js
+│   ├── froala_editor_2.9.3.zip
+│   ├── js
+│   │   ├── all.js
+│   │   ├── all.min.js
+│   │   ├── brands.js
+│   │   ├── brands.min.js
+│   │   ├── fontawesome.js
+│   │   ├── fontawesome.min.js
+│   │   ├── light.js
+│   │   ├── light.min.js
+│   │   ├── regular.js
+│   │   ├── regular.min.js
+│   │   ├── solid.js
+│   │   ├── solid.min.js
+│   │   ├── v4-shims.js
+│   │   └── v4-shims.min.js
+│   ├── less
+│   │   ├── _animated.less
+│   │   ├── _bordered-pulled.less
+│   │   ├── brands.less
+│   │   ├── _core.less
+│   │   ├── _fixed-width.less
+│   │   ├── fontawesome.less
+│   │   ├── _icons.less
+│   │   ├── _larger.less
+│   │   ├── light.less
+│   │   ├── _list.less
+│   │   ├── _mixins.less
+│   │   ├── regular.less
+│   │   ├── _rotated-flipped.less
+│   │   ├── _screen-reader.less
+│   │   ├── _shims.less
+│   │   ├── solid.less
+│   │   ├── _stacked.less
+│   │   ├── v4-shims.less
+│   │   └── _variables.less
+│   ├── LICENSE.txt
+│   ├── metadata
+│   │   ├── categories.yml
+│   │   ├── icons.json
+│   │   ├── icons.yml
+│   │   ├── shims.json
+│   │   ├── shims.yml
+│   │   └── sponsors.yml
+│   ├── noc.png
+│   ├── renderPostInputForm.js
+│   ├── scss
+│   │   ├── _animated.scss
+│   │   ├── _bordered-pulled.scss
+│   │   ├── brands.scss
+│   │   ├── _core.scss
+│   │   ├── _fixed-width.scss
+│   │   ├── fontawesome.scss
+│   │   ├── _icons.scss
+│   │   ├── _larger.scss
+│   │   ├── light.scss
+│   │   ├── _list.scss
+│   │   ├── _mixins.scss
+│   │   ├── regular.scss
+│   │   ├── _rotated-flipped.scss
+│   │   ├── _screen-reader.scss
+│   │   ├── _shims.scss
+│   │   ├── solid.scss
+│   │   ├── _stacked.scss
+│   │   ├── v4-shims.scss
+│   │   └── _variables.scss
+│   ├── skins
+│   │   └── ui
+│   │       └── oxide
+│   │           └── skin.min.css
+│   ├── sprites
+│   │   ├── brands.svg
+│   │   ├── light.svg
+│   │   ├── regular.svg
+│   │   └── solid.svg
+│   ├── svgs
+│   │   ├── brands
+│   │   │   ├── 500px.svg
+│   │   │   ├── accessible-icon.svg
+│   │   │   ├── accusoft.svg
+│   │   │   ├── adn.svg
+│   │   │   ├── adversal.svg
+│   │   │   ├── affiliatetheme.svg
+│   │   │   ├── algolia.svg
+│   │   │   ├── amazon-pay.svg
+│   │   │   ├── amazon.svg
+│   │   │   ├── amilia.svg
+│   │   │   ├── android.svg
+│   │   │   ├── angellist.svg
+│   │   │   ├── angrycreative.svg
+│   │   │   ├── angular.svg
+│   │   │   ├── apper.svg
+│   │   │   ├── apple-pay.svg
+│   │   │   ├── apple.svg
+│   │   │   ├── app-store-ios.svg
+│   │   │   ├── app-store.svg
+│   │   │   ├── asymmetrik.svg
+│   │   │   ├── audible.svg
+│   │   │   ├── autoprefixer.svg
+│   │   │   ├── avianex.svg
+│   │   │   ├── aviato.svg
+│   │   │   ├── aws.svg
+│   │   │   ├── bandcamp.svg
+│   │   │   ├── behance-square.svg
+│   │   │   ├── behance.svg
+│   │   │   ├── bimobject.svg
+│   │   │   ├── bitbucket.svg
+│   │   │   ├── bitcoin.svg
+│   │   │   ├── bity.svg
+│   │   │   ├── blackberry.svg
+│   │   │   ├── black-tie.svg
+│   │   │   ├── blogger-b.svg
+│   │   │   ├── blogger.svg
+│   │   │   ├── bluetooth-b.svg
+│   │   │   ├── bluetooth.svg
+│   │   │   ├── btc.svg
+│   │   │   ├── buromobelexperte.svg
+│   │   │   ├── buysellads.svg
+│   │   │   ├── cc-amazon-pay.svg
+│   │   │   ├── cc-amex.svg
+│   │   │   ├── cc-apple-pay.svg
+│   │   │   ├── cc-diners-club.svg
+│   │   │   ├── cc-discover.svg
+│   │   │   ├── cc-jcb.svg
+│   │   │   ├── cc-mastercard.svg
+│   │   │   ├── cc-paypal.svg
+│   │   │   ├── cc-stripe.svg
+│   │   │   ├── cc-visa.svg
+│   │   │   ├── centercode.svg
+│   │   │   ├── chrome.svg
+│   │   │   ├── cloudscale.svg
+│   │   │   ├── cloudsmith.svg
+│   │   │   ├── cloudversify.svg
+│   │   │   ├── codepen.svg
+│   │   │   ├── codiepie.svg
+│   │   │   ├── connectdevelop.svg
+│   │   │   ├── contao.svg
+│   │   │   ├── cpanel.svg
+│   │   │   ├── creative-commons-by.svg
+│   │   │   ├── creative-commons-nc-eu.svg
+│   │   │   ├── creative-commons-nc-jp.svg
+│   │   │   ├── creative-commons-nc.svg
+│   │   │   ├── creative-commons-nd.svg
+│   │   │   ├── creative-commons-pd-alt.svg
+│   │   │   ├── creative-commons-pd.svg
+│   │   │   ├── creative-commons-remix.svg
+│   │   │   ├── creative-commons-sampling-plus.svg
+│   │   │   ├── creative-commons-sampling.svg
+│   │   │   ├── creative-commons-sa.svg
+│   │   │   ├── creative-commons-share.svg
+│   │   │   ├── creative-commons.svg
+│   │   │   ├── creative-commons-zero.svg
+│   │   │   ├── css3-alt.svg
+│   │   │   ├── css3.svg
+│   │   │   ├── cuttlefish.svg
+│   │   │   ├── d-and-d.svg
+│   │   │   ├── dashcube.svg
+│   │   │   ├── delicious.svg
+│   │   │   ├── deploydog.svg
+│   │   │   ├── deskpro.svg
+│   │   │   ├── deviantart.svg
+│   │   │   ├── digg.svg
+│   │   │   ├── digital-ocean.svg
+│   │   │   ├── discord.svg
+│   │   │   ├── discourse.svg
+│   │   │   ├── dochub.svg
+│   │   │   ├── docker.svg
+│   │   │   ├── draft2digital.svg
+│   │   │   ├── dribbble-square.svg
+│   │   │   ├── dribbble.svg
+│   │   │   ├── dropbox.svg
+│   │   │   ├── drupal.svg
+│   │   │   ├── dyalog.svg
+│   │   │   ├── earlybirds.svg
+│   │   │   ├── ebay.svg
+│   │   │   ├── edge.svg
+│   │   │   ├── elementor.svg
+│   │   │   ├── ello.svg
+│   │   │   ├── ember.svg
+│   │   │   ├── empire.svg
+│   │   │   ├── envira.svg
+│   │   │   ├── erlang.svg
+│   │   │   ├── ethereum.svg
+│   │   │   ├── etsy.svg
+│   │   │   ├── expeditedssl.svg
+│   │   │   ├── facebook-f.svg
+│   │   │   ├── facebook-messenger.svg
+│   │   │   ├── facebook-square.svg
+│   │   │   ├── facebook.svg
+│   │   │   ├── firefox.svg
+│   │   │   ├── firstdraft.svg
+│   │   │   ├── first-order-alt.svg
+│   │   │   ├── first-order.svg
+│   │   │   ├── flickr.svg
+│   │   │   ├── flipboard.svg
+│   │   │   ├── fly.svg
+│   │   │   ├── font-awesome-alt.svg
+│   │   │   ├── font-awesome-flag.svg
+│   │   │   ├── font-awesome-logo-full.svg
+│   │   │   ├── font-awesome.svg
+│   │   │   ├── fonticons-fi.svg
+│   │   │   ├── fonticons.svg
+│   │   │   ├── fort-awesome-alt.svg
+│   │   │   ├── fort-awesome.svg
+│   │   │   ├── forumbee.svg
+│   │   │   ├── foursquare.svg
+│   │   │   ├── freebsd.svg
+│   │   │   ├── free-code-camp.svg
+│   │   │   ├── fulcrum.svg
+│   │   │   ├── galactic-republic.svg
+│   │   │   ├── galactic-senate.svg
+│   │   │   ├── get-pocket.svg
+│   │   │   ├── gg-circle.svg
+│   │   │   ├── gg.svg
+│   │   │   ├── github-alt.svg
+│   │   │   ├── github-square.svg
+│   │   │   ├── github.svg
+│   │   │   ├── gitkraken.svg
+│   │   │   ├── gitlab.svg
+│   │   │   ├── git-square.svg
+│   │   │   ├── git.svg
+│   │   │   ├── gitter.svg
+│   │   │   ├── glide-g.svg
+│   │   │   ├── glide.svg
+│   │   │   ├── gofore.svg
+│   │   │   ├── goodreads-g.svg
+│   │   │   ├── goodreads.svg
+│   │   │   ├── google-drive.svg
+│   │   │   ├── google-play.svg
+│   │   │   ├── google-plus-g.svg
+│   │   │   ├── google-plus-square.svg
+│   │   │   ├── google-plus.svg
+│   │   │   ├── google.svg
+│   │   │   ├── google-wallet.svg
+│   │   │   ├── gratipay.svg
+│   │   │   ├── grav.svg
+│   │   │   ├── gripfire.svg
+│   │   │   ├── grunt.svg
+│   │   │   ├── gulp.svg
+│   │   │   ├── hacker-news-square.svg
+│   │   │   ├── hacker-news.svg
+│   │   │   ├── hackerrank.svg
+│   │   │   ├── hips.svg
+│   │   │   ├── hire-a-helper.svg
+│   │   │   ├── hooli.svg
+│   │   │   ├── hornbill.svg
+│   │   │   ├── hotjar.svg
+│   │   │   ├── houzz.svg
+│   │   │   ├── html5.svg
+│   │   │   ├── hubspot.svg
+│   │   │   ├── imdb.svg
+│   │   │   ├── instagram.svg
+│   │   │   ├── internet-explorer.svg
+│   │   │   ├── ioxhost.svg
+│   │   │   ├── itunes-note.svg
+│   │   │   ├── itunes.svg
+│   │   │   ├── java.svg
+│   │   │   ├── jedi-order.svg
+│   │   │   ├── jenkins.svg
+│   │   │   ├── joget.svg
+│   │   │   ├── joomla.svg
+│   │   │   ├── jsfiddle.svg
+│   │   │   ├── js-square.svg
+│   │   │   ├── js.svg
+│   │   │   ├── kaggle.svg
+│   │   │   ├── keybase.svg
+│   │   │   ├── keycdn.svg
+│   │   │   ├── kickstarter-k.svg
+│   │   │   ├── kickstarter.svg
+│   │   │   ├── korvue.svg
+│   │   │   ├── laravel.svg
+│   │   │   ├── lastfm-square.svg
+│   │   │   ├── lastfm.svg
+│   │   │   ├── leanpub.svg
+│   │   │   ├── less.svg
+│   │   │   ├── line.svg
+│   │   │   ├── linkedin-in.svg
+│   │   │   ├── linkedin.svg
+│   │   │   ├── linode.svg
+│   │   │   ├── linux.svg
+│   │   │   ├── lyft.svg
+│   │   │   ├── magento.svg
+│   │   │   ├── mailchimp.svg
+│   │   │   ├── mandalorian.svg
+│   │   │   ├── markdown.svg
+│   │   │   ├── mastodon.svg
+│   │   │   ├── maxcdn.svg
+│   │   │   ├── medapps.svg
+│   │   │   ├── medium-m.svg
+│   │   │   ├── medium.svg
+│   │   │   ├── medrt.svg
+│   │   │   ├── meetup.svg
+│   │   │   ├── megaport.svg
+│   │   │   ├── microsoft.svg
+│   │   │   ├── mixcloud.svg
+│   │   │   ├── mix.svg
+│   │   │   ├── mizuni.svg
+│   │   │   ├── modx.svg
+│   │   │   ├── monero.svg
+│   │   │   ├── napster.svg
+│   │   │   ├── neos.svg
+│   │   │   ├── nimblr.svg
+│   │   │   ├── nintendo-switch.svg
+│   │   │   ├── node-js.svg
+│   │   │   ├── node.svg
+│   │   │   ├── npm.svg
+│   │   │   ├── ns8.svg
+│   │   │   ├── nutritionix.svg
+│   │   │   ├── odnoklassniki-square.svg
+│   │   │   ├── odnoklassniki.svg
+│   │   │   ├── old-republic.svg
+│   │   │   ├── opencart.svg
+│   │   │   ├── openid.svg
+│   │   │   ├── opera.svg
+│   │   │   ├── optin-monster.svg
+│   │   │   ├── osi.svg
+│   │   │   ├── page4.svg
+│   │   │   ├── pagelines.svg
+│   │   │   ├── palfed.svg
+│   │   │   ├── patreon.svg
+│   │   │   ├── paypal.svg
+│   │   │   ├── periscope.svg
+│   │   │   ├── phabricator.svg
+│   │   │   ├── phoenix-framework.svg
+│   │   │   ├── phoenix-squadron.svg
+│   │   │   ├── php.svg
+│   │   │   ├── pied-piper-alt.svg
+│   │   │   ├── pied-piper-hat.svg
+│   │   │   ├── pied-piper-pp.svg
+│   │   │   ├── pied-piper.svg
+│   │   │   ├── pinterest-p.svg
+│   │   │   ├── pinterest-square.svg
+│   │   │   ├── pinterest.svg
+│   │   │   ├── playstation.svg
+│   │   │   ├── product-hunt.svg
+│   │   │   ├── pushed.svg
+│   │   │   ├── python.svg
+│   │   │   ├── qq.svg
+│   │   │   ├── quinscape.svg
+│   │   │   ├── quora.svg
+│   │   │   ├── ravelry.svg
+│   │   │   ├── react.svg
+│   │   │   ├── readme.svg
+│   │   │   ├── rebel.svg
+│   │   │   ├── reddit-alien.svg
+│   │   │   ├── reddit-square.svg
+│   │   │   ├── reddit.svg
+│   │   │   ├── red-river.svg
+│   │   │   ├── rendact.svg
+│   │   │   ├── renren.svg
+│   │   │   ├── replyd.svg
+│   │   │   ├── researchgate.svg
+│   │   │   ├── resolving.svg
+│   │   │   ├── rev.svg
+│   │   │   ├── rocketchat.svg
+│   │   │   ├── rockrms.svg
+│   │   │   ├── r-project.svg
+│   │   │   ├── safari.svg
+│   │   │   ├── sass.svg
+│   │   │   ├── schlix.svg
+│   │   │   ├── scribd.svg
+│   │   │   ├── searchengin.svg
+│   │   │   ├── sellcast.svg
+│   │   │   ├── sellsy.svg
+│   │   │   ├── servicestack.svg
+│   │   │   ├── shirtsinbulk.svg
+│   │   │   ├── shopware.svg
+│   │   │   ├── simplybuilt.svg
+│   │   │   ├── sistrix.svg
+│   │   │   ├── sith.svg
+│   │   │   ├── skyatlas.svg
+│   │   │   ├── skype.svg
+│   │   │   ├── slack-hash.svg
+│   │   │   ├── slack.svg
+│   │   │   ├── slideshare.svg
+│   │   │   ├── snapchat-ghost.svg
+│   │   │   ├── snapchat-square.svg
+│   │   │   ├── snapchat.svg
+│   │   │   ├── soundcloud.svg
+│   │   │   ├── speakap.svg
+│   │   │   ├── spotify.svg
+│   │   │   ├── squarespace.svg
+│   │   │   ├── stack-exchange.svg
+│   │   │   ├── stack-overflow.svg
+│   │   │   ├── staylinked.svg
+│   │   │   ├── steam-square.svg
+│   │   │   ├── steam.svg
+│   │   │   ├── steam-symbol.svg
+│   │   │   ├── sticker-mule.svg
+│   │   │   ├── strava.svg
+│   │   │   ├── stripe-s.svg
+│   │   │   ├── stripe.svg
+│   │   │   ├── studiovinari.svg
+│   │   │   ├── stumbleupon-circle.svg
+│   │   │   ├── stumbleupon.svg
+│   │   │   ├── superpowers.svg
+│   │   │   ├── supple.svg
+│   │   │   ├── teamspeak.svg
+│   │   │   ├── telegram-plane.svg
+│   │   │   ├── telegram.svg
+│   │   │   ├── tencent-weibo.svg
+│   │   │   ├── themeco.svg
+│   │   │   ├── themeisle.svg
+│   │   │   ├── trade-federation.svg
+│   │   │   ├── trello.svg
+│   │   │   ├── tripadvisor.svg
+│   │   │   ├── tumblr-square.svg
+│   │   │   ├── tumblr.svg
+│   │   │   ├── twitch.svg
+│   │   │   ├── twitter-square.svg
+│   │   │   ├── twitter.svg
+│   │   │   ├── typo3.svg
+│   │   │   ├── uber.svg
+│   │   │   ├── uikit.svg
+│   │   │   ├── uniregistry.svg
+│   │   │   ├── untappd.svg
+│   │   │   ├── usb.svg
+│   │   │   ├── ussunnah.svg
+│   │   │   ├── vaadin.svg
+│   │   │   ├── viacoin.svg
+│   │   │   ├── viadeo-square.svg
+│   │   │   ├── viadeo.svg
+│   │   │   ├── viber.svg
+│   │   │   ├── vimeo-square.svg
+│   │   │   ├── vimeo.svg
+│   │   │   ├── vimeo-v.svg
+│   │   │   ├── vine.svg
+│   │   │   ├── vk.svg
+│   │   │   ├── vnv.svg
+│   │   │   ├── vuejs.svg
+│   │   │   ├── weebly.svg
+│   │   │   ├── weibo.svg
+│   │   │   ├── weixin.svg
+│   │   │   ├── whatsapp-square.svg
+│   │   │   ├── whatsapp.svg
+│   │   │   ├── whmcs.svg
+│   │   │   ├── wikipedia-w.svg
+│   │   │   ├── windows.svg
+│   │   │   ├── wix.svg
+│   │   │   ├── wolf-pack-battalion.svg
+│   │   │   ├── wordpress-simple.svg
+│   │   │   ├── wordpress.svg
+│   │   │   ├── wpbeginner.svg
+│   │   │   ├── wpexplorer.svg
+│   │   │   ├── wpforms.svg
+│   │   │   ├── xbox.svg
+│   │   │   ├── xing-square.svg
+│   │   │   ├── xing.svg
+│   │   │   ├── yahoo.svg
+│   │   │   ├── yandex-international.svg
+│   │   │   ├── yandex.svg
+│   │   │   ├── y-combinator.svg
+│   │   │   ├── yelp.svg
+│   │   │   ├── yoast.svg
+│   │   │   ├── youtube-square.svg
+│   │   │   ├── youtube.svg
+│   │   │   └── zhihu.svg
+│   │   ├── light
+│   │   │   ├── address-book.svg
+│   │   │   ├── address-card.svg
+│   │   │   ├── adjust.svg
+│   │   │   ├── air-freshener.svg
+│   │   │   ├── alarm-clock.svg
+│   │   │   ├── align-center.svg
+│   │   │   ├── align-justify.svg
+│   │   │   ├── align-left.svg
+│   │   │   ├── align-right.svg
+│   │   │   ├── allergies.svg
+│   │   │   ├── ambulance.svg
+│   │   │   ├── american-sign-language-interpreting.svg
+│   │   │   ├── anchor.svg
+│   │   │   ├── angle-double-down.svg
+│   │   │   ├── angle-double-left.svg
+│   │   │   ├── angle-double-right.svg
+│   │   │   ├── angle-double-up.svg
+│   │   │   ├── angle-down.svg
+│   │   │   ├── angle-left.svg
+│   │   │   ├── angle-right.svg
+│   │   │   ├── angle-up.svg
+│   │   │   ├── angry.svg
+│   │   │   ├── apple-alt.svg
+│   │   │   ├── archive.svg
+│   │   │   ├── archway.svg
+│   │   │   ├── arrow-alt-circle-down.svg
+│   │   │   ├── arrow-alt-circle-left.svg
+│   │   │   ├── arrow-alt-circle-right.svg
+│   │   │   ├── arrow-alt-circle-up.svg
+│   │   │   ├── arrow-alt-down.svg
+│   │   │   ├── arrow-alt-from-bottom.svg
+│   │   │   ├── arrow-alt-from-left.svg
+│   │   │   ├── arrow-alt-from-right.svg
+│   │   │   ├── arrow-alt-from-top.svg
+│   │   │   ├── arrow-alt-left.svg
+│   │   │   ├── arrow-alt-right.svg
+│   │   │   ├── arrow-alt-square-down.svg
+│   │   │   ├── arrow-alt-square-left.svg
+│   │   │   ├── arrow-alt-square-right.svg
+│   │   │   ├── arrow-alt-square-up.svg
+│   │   │   ├── arrow-alt-to-bottom.svg
+│   │   │   ├── arrow-alt-to-left.svg
+│   │   │   ├── arrow-alt-to-right.svg
+│   │   │   ├── arrow-alt-to-top.svg
+│   │   │   ├── arrow-alt-up.svg
+│   │   │   ├── arrow-circle-down.svg
+│   │   │   ├── arrow-circle-left.svg
+│   │   │   ├── arrow-circle-right.svg
+│   │   │   ├── arrow-circle-up.svg
+│   │   │   ├── arrow-down.svg
+│   │   │   ├── arrow-from-bottom.svg
+│   │   │   ├── arrow-from-left.svg
+│   │   │   ├── arrow-from-right.svg
+│   │   │   ├── arrow-from-top.svg
+│   │   │   ├── arrow-left.svg
+│   │   │   ├── arrow-right.svg
+│   │   │   ├── arrows-alt-h.svg
+│   │   │   ├── arrows-alt.svg
+│   │   │   ├── arrows-alt-v.svg
+│   │   │   ├── arrows-h.svg
+│   │   │   ├── arrow-square-down.svg
+│   │   │   ├── arrow-square-left.svg
+│   │   │   ├── arrow-square-right.svg
+│   │   │   ├── arrow-square-up.svg
+│   │   │   ├── arrows.svg
+│   │   │   ├── arrows-v.svg
+│   │   │   ├── arrow-to-bottom.svg
+│   │   │   ├── arrow-to-left.svg
+│   │   │   ├── arrow-to-right.svg
+│   │   │   ├── arrow-to-top.svg
+│   │   │   ├── arrow-up.svg
+│   │   │   ├── assistive-listening-systems.svg
+│   │   │   ├── asterisk.svg
+│   │   │   ├── atlas.svg
+│   │   │   ├── atom-alt.svg
+│   │   │   ├── atom.svg
+│   │   │   ├── at.svg
+│   │   │   ├── audio-description.svg
+│   │   │   ├── award.svg
+│   │   │   ├── backpack.svg
+│   │   │   ├── backspace.svg
+│   │   │   ├── backward.svg
+│   │   │   ├── badge-check.svg
+│   │   │   ├── badge.svg
+│   │   │   ├── balance-scale-left.svg
+│   │   │   ├── balance-scale-right.svg
+│   │   │   ├── balance-scale.svg
+│   │   │   ├── band-aid.svg
+│   │   │   ├── ban.svg
+│   │   │   ├── barcode-alt.svg
+│   │   │   ├── barcode-read.svg
+│   │   │   ├── barcode-scan.svg
+│   │   │   ├── barcode.svg
+│   │   │   ├── bars.svg
+│   │   │   ├── baseball-ball.svg
+│   │   │   ├── baseball.svg
+│   │   │   ├── basketball-ball.svg
+│   │   │   ├── basketball-hoop.svg
+│   │   │   ├── bath.svg
+│   │   │   ├── battery-bolt.svg
+│   │   │   ├── battery-empty.svg
+│   │   │   ├── battery-full.svg
+│   │   │   ├── battery-half.svg
+│   │   │   ├── battery-quarter.svg
+│   │   │   ├── battery-slash.svg
+│   │   │   ├── battery-three-quarters.svg
+│   │   │   ├── bed.svg
+│   │   │   ├── beer.svg
+│   │   │   ├── bell-school-slash.svg
+│   │   │   ├── bell-school.svg
+│   │   │   ├── bell-slash.svg
+│   │   │   ├── bell.svg
+│   │   │   ├── bezier-curve.svg
+│   │   │   ├── bicycle.svg
+│   │   │   ├── binoculars.svg
+│   │   │   ├── birthday-cake.svg
+│   │   │   ├── blanket.svg
+│   │   │   ├── blender.svg
+│   │   │   ├── blind.svg
+│   │   │   ├── bold.svg
+│   │   │   ├── bolt.svg
+│   │   │   ├── bomb.svg
+│   │   │   ├── bone-break.svg
+│   │   │   ├── bone.svg
+│   │   │   ├── bong.svg
+│   │   │   ├── book-alt.svg
+│   │   │   ├── book-heart.svg
+│   │   │   ├── bookmark.svg
+│   │   │   ├── book-open.svg
+│   │   │   ├── book-reader.svg
+│   │   │   ├── books.svg
+│   │   │   ├── book.svg
+│   │   │   ├── bowling-ball.svg
+│   │   │   ├── bowling-pins.svg
+│   │   │   ├── box-alt.svg
+│   │   │   ├── box-check.svg
+│   │   │   ├── boxes-alt.svg
+│   │   │   ├── boxes.svg
+│   │   │   ├── box-fragile.svg
+│   │   │   ├── box-full.svg
+│   │   │   ├── box-heart.svg
+│   │   │   ├── boxing-glove.svg
+│   │   │   ├── box-open.svg
+│   │   │   ├── box.svg
+│   │   │   ├── box-up.svg
+│   │   │   ├── box-usd.svg
+│   │   │   ├── braille.svg
+│   │   │   ├── brain.svg
+│   │   │   ├── briefcase-medical.svg
+│   │   │   ├── briefcase.svg
+│   │   │   ├── broadcast-tower.svg
+│   │   │   ├── broom.svg
+│   │   │   ├── browser.svg
+│   │   │   ├── brush.svg
+│   │   │   ├── bug.svg
+│   │   │   ├── building.svg
+│   │   │   ├── bullhorn.svg
+│   │   │   ├── bullseye.svg
+│   │   │   ├── burn.svg
+│   │   │   ├── bus-alt.svg
+│   │   │   ├── bus-school.svg
+│   │   │   ├── bus.svg
+│   │   │   ├── calculator.svg
+│   │   │   ├── calendar-alt.svg
+│   │   │   ├── calendar-check.svg
+│   │   │   ├── calendar-edit.svg
+│   │   │   ├── calendar-exclamation.svg
+│   │   │   ├── calendar-minus.svg
+│   │   │   ├── calendar-plus.svg
+│   │   │   ├── calendar.svg
+│   │   │   ├── calendar-times.svg
+│   │   │   ├── camera-alt.svg
+│   │   │   ├── camera-retro.svg
+│   │   │   ├── camera.svg
+│   │   │   ├── cannabis.svg
+│   │   │   ├── capsules.svg
+│   │   │   ├── car-alt.svg
+│   │   │   ├── car-battery.svg
+│   │   │   ├── car-bump.svg
+│   │   │   ├── car-crash.svg
+│   │   │   ├── caret-circle-down.svg
+│   │   │   ├── caret-circle-left.svg
+│   │   │   ├── caret-circle-right.svg
+│   │   │   ├── caret-circle-up.svg
+│   │   │   ├── caret-down.svg
+│   │   │   ├── caret-left.svg
+│   │   │   ├── caret-right.svg
+│   │   │   ├── caret-square-down.svg
+│   │   │   ├── caret-square-left.svg
+│   │   │   ├── caret-square-right.svg
+│   │   │   ├── caret-square-up.svg
+│   │   │   ├── caret-up.svg
+│   │   │   ├── car-garage.svg
+│   │   │   ├── car-mechanic.svg
+│   │   │   ├── car-side.svg
+│   │   │   ├── car.svg
+│   │   │   ├── cart-arrow-down.svg
+│   │   │   ├── car-tilt.svg
+│   │   │   ├── cart-plus.svg
+│   │   │   ├── car-wash.svg
+│   │   │   ├── certificate.svg
+│   │   │   ├── chalkboard.svg
+│   │   │   ├── chalkboard-teacher.svg
+│   │   │   ├── charging-station.svg
+│   │   │   ├── chart-area.svg
+│   │   │   ├── chart-bar.svg
+│   │   │   ├── chart-line.svg
+│   │   │   ├── chart-pie.svg
+│   │   │   ├── check-circle.svg
+│   │   │   ├── check-double.svg
+│   │   │   ├── check-square.svg
+│   │   │   ├── check.svg
+│   │   │   ├── chess-bishop-alt.svg
+│   │   │   ├── chess-bishop.svg
+│   │   │   ├── chess-board.svg
+│   │   │   ├── chess-clock-alt.svg
+│   │   │   ├── chess-clock.svg
+│   │   │   ├── chess-king-alt.svg
+│   │   │   ├── chess-king.svg
+│   │   │   ├── chess-knight-alt.svg
+│   │   │   ├── chess-knight.svg
+│   │   │   ├── chess-pawn-alt.svg
+│   │   │   ├── chess-pawn.svg
+│   │   │   ├── chess-queen-alt.svg
+│   │   │   ├── chess-queen.svg
+│   │   │   ├── chess-rook-alt.svg
+│   │   │   ├── chess-rook.svg
+│   │   │   ├── chess.svg
+│   │   │   ├── chevron-circle-down.svg
+│   │   │   ├── chevron-circle-left.svg
+│   │   │   ├── chevron-circle-right.svg
+│   │   │   ├── chevron-circle-up.svg
+│   │   │   ├── chevron-double-down.svg
+│   │   │   ├── chevron-double-left.svg
+│   │   │   ├── chevron-double-right.svg
+│   │   │   ├── chevron-double-up.svg
+│   │   │   ├── chevron-down.svg
+│   │   │   ├── chevron-left.svg
+│   │   │   ├── chevron-right.svg
+│   │   │   ├── chevron-square-down.svg
+│   │   │   ├── chevron-square-left.svg
+│   │   │   ├── chevron-square-right.svg
+│   │   │   ├── chevron-square-up.svg
+│   │   │   ├── chevron-up.svg
+│   │   │   ├── child.svg
+│   │   │   ├── church.svg
+│   │   │   ├── circle-notch.svg
+│   │   │   ├── circle.svg
+│   │   │   ├── clipboard-check.svg
+│   │   │   ├── clipboard-list.svg
+│   │   │   ├── clipboard-prescription.svg
+│   │   │   ├── clipboard.svg
+│   │   │   ├── clock.svg
+│   │   │   ├── clone.svg
+│   │   │   ├── closed-captioning.svg
+│   │   │   ├── cloud-download-alt.svg
+│   │   │   ├── cloud-download.svg
+│   │   │   ├── cloud.svg
+│   │   │   ├── cloud-upload-alt.svg
+│   │   │   ├── cloud-upload.svg
+│   │   │   ├── club.svg
+│   │   │   ├── cocktail.svg
+│   │   │   ├── code-branch.svg
+│   │   │   ├── code-commit.svg
+│   │   │   ├── code-merge.svg
+│   │   │   ├── code.svg
+│   │   │   ├── coffee.svg
+│   │   │   ├── cogs.svg
+│   │   │   ├── cog.svg
+│   │   │   ├── coins.svg
+│   │   │   ├── columns.svg
+│   │   │   ├── comment-alt-check.svg
+│   │   │   ├── comment-alt-dots.svg
+│   │   │   ├── comment-alt-edit.svg
+│   │   │   ├── comment-alt-exclamation.svg
+│   │   │   ├── comment-alt-lines.svg
+│   │   │   ├── comment-alt-minus.svg
+│   │   │   ├── comment-alt-plus.svg
+│   │   │   ├── comment-alt-slash.svg
+│   │   │   ├── comment-alt-smile.svg
+│   │   │   ├── comment-alt.svg
+│   │   │   ├── comment-alt-times.svg
+│   │   │   ├── comment-check.svg
+│   │   │   ├── comment-dots.svg
+│   │   │   ├── comment-edit.svg
+│   │   │   ├── comment-exclamation.svg
+│   │   │   ├── comment-lines.svg
+│   │   │   ├── comment-minus.svg
+│   │   │   ├── comment-plus.svg
+│   │   │   ├── comments-alt.svg
+│   │   │   ├── comment-slash.svg
+│   │   │   ├── comment-smile.svg
+│   │   │   ├── comments.svg
+│   │   │   ├── comment.svg
+│   │   │   ├── comment-times.svg
+│   │   │   ├── compact-disc.svg
+│   │   │   ├── compass-slash.svg
+│   │   │   ├── compass.svg
+│   │   │   ├── compress-alt.svg
+│   │   │   ├── compress.svg
+│   │   │   ├── compress-wide.svg
+│   │   │   ├── concierge-bell.svg
+│   │   │   ├── container-storage.svg
+│   │   │   ├── conveyor-belt-alt.svg
+│   │   │   ├── conveyor-belt.svg
+│   │   │   ├── cookie-bite.svg
+│   │   │   ├── cookie.svg
+│   │   │   ├── copyright.svg
+│   │   │   ├── copy.svg
+│   │   │   ├── couch.svg
+│   │   │   ├── credit-card-blank.svg
+│   │   │   ├── credit-card-front.svg
+│   │   │   ├── credit-card.svg
+│   │   │   ├── cricket.svg
+│   │   │   ├── crop-alt.svg
+│   │   │   ├── crop.svg
+│   │   │   ├── crosshairs.svg
+│   │   │   ├── crown.svg
+│   │   │   ├── crow.svg
+│   │   │   ├── cubes.svg
+│   │   │   ├── cube.svg
+│   │   │   ├── curling.svg
+│   │   │   ├── cut.svg
+│   │   │   ├── database.svg
+│   │   │   ├── deaf.svg
+│   │   │   ├── desktop-alt.svg
+│   │   │   ├── desktop.svg
+│   │   │   ├── diagnoses.svg
+│   │   │   ├── diamond.svg
+│   │   │   ├── dice-five.svg
+│   │   │   ├── dice-four.svg
+│   │   │   ├── dice-one.svg
+│   │   │   ├── dice-six.svg
+│   │   │   ├── dice.svg
+│   │   │   ├── dice-three.svg
+│   │   │   ├── dice-two.svg
+│   │   │   ├── digital-tachograph.svg
+│   │   │   ├── diploma.svg
+│   │   │   ├── directions.svg
+│   │   │   ├── divide.svg
+│   │   │   ├── dizzy.svg
+│   │   │   ├── dna.svg
+│   │   │   ├── dollar-sign.svg
+│   │   │   ├── dolly-empty.svg
+│   │   │   ├── dolly-flatbed-alt.svg
+│   │   │   ├── dolly-flatbed-empty.svg
+│   │   │   ├── dolly-flatbed.svg
+│   │   │   ├── dolly.svg
+│   │   │   ├── donate.svg
+│   │   │   ├── do-not-enter.svg
+│   │   │   ├── door-closed.svg
+│   │   │   ├── door-open.svg
+│   │   │   ├── dot-circle.svg
+│   │   │   ├── dove.svg
+│   │   │   ├── download.svg
+│   │   │   ├── drafting-compass.svg
+│   │   │   ├── draw-circle.svg
+│   │   │   ├── draw-polygon.svg
+│   │   │   ├── draw-square.svg
+│   │   │   ├── drum-steelpan.svg
+│   │   │   ├── drum.svg
+│   │   │   ├── dumbbell.svg
+│   │   │   ├── ear.svg
+│   │   │   ├── edit.svg
+│   │   │   ├── eject.svg
+│   │   │   ├── ellipsis-h-alt.svg
+│   │   │   ├── ellipsis-h.svg
+│   │   │   ├── ellipsis-v-alt.svg
+│   │   │   ├── ellipsis-v.svg
+│   │   │   ├── engine-warning.svg
+│   │   │   ├── envelope-open.svg
+│   │   │   ├── envelope-square.svg
+│   │   │   ├── envelope.svg
+│   │   │   ├── equals.svg
+│   │   │   ├── eraser.svg
+│   │   │   ├── euro-sign.svg
+│   │   │   ├── exchange-alt.svg
+│   │   │   ├── exchange.svg
+│   │   │   ├── exclamation-circle.svg
+│   │   │   ├── exclamation-square.svg
+│   │   │   ├── exclamation.svg
+│   │   │   ├── exclamation-triangle.svg
+│   │   │   ├── expand-alt.svg
+│   │   │   ├── expand-arrows-alt.svg
+│   │   │   ├── expand-arrows.svg
+│   │   │   ├── expand.svg
+│   │   │   ├── expand-wide.svg
+│   │   │   ├── external-link-alt.svg
+│   │   │   ├── external-link-square-alt.svg
+│   │   │   ├── external-link-square.svg
+│   │   │   ├── external-link.svg
+│   │   │   ├── eye-dropper.svg
+│   │   │   ├── eye-slash.svg
+│   │   │   ├── eye.svg
+│   │   │   ├── fast-backward.svg
+│   │   │   ├── fast-forward.svg
+│   │   │   ├── fax.svg
+│   │   │   ├── feather-alt.svg
+│   │   │   ├── feather.svg
+│   │   │   ├── female.svg
+│   │   │   ├── field-hockey.svg
+│   │   │   ├── fighter-jet.svg
+│   │   │   ├── file-alt.svg
+│   │   │   ├── file-archive.svg
+│   │   │   ├── file-audio.svg
+│   │   │   ├── file-certificate.svg
+│   │   │   ├── file-check.svg
+│   │   │   ├── file-code.svg
+│   │   │   ├── file-contract.svg
+│   │   │   ├── file-download.svg
+│   │   │   ├── file-edit.svg
+│   │   │   ├── file-excel.svg
+│   │   │   ├── file-exclamation.svg
+│   │   │   ├── file-export.svg
+│   │   │   ├── file-image.svg
+│   │   │   ├── file-import.svg
+│   │   │   ├── file-invoice-dollar.svg
+│   │   │   ├── file-invoice.svg
+│   │   │   ├── file-medical-alt.svg
+│   │   │   ├── file-medical.svg
+│   │   │   ├── file-minus.svg
+│   │   │   ├── file-pdf.svg
+│   │   │   ├── file-plus.svg
+│   │   │   ├── file-powerpoint.svg
+│   │   │   ├── file-prescription.svg
+│   │   │   ├── file-signature.svg
+│   │   │   ├── file.svg
+│   │   │   ├── file-times.svg
+│   │   │   ├── file-upload.svg
+│   │   │   ├── file-video.svg
+│   │   │   ├── file-word.svg
+│   │   │   ├── fill-drip.svg
+│   │   │   ├── fill.svg
+│   │   │   ├── film-alt.svg
+│   │   │   ├── film.svg
+│   │   │   ├── filter.svg
+│   │   │   ├── fingerprint.svg
+│   │   │   ├── fire-extinguisher.svg
+│   │   │   ├── fire.svg
+│   │   │   ├── first-aid.svg
+│   │   │   ├── fish.svg
+│   │   │   ├── flag-checkered.svg
+│   │   │   ├── flag.svg
+│   │   │   ├── flask.svg
+│   │   │   ├── flushed.svg
+│   │   │   ├── folder-open.svg
+│   │   │   ├── folder.svg
+│   │   │   ├── font-awesome-logo-full.svg
+│   │   │   ├── font.svg
+│   │   │   ├── football-ball.svg
+│   │   │   ├── football-helmet.svg
+│   │   │   ├── forklift.svg
+│   │   │   ├── forward.svg
+│   │   │   ├── fragile.svg
+│   │   │   ├── frog.svg
+│   │   │   ├── frown-open.svg
+│   │   │   ├── frown.svg
+│   │   │   ├── futbol.svg
+│   │   │   ├── gamepad.svg
+│   │   │   ├── gas-pump-slash.svg
+│   │   │   ├── gas-pump.svg
+│   │   │   ├── gavel.svg
+│   │   │   ├── gem.svg
+│   │   │   ├── genderless.svg
+│   │   │   ├── gift.svg
+│   │   │   ├── glasses-alt.svg
+│   │   │   ├── glasses.svg
+│   │   │   ├── glass-martini-alt.svg
+│   │   │   ├── glass-martini.svg
+│   │   │   ├── globe-africa.svg
+│   │   │   ├── globe-americas.svg
+│   │   │   ├── globe-asia.svg
+│   │   │   ├── globe-stand.svg
+│   │   │   ├── globe.svg
+│   │   │   ├── golf-ball.svg
+│   │   │   ├── golf-club.svg
+│   │   │   ├── graduation-cap.svg
+│   │   │   ├── greater-than-equal.svg
+│   │   │   ├── greater-than.svg
+│   │   │   ├── grimace.svg
+│   │   │   ├── grin-alt.svg
+│   │   │   ├── grin-beam.svg
+│   │   │   ├── grin-beam-sweat.svg
+│   │   │   ├── grin-hearts.svg
+│   │   │   ├── grin-squint.svg
+│   │   │   ├── grin-squint-tears.svg
+│   │   │   ├── grin-stars.svg
+│   │   │   ├── grin.svg
+│   │   │   ├── grin-tears.svg
+│   │   │   ├── grin-tongue-squint.svg
+│   │   │   ├── grin-tongue.svg
+│   │   │   ├── grin-tongue-wink.svg
+│   │   │   ├── grin-wink.svg
+│   │   │   ├── grip-horizontal.svg
+│   │   │   ├── grip-vertical.svg
+│   │   │   ├── h1.svg
+│   │   │   ├── h2.svg
+│   │   │   ├── h3.svg
+│   │   │   ├── hand-heart.svg
+│   │   │   ├── hand-holding-box.svg
+│   │   │   ├── hand-holding-heart.svg
+│   │   │   ├── hand-holding-seedling.svg
+│   │   │   ├── hand-holding.svg
+│   │   │   ├── hand-holding-usd.svg
+│   │   │   ├── hand-holding-water.svg
+│   │   │   ├── hand-lizard.svg
+│   │   │   ├── hand-paper.svg
+│   │   │   ├── hand-peace.svg
+│   │   │   ├── hand-point-down.svg
+│   │   │   ├── hand-pointer.svg
+│   │   │   ├── hand-point-left.svg
+│   │   │   ├── hand-point-right.svg
+│   │   │   ├── hand-point-up.svg
+│   │   │   ├── hand-receiving.svg
+│   │   │   ├── hand-rock.svg
+│   │   │   ├── hand-scissors.svg
+│   │   │   ├── handshake-alt.svg
+│   │   │   ├── handshake.svg
+│   │   │   ├── hands-heart.svg
+│   │   │   ├── hands-helping.svg
+│   │   │   ├── hand-spock.svg
+│   │   │   ├── hands.svg
+│   │   │   ├── hands-usd.svg
+│   │   │   ├── hashtag.svg
+│   │   │   ├── hdd.svg
+│   │   │   ├── heading.svg
+│   │   │   ├── headphones-alt.svg
+│   │   │   ├── headphones.svg
+│   │   │   ├── headset.svg
+│   │   │   ├── heartbeat.svg
+│   │   │   ├── heart-circle.svg
+│   │   │   ├── heart-rate.svg
+│   │   │   ├── heart-square.svg
+│   │   │   ├── heart.svg
+│   │   │   ├── helicopter.svg
+│   │   │   ├── hexagon.svg
+│   │   │   ├── highlighter.svg
+│   │   │   ├── history.svg
+│   │   │   ├── hockey-puck.svg
+│   │   │   ├── hockey-sticks.svg
+│   │   │   ├── home-heart.svg
+│   │   │   ├── home.svg
+│   │   │   ├── hospital-alt.svg
+│   │   │   ├── hospital.svg
+│   │   │   ├── hospital-symbol.svg
+│   │   │   ├── hotel.svg
+│   │   │   ├── hot-tub.svg
+│   │   │   ├── hourglass-end.svg
+│   │   │   ├── hourglass-half.svg
+│   │   │   ├── hourglass-start.svg
+│   │   │   ├── hourglass.svg
+│   │   │   ├── h-square.svg
+│   │   │   ├── i-cursor.svg
+│   │   │   ├── id-badge.svg
+│   │   │   ├── id-card-alt.svg
+│   │   │   ├── id-card.svg
+│   │   │   ├── images.svg
+│   │   │   ├── image.svg
+│   │   │   ├── inbox-in.svg
+│   │   │   ├── inbox-out.svg
+│   │   │   ├── inbox.svg
+│   │   │   ├── indent.svg
+│   │   │   ├── industry-alt.svg
+│   │   │   ├── industry.svg
+│   │   │   ├── infinity.svg
+│   │   │   ├── info-circle.svg
+│   │   │   ├── info-square.svg
+│   │   │   ├── info.svg
+│   │   │   ├── inhaler.svg
+│   │   │   ├── inventory.svg
+│   │   │   ├── italic.svg
+│   │   │   ├── jack-o-lantern.svg
+│   │   │   ├── joint.svg
+│   │   │   ├── keyboard.svg
+│   │   │   ├── key.svg
+│   │   │   ├── kidneys.svg
+│   │   │   ├── kiss-beam.svg
+│   │   │   ├── kiss.svg
+│   │   │   ├── kiss-wink-heart.svg
+│   │   │   ├── kiwi-bird.svg
+│   │   │   ├── lamp.svg
+│   │   │   ├── language.svg
+│   │   │   ├── laptop-code.svg
+│   │   │   ├── laptop.svg
+│   │   │   ├── laugh-beam.svg
+│   │   │   ├── laugh-squint.svg
+│   │   │   ├── laugh.svg
+│   │   │   ├── laugh-wink.svg
+│   │   │   ├── layer-group.svg
+│   │   │   ├── layer-minus.svg
+│   │   │   ├── layer-plus.svg
+│   │   │   ├── leaf-heart.svg
+│   │   │   ├── leaf.svg
+│   │   │   ├── lemon.svg
+│   │   │   ├── less-than-equal.svg
+│   │   │   ├── less-than.svg
+│   │   │   ├── level-down-alt.svg
+│   │   │   ├── level-down.svg
+│   │   │   ├── level-up-alt.svg
+│   │   │   ├── level-up.svg
+│   │   │   ├── life-ring.svg
+│   │   │   ├── lightbulb.svg
+│   │   │   ├── link.svg
+│   │   │   ├── lips.svg
+│   │   │   ├── lira-sign.svg
+│   │   │   ├── list-alt.svg
+│   │   │   ├── list-ol.svg
+│   │   │   ├── list.svg
+│   │   │   ├── list-ul.svg
+│   │   │   ├── location-arrow.svg
+│   │   │   ├── location-circle.svg
+│   │   │   ├── location-slash.svg
+│   │   │   ├── location.svg
+│   │   │   ├── lock-alt.svg
+│   │   │   ├── lock-open-alt.svg
+│   │   │   ├── lock-open.svg
+│   │   │   ├── lock.svg
+│   │   │   ├── long-arrow-alt-down.svg
+│   │   │   ├── long-arrow-alt-left.svg
+│   │   │   ├── long-arrow-alt-right.svg
+│   │   │   ├── long-arrow-alt-up.svg
+│   │   │   ├── long-arrow-down.svg
+│   │   │   ├── long-arrow-left.svg
+│   │   │   ├── long-arrow-right.svg
+│   │   │   ├── long-arrow-up.svg
+│   │   │   ├── loveseat.svg
+│   │   │   ├── low-vision.svg
+│   │   │   ├── luchador.svg
+│   │   │   ├── luggage-cart.svg
+│   │   │   ├── lungs.svg
+│   │   │   ├── magic.svg
+│   │   │   ├── magnet.svg
+│   │   │   ├── male.svg
+│   │   │   ├── map-marked-alt.svg
+│   │   │   ├── map-marked.svg
+│   │   │   ├── map-marker-alt-slash.svg
+│   │   │   ├── map-marker-alt.svg
+│   │   │   ├── map-marker-check.svg
+│   │   │   ├── map-marker-edit.svg
+│   │   │   ├── map-marker-exclamation.svg
+│   │   │   ├── map-marker-minus.svg
+│   │   │   ├── map-marker-plus.svg
+│   │   │   ├── map-marker-question.svg
+│   │   │   ├── map-marker-slash.svg
+│   │   │   ├── map-marker-smile.svg
+│   │   │   ├── map-marker.svg
+│   │   │   ├── map-marker-times.svg
+│   │   │   ├── map-pin.svg
+│   │   │   ├── map-signs.svg
+│   │   │   ├── map.svg
+│   │   │   ├── marker.svg
+│   │   │   ├── mars-double.svg
+│   │   │   ├── mars-stroke-h.svg
+│   │   │   ├── mars-stroke.svg
+│   │   │   ├── mars-stroke-v.svg
+│   │   │   ├── mars.svg
+│   │   │   ├── medal.svg
+│   │   │   ├── medkit.svg
+│   │   │   ├── meh-blank.svg
+│   │   │   ├── meh-rolling-eyes.svg
+│   │   │   ├── meh.svg
+│   │   │   ├── memory.svg
+│   │   │   ├── mercury.svg
+│   │   │   ├── microchip.svg
+│   │   │   ├── microphone-alt-slash.svg
+│   │   │   ├── microphone-alt.svg
+│   │   │   ├── microphone-slash.svg
+│   │   │   ├── microphone.svg
+│   │   │   ├── microscope.svg
+│   │   │   ├── minus-circle.svg
+│   │   │   ├── minus-hexagon.svg
+│   │   │   ├── minus-octagon.svg
+│   │   │   ├── minus-square.svg
+│   │   │   ├── minus.svg
+│   │   │   ├── mobile-alt.svg
+│   │   │   ├── mobile-android-alt.svg
+│   │   │   ├── mobile-android.svg
+│   │   │   ├── mobile.svg
+│   │   │   ├── money-bill-alt.svg
+│   │   │   ├── money-bill.svg
+│   │   │   ├── money-bill-wave-alt.svg
+│   │   │   ├── money-bill-wave.svg
+│   │   │   ├── money-check-alt.svg
+│   │   │   ├── money-check.svg
+│   │   │   ├── monitor-heart-rate.svg
+│   │   │   ├── monument.svg
+│   │   │   ├── moon.svg
+│   │   │   ├── mortar-pestle.svg
+│   │   │   ├── motorcycle.svg
+│   │   │   ├── mouse-pointer.svg
+│   │   │   ├── music.svg
+│   │   │   ├── neuter.svg
+│   │   │   ├── newspaper.svg
+│   │   │   ├── not-equal.svg
+│   │   │   ├── notes-medical.svg
+│   │   │   ├── object-group.svg
+│   │   │   ├── object-ungroup.svg
+│   │   │   ├── octagon.svg
+│   │   │   ├── oil-can.svg
+│   │   │   ├── oil-temp.svg
+│   │   │   ├── outdent.svg
+│   │   │   ├── paint-brush-alt.svg
+│   │   │   ├── paint-brush.svg
+│   │   │   ├── paint-roller.svg
+│   │   │   ├── palette.svg
+│   │   │   ├── pallet-alt.svg
+│   │   │   ├── pallet.svg
+│   │   │   ├── paperclip.svg
+│   │   │   ├── paper-plane.svg
+│   │   │   ├── parachute-box.svg
+│   │   │   ├── paragraph.svg
+│   │   │   ├── parking-circle-slash.svg
+│   │   │   ├── parking-circle.svg
+│   │   │   ├── parking-slash.svg
+│   │   │   ├── parking.svg
+│   │   │   ├── passport.svg
+│   │   │   ├── paste.svg
+│   │   │   ├── pause-circle.svg
+│   │   │   ├── pause.svg
+│   │   │   ├── paw.svg
+│   │   │   ├── pen-alt.svg
+│   │   │   ├── pencil-alt.svg
+│   │   │   ├── pencil-paintbrush.svg
+│   │   │   ├── pencil-ruler.svg
+│   │   │   ├── pencil.svg
+│   │   │   ├── pen-fancy.svg
+│   │   │   ├── pennant.svg
+│   │   │   ├── pen-nib.svg
+│   │   │   ├── pen-square.svg
+│   │   │   ├── pen.svg
+│   │   │   ├── people-carry.svg
+│   │   │   ├── percentage.svg
+│   │   │   ├── percent.svg
+│   │   │   ├── person-carry.svg
+│   │   │   ├── person-dolly-empty.svg
+│   │   │   ├── person-dolly.svg
+│   │   │   ├── phone-plus.svg
+│   │   │   ├── phone-slash.svg
+│   │   │   ├── phone-square.svg
+│   │   │   ├── phone.svg
+│   │   │   ├── phone-volume.svg
+│   │   │   ├── piggy-bank.svg
+│   │   │   ├── pills.svg
+│   │   │   ├── plane-alt.svg
+│   │   │   ├── plane-arrival.svg
+│   │   │   ├── plane-departure.svg
+│   │   │   ├── plane.svg
+│   │   │   ├── play-circle.svg
+│   │   │   ├── play.svg
+│   │   │   ├── plug.svg
+│   │   │   ├── plus-circle.svg
+│   │   │   ├── plus-hexagon.svg
+│   │   │   ├── plus-octagon.svg
+│   │   │   ├── plus-square.svg
+│   │   │   ├── plus.svg
+│   │   │   ├── podcast.svg
+│   │   │   ├── poop.svg
+│   │   │   ├── poo.svg
+│   │   │   ├── portrait.svg
+│   │   │   ├── pound-sign.svg
+│   │   │   ├── power-off.svg
+│   │   │   ├── prescription-bottle-alt.svg
+│   │   │   ├── prescription-bottle.svg
+│   │   │   ├── prescription.svg
+│   │   │   ├── print.svg
+│   │   │   ├── procedures.svg
+│   │   │   ├── project-diagram.svg
+│   │   │   ├── puzzle-piece.svg
+│   │   │   ├── qrcode.svg
+│   │   │   ├── question-circle.svg
+│   │   │   ├── question-square.svg
+│   │   │   ├── question.svg
+│   │   │   ├── quidditch.svg
+│   │   │   ├── quote-left.svg
+│   │   │   ├── quote-right.svg
+│   │   │   ├── racquet.svg
+│   │   │   ├── ramp-loading.svg
+│   │   │   ├── random.svg
+│   │   │   ├── receipt.svg
+│   │   │   ├── rectangle-landscape.svg
+│   │   │   ├── rectangle-portrait.svg
+│   │   │   ├── rectangle-wide.svg
+│   │   │   ├── recycle.svg
+│   │   │   ├── redo-alt.svg
+│   │   │   ├── redo.svg
+│   │   │   ├── registered.svg
+│   │   │   ├── repeat-1-alt.svg
+│   │   │   ├── repeat-1.svg
+│   │   │   ├── repeat-alt.svg
+│   │   │   ├── repeat.svg
+│   │   │   ├── reply-all.svg
+│   │   │   ├── reply.svg
+│   │   │   ├── retweet-alt.svg
+│   │   │   ├── retweet.svg
+│   │   │   ├── ribbon.svg
+│   │   │   ├── road.svg
+│   │   │   ├── robot.svg
+│   │   │   ├── rocket.svg
+│   │   │   ├── route-highway.svg
+│   │   │   ├── route-interstate.svg
+│   │   │   ├── route.svg
+│   │   │   ├── rss-square.svg
+│   │   │   ├── rss.svg
+│   │   │   ├── ruble-sign.svg
+│   │   │   ├── ruler-combined.svg
+│   │   │   ├── ruler-horizontal.svg
+│   │   │   ├── ruler.svg
+│   │   │   ├── ruler-triangle.svg
+│   │   │   ├── ruler-vertical.svg
+│   │   │   ├── rupee-sign.svg
+│   │   │   ├── sad-cry.svg
+│   │   │   ├── sad-tear.svg
+│   │   │   ├── save.svg
+│   │   │   ├── scalpel-path.svg
+│   │   │   ├── scalpel.svg
+│   │   │   ├── scanner-keyboard.svg
+│   │   │   ├── scanner.svg
+│   │   │   ├── scanner-touchscreen.svg
+│   │   │   ├── school.svg
+│   │   │   ├── screwdriver.svg
+│   │   │   ├── scrubber.svg
+│   │   │   ├── search-minus.svg
+│   │   │   ├── search-plus.svg
+│   │   │   ├── search.svg
+│   │   │   ├── seedling.svg
+│   │   │   ├── server.svg
+│   │   │   ├── shapes.svg
+│   │   │   ├── share-all.svg
+│   │   │   ├── share-alt-square.svg
+│   │   │   ├── share-alt.svg
+│   │   │   ├── share-square.svg
+│   │   │   ├── share.svg
+│   │   │   ├── shekel-sign.svg
+│   │   │   ├── shield-alt.svg
+│   │   │   ├── shield-check.svg
+│   │   │   ├── shield.svg
+│   │   │   ├── shipping-fast.svg
+│   │   │   ├── shipping-timed.svg
+│   │   │   ├── ship.svg
+│   │   │   ├── shoe-prints.svg
+│   │   │   ├── shopping-bag.svg
+│   │   │   ├── shopping-basket.svg
+│   │   │   ├── shopping-cart.svg
+│   │   │   ├── shower.svg
+│   │   │   ├── shuttlecock.svg
+│   │   │   ├── shuttle-van.svg
+│   │   │   ├── signal.svg
+│   │   │   ├── signature.svg
+│   │   │   ├── sign-in-alt.svg
+│   │   │   ├── sign-in.svg
+│   │   │   ├── sign-language.svg
+│   │   │   ├── sign-out-alt.svg
+│   │   │   ├── sign-out.svg
+│   │   │   ├── sign.svg
+│   │   │   ├── sitemap.svg
+│   │   │   ├── skeleton.svg
+│   │   │   ├── skull.svg
+│   │   │   ├── sliders-h-square.svg
+│   │   │   ├── sliders-h.svg
+│   │   │   ├── sliders-v-square.svg
+│   │   │   ├── sliders-v.svg
+│   │   │   ├── smile-beam.svg
+│   │   │   ├── smile-plus.svg
+│   │   │   ├── smile.svg
+│   │   │   ├── smile-wink.svg
+│   │   │   ├── smoking-ban.svg
+│   │   │   ├── smoking.svg
+│   │   │   ├── snowflake.svg
+│   │   │   ├── solar-panel.svg
+│   │   │   ├── sort-alpha-down.svg
+│   │   │   ├── sort-alpha-up.svg
+│   │   │   ├── sort-amount-down.svg
+│   │   │   ├── sort-amount-up.svg
+│   │   │   ├── sort-down.svg
+│   │   │   ├── sort-numeric-down.svg
+│   │   │   ├── sort-numeric-up.svg
+│   │   │   ├── sort.svg
+│   │   │   ├── sort-up.svg
+│   │   │   ├── space-shuttle.svg
+│   │   │   ├── spade.svg
+│   │   │   ├── spa.svg
+│   │   │   ├── spinner.svg
+│   │   │   ├── spinner-third.svg
+│   │   │   ├── splotch.svg
+│   │   │   ├── spray-can.svg
+│   │   │   ├── square-full.svg
+│   │   │   ├── square.svg
+│   │   │   ├── stamp.svg
+│   │   │   ├── star-exclamation.svg
+│   │   │   ├── star-half-alt.svg
+│   │   │   ├── star-half.svg
+│   │   │   ├── star-of-life.svg
+│   │   │   ├── star.svg
+│   │   │   ├── steering-wheel.svg
+│   │   │   ├── step-backward.svg
+│   │   │   ├── step-forward.svg
+│   │   │   ├── stethoscope.svg
+│   │   │   ├── sticky-note.svg
+│   │   │   ├── stomach.svg
+│   │   │   ├── stop-circle.svg
+│   │   │   ├── stop.svg
+│   │   │   ├── stopwatch.svg
+│   │   │   ├── store-alt.svg
+│   │   │   ├── store.svg
+│   │   │   ├── stream.svg
+│   │   │   ├── street-view.svg
+│   │   │   ├── strikethrough.svg
+│   │   │   ├── stroopwafel.svg
+│   │   │   ├── subscript.svg
+│   │   │   ├── subway.svg
+│   │   │   ├── suitcase-rolling.svg
+│   │   │   ├── suitcase.svg
+│   │   │   ├── sun.svg
+│   │   │   ├── superscript.svg
+│   │   │   ├── surprise.svg
+│   │   │   ├── swatchbook.svg
+│   │   │   ├── swimmer.svg
+│   │   │   ├── swimming-pool.svg
+│   │   │   ├── sync-alt.svg
+│   │   │   ├── sync.svg
+│   │   │   ├── syringe.svg
+│   │   │   ├── table.svg
+│   │   │   ├── tablet-alt.svg
+│   │   │   ├── tablet-android-alt.svg
+│   │   │   ├── tablet-android.svg
+│   │   │   ├── table-tennis.svg
+│   │   │   ├── tablet-rugged.svg
+│   │   │   ├── tablets.svg
+│   │   │   ├── tablet.svg
+│   │   │   ├── tachometer-alt-average.svg
+│   │   │   ├── tachometer-alt-fastest.svg
+│   │   │   ├── tachometer-alt-fast.svg
+│   │   │   ├── tachometer-alt-slowest.svg
+│   │   │   ├── tachometer-alt-slow.svg
+│   │   │   ├── tachometer-alt.svg
+│   │   │   ├── tachometer-average.svg
+│   │   │   ├── tachometer-fastest.svg
+│   │   │   ├── tachometer-fast.svg
+│   │   │   ├── tachometer-slowest.svg
+│   │   │   ├── tachometer-slow.svg
+│   │   │   ├── tachometer.svg
+│   │   │   ├── tags.svg
+│   │   │   ├── tag.svg
+│   │   │   ├── tape.svg
+│   │   │   ├── tasks.svg
+│   │   │   ├── taxi.svg
+│   │   │   ├── teeth-open.svg
+│   │   │   ├── teeth.svg
+│   │   │   ├── tennis-ball.svg
+│   │   │   ├── terminal.svg
+│   │   │   ├── text-height.svg
+│   │   │   ├── text-width.svg
+│   │   │   ├── theater-masks.svg
+│   │   │   ├── thermometer-empty.svg
+│   │   │   ├── thermometer-full.svg
+│   │   │   ├── thermometer-half.svg
+│   │   │   ├── thermometer-quarter.svg
+│   │   │   ├── thermometer.svg
+│   │   │   ├── thermometer-three-quarters.svg
+│   │   │   ├── th-large.svg
+│   │   │   ├── th-list.svg
+│   │   │   ├── th.svg
+│   │   │   ├── thumbs-down.svg
+│   │   │   ├── thumbs-up.svg
+│   │   │   ├── thumbtack.svg
+│   │   │   ├── ticket-alt.svg
+│   │   │   ├── ticket.svg
+│   │   │   ├── times-circle.svg
+│   │   │   ├── times-hexagon.svg
+│   │   │   ├── times-octagon.svg
+│   │   │   ├── times-square.svg
+│   │   │   ├── times.svg
+│   │   │   ├── tint-slash.svg
+│   │   │   ├── tint.svg
+│   │   │   ├── tired.svg
+│   │   │   ├── tire-flat.svg
+│   │   │   ├── tire-pressure-warning.svg
+│   │   │   ├── tire-rugged.svg
+│   │   │   ├── tire.svg
+│   │   │   ├── toggle-off.svg
+│   │   │   ├── toggle-on.svg
+│   │   │   ├── toolbox.svg
+│   │   │   ├── toothbrush.svg
+│   │   │   ├── tooth.svg
+│   │   │   ├── trademark.svg
+│   │   │   ├── traffic-cone.svg
+│   │   │   ├── traffic-light-go.svg
+│   │   │   ├── traffic-light-slow.svg
+│   │   │   ├── traffic-light-stop.svg
+│   │   │   ├── traffic-light.svg
+│   │   │   ├── train.svg
+│   │   │   ├── transgender-alt.svg
+│   │   │   ├── transgender.svg
+│   │   │   ├── trash-alt.svg
+│   │   │   ├── trash.svg
+│   │   │   ├── tree-alt.svg
+│   │   │   ├── tree.svg
+│   │   │   ├── triangle.svg
+│   │   │   ├── trophy-alt.svg
+│   │   │   ├── trophy.svg
+│   │   │   ├── truck-container.svg
+│   │   │   ├── truck-couch.svg
+│   │   │   ├── truck-loading.svg
+│   │   │   ├── truck-monster.svg
+│   │   │   ├── truck-moving.svg
+│   │   │   ├── truck-pickup.svg
+│   │   │   ├── truck-ramp.svg
+│   │   │   ├── truck.svg
+│   │   │   ├── tshirt.svg
+│   │   │   ├── tty.svg
+│   │   │   ├── tv-retro.svg
+│   │   │   ├── tv.svg
+│   │   │   ├── umbrella-beach.svg
+│   │   │   ├── umbrella.svg
+│   │   │   ├── underline.svg
+│   │   │   ├── undo-alt.svg
+│   │   │   ├── undo.svg
+│   │   │   ├── universal-access.svg
+│   │   │   ├── university.svg
+│   │   │   ├── unlink.svg
+│   │   │   ├── unlock-alt.svg
+│   │   │   ├── unlock.svg
+│   │   │   ├── upload.svg
+│   │   │   ├── usd-circle.svg
+│   │   │   ├── usd-square.svg
+│   │   │   ├── user-alt-slash.svg
+│   │   │   ├── user-alt.svg
+│   │   │   ├── user-astronaut.svg
+│   │   │   ├── user-check.svg
+│   │   │   ├── user-circle.svg
+│   │   │   ├── user-clock.svg
+│   │   │   ├── user-cog.svg
+│   │   │   ├── user-edit.svg
+│   │   │   ├── user-friends.svg
+│   │   │   ├── user-graduate.svg
+│   │   │   ├── user-lock.svg
+│   │   │   ├── user-md.svg
+│   │   │   ├── user-minus.svg
+│   │   │   ├── user-ninja.svg
+│   │   │   ├── user-plus.svg
+│   │   │   ├── users-class.svg
+│   │   │   ├── users-cog.svg
+│   │   │   ├── user-secret.svg
+│   │   │   ├── user-shield.svg
+│   │   │   ├── user-slash.svg
+│   │   │   ├── users.svg
+│   │   │   ├── user.svg
+│   │   │   ├── user-tag.svg
+│   │   │   ├── user-tie.svg
+│   │   │   ├── user-times.svg
+│   │   │   ├── utensil-fork.svg
+│   │   │   ├── utensil-knife.svg
+│   │   │   ├── utensils-alt.svg
+│   │   │   ├── utensil-spoon.svg
+│   │   │   ├── utensils.svg
+│   │   │   ├── vector-square.svg
+│   │   │   ├── venus-double.svg
+│   │   │   ├── venus-mars.svg
+│   │   │   ├── venus.svg
+│   │   │   ├── vials.svg
+│   │   │   ├── vial.svg
+│   │   │   ├── video-plus.svg
+│   │   │   ├── video-slash.svg
+│   │   │   ├── video.svg
+│   │   │   ├── volleyball-ball.svg
+│   │   │   ├── volume-down.svg
+│   │   │   ├── volume-mute.svg
+│   │   │   ├── volume-off.svg
+│   │   │   ├── volume-up.svg
+│   │   │   ├── walking.svg
+│   │   │   ├── wallet.svg
+│   │   │   ├── warehouse-alt.svg
+│   │   │   ├── warehouse.svg
+│   │   │   ├── watch-fitness.svg
+│   │   │   ├── watch.svg
+│   │   │   ├── weight-hanging.svg
+│   │   │   ├── weight.svg
+│   │   │   ├── wheelchair.svg
+│   │   │   ├── whistle.svg
+│   │   │   ├── wifi.svg
+│   │   │   ├── window-alt.svg
+│   │   │   ├── window-close.svg
+│   │   │   ├── window-maximize.svg
+│   │   │   ├── window-minimize.svg
+│   │   │   ├── window-restore.svg
+│   │   │   ├── window.svg
+│   │   │   ├── wine-glass-alt.svg
+│   │   │   ├── wine-glass.svg
+│   │   │   ├── won-sign.svg
+│   │   │   ├── wrench.svg
+│   │   │   ├── x-ray.svg
+│   │   │   └── yen-sign.svg
+│   │   ├── regular
+│   │   │   ├── address-book.svg
+│   │   │   ├── address-card.svg
+│   │   │   ├── adjust.svg
+│   │   │   ├── air-freshener.svg
+│   │   │   ├── alarm-clock.svg
+│   │   │   ├── align-center.svg
+│   │   │   ├── align-justify.svg
+│   │   │   ├── align-left.svg
+│   │   │   ├── align-right.svg
+│   │   │   ├── allergies.svg
+│   │   │   ├── ambulance.svg
+│   │   │   ├── american-sign-language-interpreting.svg
+│   │   │   ├── anchor.svg
+│   │   │   ├── angle-double-down.svg
+│   │   │   ├── angle-double-left.svg
+│   │   │   ├── angle-double-right.svg
+│   │   │   ├── angle-double-up.svg
+│   │   │   ├── angle-down.svg
+│   │   │   ├── angle-left.svg
+│   │   │   ├── angle-right.svg
+│   │   │   ├── angle-up.svg
+│   │   │   ├── angry.svg
+│   │   │   ├── apple-alt.svg
+│   │   │   ├── archive.svg
+│   │   │   ├── archway.svg
+│   │   │   ├── arrow-alt-circle-down.svg
+│   │   │   ├── arrow-alt-circle-left.svg
+│   │   │   ├── arrow-alt-circle-right.svg
+│   │   │   ├── arrow-alt-circle-up.svg
+│   │   │   ├── arrow-alt-down.svg
+│   │   │   ├── arrow-alt-from-bottom.svg
+│   │   │   ├── arrow-alt-from-left.svg
+│   │   │   ├── arrow-alt-from-right.svg
+│   │   │   ├── arrow-alt-from-top.svg
+│   │   │   ├── arrow-alt-left.svg
+│   │   │   ├── arrow-alt-right.svg
+│   │   │   ├── arrow-alt-square-down.svg
+│   │   │   ├── arrow-alt-square-left.svg
+│   │   │   ├── arrow-alt-square-right.svg
+│   │   │   ├── arrow-alt-square-up.svg
+│   │   │   ├── arrow-alt-to-bottom.svg
+│   │   │   ├── arrow-alt-to-left.svg
+│   │   │   ├── arrow-alt-to-right.svg
+│   │   │   ├── arrow-alt-to-top.svg
+│   │   │   ├── arrow-alt-up.svg
+│   │   │   ├── arrow-circle-down.svg
+│   │   │   ├── arrow-circle-left.svg
+│   │   │   ├── arrow-circle-right.svg
+│   │   │   ├── arrow-circle-up.svg
+│   │   │   ├── arrow-down.svg
+│   │   │   ├── arrow-from-bottom.svg
+│   │   │   ├── arrow-from-left.svg
+│   │   │   ├── arrow-from-right.svg
+│   │   │   ├── arrow-from-top.svg
+│   │   │   ├── arrow-left.svg
+│   │   │   ├── arrow-right.svg
+│   │   │   ├── arrows-alt-h.svg
+│   │   │   ├── arrows-alt.svg
+│   │   │   ├── arrows-alt-v.svg
+│   │   │   ├── arrows-h.svg
+│   │   │   ├── arrow-square-down.svg
+│   │   │   ├── arrow-square-left.svg
+│   │   │   ├── arrow-square-right.svg
+│   │   │   ├── arrow-square-up.svg
+│   │   │   ├── arrows.svg
+│   │   │   ├── arrows-v.svg
+│   │   │   ├── arrow-to-bottom.svg
+│   │   │   ├── arrow-to-left.svg
+│   │   │   ├── arrow-to-right.svg
+│   │   │   ├── arrow-to-top.svg
+│   │   │   ├── arrow-up.svg
+│   │   │   ├── assistive-listening-systems.svg
+│   │   │   ├── asterisk.svg
+│   │   │   ├── atlas.svg
+│   │   │   ├── atom-alt.svg
+│   │   │   ├── atom.svg
+│   │   │   ├── at.svg
+│   │   │   ├── audio-description.svg
+│   │   │   ├── award.svg
+│   │   │   ├── backpack.svg
+│   │   │   ├── backspace.svg
+│   │   │   ├── backward.svg
+│   │   │   ├── badge-check.svg
+│   │   │   ├── badge.svg
+│   │   │   ├── balance-scale-left.svg
+│   │   │   ├── balance-scale-right.svg
+│   │   │   ├── balance-scale.svg
+│   │   │   ├── band-aid.svg
+│   │   │   ├── ban.svg
+│   │   │   ├── barcode-alt.svg
+│   │   │   ├── barcode-read.svg
+│   │   │   ├── barcode-scan.svg
+│   │   │   ├── barcode.svg
+│   │   │   ├── bars.svg
+│   │   │   ├── baseball-ball.svg
+│   │   │   ├── baseball.svg
+│   │   │   ├── basketball-ball.svg
+│   │   │   ├── basketball-hoop.svg
+│   │   │   ├── bath.svg
+│   │   │   ├── battery-bolt.svg
+│   │   │   ├── battery-empty.svg
+│   │   │   ├── battery-full.svg
+│   │   │   ├── battery-half.svg
+│   │   │   ├── battery-quarter.svg
+│   │   │   ├── battery-slash.svg
+│   │   │   ├── battery-three-quarters.svg
+│   │   │   ├── bed.svg
+│   │   │   ├── beer.svg
+│   │   │   ├── bell-school-slash.svg
+│   │   │   ├── bell-school.svg
+│   │   │   ├── bell-slash.svg
+│   │   │   ├── bell.svg
+│   │   │   ├── bezier-curve.svg
+│   │   │   ├── bicycle.svg
+│   │   │   ├── binoculars.svg
+│   │   │   ├── birthday-cake.svg
+│   │   │   ├── blanket.svg
+│   │   │   ├── blender.svg
+│   │   │   ├── blind.svg
+│   │   │   ├── bold.svg
+│   │   │   ├── bolt.svg
+│   │   │   ├── bomb.svg
+│   │   │   ├── bone-break.svg
+│   │   │   ├── bone.svg
+│   │   │   ├── bong.svg
+│   │   │   ├── book-alt.svg
+│   │   │   ├── book-heart.svg
+│   │   │   ├── bookmark.svg
+│   │   │   ├── book-open.svg
+│   │   │   ├── book-reader.svg
+│   │   │   ├── books.svg
+│   │   │   ├── book.svg
+│   │   │   ├── bowling-ball.svg
+│   │   │   ├── bowling-pins.svg
+│   │   │   ├── box-alt.svg
+│   │   │   ├── box-check.svg
+│   │   │   ├── boxes-alt.svg
+│   │   │   ├── boxes.svg
+│   │   │   ├── box-fragile.svg
+│   │   │   ├── box-full.svg
+│   │   │   ├── box-heart.svg
+│   │   │   ├── boxing-glove.svg
+│   │   │   ├── box-open.svg
+│   │   │   ├── box.svg
+│   │   │   ├── box-up.svg
+│   │   │   ├── box-usd.svg
+│   │   │   ├── braille.svg
+│   │   │   ├── brain.svg
+│   │   │   ├── briefcase-medical.svg
+│   │   │   ├── briefcase.svg
+│   │   │   ├── broadcast-tower.svg
+│   │   │   ├── broom.svg
+│   │   │   ├── browser.svg
+│   │   │   ├── brush.svg
+│   │   │   ├── bug.svg
+│   │   │   ├── building.svg
+│   │   │   ├── bullhorn.svg
+│   │   │   ├── bullseye.svg
+│   │   │   ├── burn.svg
+│   │   │   ├── bus-alt.svg
+│   │   │   ├── bus-school.svg
+│   │   │   ├── bus.svg
+│   │   │   ├── calculator.svg
+│   │   │   ├── calendar-alt.svg
+│   │   │   ├── calendar-check.svg
+│   │   │   ├── calendar-edit.svg
+│   │   │   ├── calendar-exclamation.svg
+│   │   │   ├── calendar-minus.svg
+│   │   │   ├── calendar-plus.svg
+│   │   │   ├── calendar.svg
+│   │   │   ├── calendar-times.svg
+│   │   │   ├── camera-alt.svg
+│   │   │   ├── camera-retro.svg
+│   │   │   ├── camera.svg
+│   │   │   ├── cannabis.svg
+│   │   │   ├── capsules.svg
+│   │   │   ├── car-alt.svg
+│   │   │   ├── car-battery.svg
+│   │   │   ├── car-bump.svg
+│   │   │   ├── car-crash.svg
+│   │   │   ├── caret-circle-down.svg
+│   │   │   ├── caret-circle-left.svg
+│   │   │   ├── caret-circle-right.svg
+│   │   │   ├── caret-circle-up.svg
+│   │   │   ├── caret-down.svg
+│   │   │   ├── caret-left.svg
+│   │   │   ├── caret-right.svg
+│   │   │   ├── caret-square-down.svg
+│   │   │   ├── caret-square-left.svg
+│   │   │   ├── caret-square-right.svg
+│   │   │   ├── caret-square-up.svg
+│   │   │   ├── caret-up.svg
+│   │   │   ├── car-garage.svg
+│   │   │   ├── car-mechanic.svg
+│   │   │   ├── car-side.svg
+│   │   │   ├── car.svg
+│   │   │   ├── cart-arrow-down.svg
+│   │   │   ├── car-tilt.svg
+│   │   │   ├── cart-plus.svg
+│   │   │   ├── car-wash.svg
+│   │   │   ├── certificate.svg
+│   │   │   ├── chalkboard.svg
+│   │   │   ├── chalkboard-teacher.svg
+│   │   │   ├── charging-station.svg
+│   │   │   ├── chart-area.svg
+│   │   │   ├── chart-bar.svg
+│   │   │   ├── chart-line.svg
+│   │   │   ├── chart-pie.svg
+│   │   │   ├── check-circle.svg
+│   │   │   ├── check-double.svg
+│   │   │   ├── check-square.svg
+│   │   │   ├── check.svg
+│   │   │   ├── chess-bishop-alt.svg
+│   │   │   ├── chess-bishop.svg
+│   │   │   ├── chess-board.svg
+│   │   │   ├── chess-clock-alt.svg
+│   │   │   ├── chess-clock.svg
+│   │   │   ├── chess-king-alt.svg
+│   │   │   ├── chess-king.svg
+│   │   │   ├── chess-knight-alt.svg
+│   │   │   ├── chess-knight.svg
+│   │   │   ├── chess-pawn-alt.svg
+│   │   │   ├── chess-pawn.svg
+│   │   │   ├── chess-queen-alt.svg
+│   │   │   ├── chess-queen.svg
+│   │   │   ├── chess-rook-alt.svg
+│   │   │   ├── chess-rook.svg
+│   │   │   ├── chess.svg
+│   │   │   ├── chevron-circle-down.svg
+│   │   │   ├── chevron-circle-left.svg
+│   │   │   ├── chevron-circle-right.svg
+│   │   │   ├── chevron-circle-up.svg
+│   │   │   ├── chevron-double-down.svg
+│   │   │   ├── chevron-double-left.svg
+│   │   │   ├── chevron-double-right.svg
+│   │   │   ├── chevron-double-up.svg
+│   │   │   ├── chevron-down.svg
+│   │   │   ├── chevron-left.svg
+│   │   │   ├── chevron-right.svg
+│   │   │   ├── chevron-square-down.svg
+│   │   │   ├── chevron-square-left.svg
+│   │   │   ├── chevron-square-right.svg
+│   │   │   ├── chevron-square-up.svg
+│   │   │   ├── chevron-up.svg
+│   │   │   ├── child.svg
+│   │   │   ├── church.svg
+│   │   │   ├── circle-notch.svg
+│   │   │   ├── circle.svg
+│   │   │   ├── clipboard-check.svg
+│   │   │   ├── clipboard-list.svg
+│   │   │   ├── clipboard-prescription.svg
+│   │   │   ├── clipboard.svg
+│   │   │   ├── clock.svg
+│   │   │   ├── clone.svg
+│   │   │   ├── closed-captioning.svg
+│   │   │   ├── cloud-download-alt.svg
+│   │   │   ├── cloud-download.svg
+│   │   │   ├── cloud.svg
+│   │   │   ├── cloud-upload-alt.svg
+│   │   │   ├── cloud-upload.svg
+│   │   │   ├── club.svg
+│   │   │   ├── cocktail.svg
+│   │   │   ├── code-branch.svg
+│   │   │   ├── code-commit.svg
+│   │   │   ├── code-merge.svg
+│   │   │   ├── code.svg
+│   │   │   ├── coffee.svg
+│   │   │   ├── cogs.svg
+│   │   │   ├── cog.svg
+│   │   │   ├── coins.svg
+│   │   │   ├── columns.svg
+│   │   │   ├── comment-alt-check.svg
+│   │   │   ├── comment-alt-dots.svg
+│   │   │   ├── comment-alt-edit.svg
+│   │   │   ├── comment-alt-exclamation.svg
+│   │   │   ├── comment-alt-lines.svg
+│   │   │   ├── comment-alt-minus.svg
+│   │   │   ├── comment-alt-plus.svg
+│   │   │   ├── comment-alt-slash.svg
+│   │   │   ├── comment-alt-smile.svg
+│   │   │   ├── comment-alt.svg
+│   │   │   ├── comment-alt-times.svg
+│   │   │   ├── comment-check.svg
+│   │   │   ├── comment-dots.svg
+│   │   │   ├── comment-edit.svg
+│   │   │   ├── comment-exclamation.svg
+│   │   │   ├── comment-lines.svg
+│   │   │   ├── comment-minus.svg
+│   │   │   ├── comment-plus.svg
+│   │   │   ├── comments-alt.svg
+│   │   │   ├── comment-slash.svg
+│   │   │   ├── comment-smile.svg
+│   │   │   ├── comments.svg
+│   │   │   ├── comment.svg
+│   │   │   ├── comment-times.svg
+│   │   │   ├── compact-disc.svg
+│   │   │   ├── compass-slash.svg
+│   │   │   ├── compass.svg
+│   │   │   ├── compress-alt.svg
+│   │   │   ├── compress.svg
+│   │   │   ├── compress-wide.svg
+│   │   │   ├── concierge-bell.svg
+│   │   │   ├── container-storage.svg
+│   │   │   ├── conveyor-belt-alt.svg
+│   │   │   ├── conveyor-belt.svg
+│   │   │   ├── cookie-bite.svg
+│   │   │   ├── cookie.svg
+│   │   │   ├── copyright.svg
+│   │   │   ├── copy.svg
+│   │   │   ├── couch.svg
+│   │   │   ├── credit-card-blank.svg
+│   │   │   ├── credit-card-front.svg
+│   │   │   ├── credit-card.svg
+│   │   │   ├── cricket.svg
+│   │   │   ├── crop-alt.svg
+│   │   │   ├── crop.svg
+│   │   │   ├── crosshairs.svg
+│   │   │   ├── crown.svg
+│   │   │   ├── crow.svg
+│   │   │   ├── cubes.svg
+│   │   │   ├── cube.svg
+│   │   │   ├── curling.svg
+│   │   │   ├── cut.svg
+│   │   │   ├── database.svg
+│   │   │   ├── deaf.svg
+│   │   │   ├── desktop-alt.svg
+│   │   │   ├── desktop.svg
+│   │   │   ├── diagnoses.svg
+│   │   │   ├── diamond.svg
+│   │   │   ├── dice-five.svg
+│   │   │   ├── dice-four.svg
+│   │   │   ├── dice-one.svg
+│   │   │   ├── dice-six.svg
+│   │   │   ├── dice.svg
+│   │   │   ├── dice-three.svg
+│   │   │   ├── dice-two.svg
+│   │   │   ├── digital-tachograph.svg
+│   │   │   ├── diploma.svg
+│   │   │   ├── directions.svg
+│   │   │   ├── divide.svg
+│   │   │   ├── dizzy.svg
+│   │   │   ├── dna.svg
+│   │   │   ├── dollar-sign.svg
+│   │   │   ├── dolly-empty.svg
+│   │   │   ├── dolly-flatbed-alt.svg
+│   │   │   ├── dolly-flatbed-empty.svg
+│   │   │   ├── dolly-flatbed.svg
+│   │   │   ├── dolly.svg
+│   │   │   ├── donate.svg
+│   │   │   ├── do-not-enter.svg
+│   │   │   ├── door-closed.svg
+│   │   │   ├── door-open.svg
+│   │   │   ├── dot-circle.svg
+│   │   │   ├── dove.svg
+│   │   │   ├── download.svg
+│   │   │   ├── drafting-compass.svg
+│   │   │   ├── draw-circle.svg
+│   │   │   ├── draw-polygon.svg
+│   │   │   ├── draw-square.svg
+│   │   │   ├── drum-steelpan.svg
+│   │   │   ├── drum.svg
+│   │   │   ├── dumbbell.svg
+│   │   │   ├── ear.svg
+│   │   │   ├── edit.svg
+│   │   │   ├── eject.svg
+│   │   │   ├── ellipsis-h-alt.svg
+│   │   │   ├── ellipsis-h.svg
+│   │   │   ├── ellipsis-v-alt.svg
+│   │   │   ├── ellipsis-v.svg
+│   │   │   ├── engine-warning.svg
+│   │   │   ├── envelope-open.svg
+│   │   │   ├── envelope-square.svg
+│   │   │   ├── envelope.svg
+│   │   │   ├── equals.svg
+│   │   │   ├── eraser.svg
+│   │   │   ├── euro-sign.svg
+│   │   │   ├── exchange-alt.svg
+│   │   │   ├── exchange.svg
+│   │   │   ├── exclamation-circle.svg
+│   │   │   ├── exclamation-square.svg
+│   │   │   ├── exclamation.svg
+│   │   │   ├── exclamation-triangle.svg
+│   │   │   ├── expand-alt.svg
+│   │   │   ├── expand-arrows-alt.svg
+│   │   │   ├── expand-arrows.svg
+│   │   │   ├── expand.svg
+│   │   │   ├── expand-wide.svg
+│   │   │   ├── external-link-alt.svg
+│   │   │   ├── external-link-square-alt.svg
+│   │   │   ├── external-link-square.svg
+│   │   │   ├── external-link.svg
+│   │   │   ├── eye-dropper.svg
+│   │   │   ├── eye-slash.svg
+│   │   │   ├── eye.svg
+│   │   │   ├── fast-backward.svg
+│   │   │   ├── fast-forward.svg
+│   │   │   ├── fax.svg
+│   │   │   ├── feather-alt.svg
+│   │   │   ├── feather.svg
+│   │   │   ├── female.svg
+│   │   │   ├── field-hockey.svg
+│   │   │   ├── fighter-jet.svg
+│   │   │   ├── file-alt.svg
+│   │   │   ├── file-archive.svg
+│   │   │   ├── file-audio.svg
+│   │   │   ├── file-certificate.svg
+│   │   │   ├── file-check.svg
+│   │   │   ├── file-code.svg
+│   │   │   ├── file-contract.svg
+│   │   │   ├── file-download.svg
+│   │   │   ├── file-edit.svg
+│   │   │   ├── file-excel.svg
+│   │   │   ├── file-exclamation.svg
+│   │   │   ├── file-export.svg
+│   │   │   ├── file-image.svg
+│   │   │   ├── file-import.svg
+│   │   │   ├── file-invoice-dollar.svg
+│   │   │   ├── file-invoice.svg
+│   │   │   ├── file-medical-alt.svg
+│   │   │   ├── file-medical.svg
+│   │   │   ├── file-minus.svg
+│   │   │   ├── file-pdf.svg
+│   │   │   ├── file-plus.svg
+│   │   │   ├── file-powerpoint.svg
+│   │   │   ├── file-prescription.svg
+│   │   │   ├── file-signature.svg
+│   │   │   ├── file.svg
+│   │   │   ├── file-times.svg
+│   │   │   ├── file-upload.svg
+│   │   │   ├── file-video.svg
+│   │   │   ├── file-word.svg
+│   │   │   ├── fill-drip.svg
+│   │   │   ├── fill.svg
+│   │   │   ├── film-alt.svg
+│   │   │   ├── film.svg
+│   │   │   ├── filter.svg
+│   │   │   ├── fingerprint.svg
+│   │   │   ├── fire-extinguisher.svg
+│   │   │   ├── fire.svg
+│   │   │   ├── first-aid.svg
+│   │   │   ├── fish.svg
+│   │   │   ├── flag-checkered.svg
+│   │   │   ├── flag.svg
+│   │   │   ├── flask.svg
+│   │   │   ├── flushed.svg
+│   │   │   ├── folder-open.svg
+│   │   │   ├── folder.svg
+│   │   │   ├── font-awesome-logo-full.svg
+│   │   │   ├── font.svg
+│   │   │   ├── football-ball.svg
+│   │   │   ├── football-helmet.svg
+│   │   │   ├── forklift.svg
+│   │   │   ├── forward.svg
+│   │   │   ├── fragile.svg
+│   │   │   ├── frog.svg
+│   │   │   ├── frown-open.svg
+│   │   │   ├── frown.svg
+│   │   │   ├── futbol.svg
+│   │   │   ├── gamepad.svg
+│   │   │   ├── gas-pump-slash.svg
+│   │   │   ├── gas-pump.svg
+│   │   │   ├── gavel.svg
+│   │   │   ├── gem.svg
+│   │   │   ├── genderless.svg
+│   │   │   ├── gift.svg
+│   │   │   ├── glasses-alt.svg
+│   │   │   ├── glasses.svg
+│   │   │   ├── glass-martini-alt.svg
+│   │   │   ├── glass-martini.svg
+│   │   │   ├── globe-africa.svg
+│   │   │   ├── globe-americas.svg
+│   │   │   ├── globe-asia.svg
+│   │   │   ├── globe-stand.svg
+│   │   │   ├── globe.svg
+│   │   │   ├── golf-ball.svg
+│   │   │   ├── golf-club.svg
+│   │   │   ├── graduation-cap.svg
+│   │   │   ├── greater-than-equal.svg
+│   │   │   ├── greater-than.svg
+│   │   │   ├── grimace.svg
+│   │   │   ├── grin-alt.svg
+│   │   │   ├── grin-beam.svg
+│   │   │   ├── grin-beam-sweat.svg
+│   │   │   ├── grin-hearts.svg
+│   │   │   ├── grin-squint.svg
+│   │   │   ├── grin-squint-tears.svg
+│   │   │   ├── grin-stars.svg
+│   │   │   ├── grin.svg
+│   │   │   ├── grin-tears.svg
+│   │   │   ├── grin-tongue-squint.svg
+│   │   │   ├── grin-tongue.svg
+│   │   │   ├── grin-tongue-wink.svg
+│   │   │   ├── grin-wink.svg
+│   │   │   ├── grip-horizontal.svg
+│   │   │   ├── grip-vertical.svg
+│   │   │   ├── h1.svg
+│   │   │   ├── h2.svg
+│   │   │   ├── h3.svg
+│   │   │   ├── hand-heart.svg
+│   │   │   ├── hand-holding-box.svg
+│   │   │   ├── hand-holding-heart.svg
+│   │   │   ├── hand-holding-seedling.svg
+│   │   │   ├── hand-holding.svg
+│   │   │   ├── hand-holding-usd.svg
+│   │   │   ├── hand-holding-water.svg
+│   │   │   ├── hand-lizard.svg
+│   │   │   ├── hand-paper.svg
+│   │   │   ├── hand-peace.svg
+│   │   │   ├── hand-point-down.svg
+│   │   │   ├── hand-pointer.svg
+│   │   │   ├── hand-point-left.svg
+│   │   │   ├── hand-point-right.svg
+│   │   │   ├── hand-point-up.svg
+│   │   │   ├── hand-receiving.svg
+│   │   │   ├── hand-rock.svg
+│   │   │   ├── hand-scissors.svg
+│   │   │   ├── handshake-alt.svg
+│   │   │   ├── handshake.svg
+│   │   │   ├── hands-heart.svg
+│   │   │   ├── hands-helping.svg
+│   │   │   ├── hand-spock.svg
+│   │   │   ├── hands.svg
+│   │   │   ├── hands-usd.svg
+│   │   │   ├── hashtag.svg
+│   │   │   ├── hdd.svg
+│   │   │   ├── heading.svg
+│   │   │   ├── headphones-alt.svg
+│   │   │   ├── headphones.svg
+│   │   │   ├── headset.svg
+│   │   │   ├── heartbeat.svg
+│   │   │   ├── heart-circle.svg
+│   │   │   ├── heart-rate.svg
+│   │   │   ├── heart-square.svg
+│   │   │   ├── heart.svg
+│   │   │   ├── helicopter.svg
+│   │   │   ├── hexagon.svg
+│   │   │   ├── highlighter.svg
+│   │   │   ├── history.svg
+│   │   │   ├── hockey-puck.svg
+│   │   │   ├── hockey-sticks.svg
+│   │   │   ├── home-heart.svg
+│   │   │   ├── home.svg
+│   │   │   ├── hospital-alt.svg
+│   │   │   ├── hospital.svg
+│   │   │   ├── hospital-symbol.svg
+│   │   │   ├── hotel.svg
+│   │   │   ├── hot-tub.svg
+│   │   │   ├── hourglass-end.svg
+│   │   │   ├── hourglass-half.svg
+│   │   │   ├── hourglass-start.svg
+│   │   │   ├── hourglass.svg
+│   │   │   ├── h-square.svg
+│   │   │   ├── i-cursor.svg
+│   │   │   ├── id-badge.svg
+│   │   │   ├── id-card-alt.svg
+│   │   │   ├── id-card.svg
+│   │   │   ├── images.svg
+│   │   │   ├── image.svg
+│   │   │   ├── inbox-in.svg
+│   │   │   ├── inbox-out.svg
+│   │   │   ├── inbox.svg
+│   │   │   ├── indent.svg
+│   │   │   ├── industry-alt.svg
+│   │   │   ├── industry.svg
+│   │   │   ├── infinity.svg
+│   │   │   ├── info-circle.svg
+│   │   │   ├── info-square.svg
+│   │   │   ├── info.svg
+│   │   │   ├── inhaler.svg
+│   │   │   ├── inventory.svg
+│   │   │   ├── italic.svg
+│   │   │   ├── jack-o-lantern.svg
+│   │   │   ├── joint.svg
+│   │   │   ├── keyboard.svg
+│   │   │   ├── key.svg
+│   │   │   ├── kidneys.svg
+│   │   │   ├── kiss-beam.svg
+│   │   │   ├── kiss.svg
+│   │   │   ├── kiss-wink-heart.svg
+│   │   │   ├── kiwi-bird.svg
+│   │   │   ├── lamp.svg
+│   │   │   ├── language.svg
+│   │   │   ├── laptop-code.svg
+│   │   │   ├── laptop.svg
+│   │   │   ├── laugh-beam.svg
+│   │   │   ├── laugh-squint.svg
+│   │   │   ├── laugh.svg
+│   │   │   ├── laugh-wink.svg
+│   │   │   ├── layer-group.svg
+│   │   │   ├── layer-minus.svg
+│   │   │   ├── layer-plus.svg
+│   │   │   ├── leaf-heart.svg
+│   │   │   ├── leaf.svg
+│   │   │   ├── lemon.svg
+│   │   │   ├── less-than-equal.svg
+│   │   │   ├── less-than.svg
+│   │   │   ├── level-down-alt.svg
+│   │   │   ├── level-down.svg
+│   │   │   ├── level-up-alt.svg
+│   │   │   ├── level-up.svg
+│   │   │   ├── life-ring.svg
+│   │   │   ├── lightbulb.svg
+│   │   │   ├── link.svg
+│   │   │   ├── lips.svg
+│   │   │   ├── lira-sign.svg
+│   │   │   ├── list-alt.svg
+│   │   │   ├── list-ol.svg
+│   │   │   ├── list.svg
+│   │   │   ├── list-ul.svg
+│   │   │   ├── location-arrow.svg
+│   │   │   ├── location-circle.svg
+│   │   │   ├── location-slash.svg
+│   │   │   ├── location.svg
+│   │   │   ├── lock-alt.svg
+│   │   │   ├── lock-open-alt.svg
+│   │   │   ├── lock-open.svg
+│   │   │   ├── lock.svg
+│   │   │   ├── long-arrow-alt-down.svg
+│   │   │   ├── long-arrow-alt-left.svg
+│   │   │   ├── long-arrow-alt-right.svg
+│   │   │   ├── long-arrow-alt-up.svg
+│   │   │   ├── long-arrow-down.svg
+│   │   │   ├── long-arrow-left.svg
+│   │   │   ├── long-arrow-right.svg
+│   │   │   ├── long-arrow-up.svg
+│   │   │   ├── loveseat.svg
+│   │   │   ├── low-vision.svg
+│   │   │   ├── luchador.svg
+│   │   │   ├── luggage-cart.svg
+│   │   │   ├── lungs.svg
+│   │   │   ├── magic.svg
+│   │   │   ├── magnet.svg
+│   │   │   ├── male.svg
+│   │   │   ├── map-marked-alt.svg
+│   │   │   ├── map-marked.svg
+│   │   │   ├── map-marker-alt-slash.svg
+│   │   │   ├── map-marker-alt.svg
+│   │   │   ├── map-marker-check.svg
+│   │   │   ├── map-marker-edit.svg
+│   │   │   ├── map-marker-exclamation.svg
+│   │   │   ├── map-marker-minus.svg
+│   │   │   ├── map-marker-plus.svg
+│   │   │   ├── map-marker-question.svg
+│   │   │   ├── map-marker-slash.svg
+│   │   │   ├── map-marker-smile.svg
+│   │   │   ├── map-marker.svg
+│   │   │   ├── map-marker-times.svg
+│   │   │   ├── map-pin.svg
+│   │   │   ├── map-signs.svg
+│   │   │   ├── map.svg
+│   │   │   ├── marker.svg
+│   │   │   ├── mars-double.svg
+│   │   │   ├── mars-stroke-h.svg
+│   │   │   ├── mars-stroke.svg
+│   │   │   ├── mars-stroke-v.svg
+│   │   │   ├── mars.svg
+│   │   │   ├── medal.svg
+│   │   │   ├── medkit.svg
+│   │   │   ├── meh-blank.svg
+│   │   │   ├── meh-rolling-eyes.svg
+│   │   │   ├── meh.svg
+│   │   │   ├── memory.svg
+│   │   │   ├── mercury.svg
+│   │   │   ├── microchip.svg
+│   │   │   ├── microphone-alt-slash.svg
+│   │   │   ├── microphone-alt.svg
+│   │   │   ├── microphone-slash.svg
+│   │   │   ├── microphone.svg
+│   │   │   ├── microscope.svg
+│   │   │   ├── minus-circle.svg
+│   │   │   ├── minus-hexagon.svg
+│   │   │   ├── minus-octagon.svg
+│   │   │   ├── minus-square.svg
+│   │   │   ├── minus.svg
+│   │   │   ├── mobile-alt.svg
+│   │   │   ├── mobile-android-alt.svg
+│   │   │   ├── mobile-android.svg
+│   │   │   ├── mobile.svg
+│   │   │   ├── money-bill-alt.svg
+│   │   │   ├── money-bill.svg
+│   │   │   ├── money-bill-wave-alt.svg
+│   │   │   ├── money-bill-wave.svg
+│   │   │   ├── money-check-alt.svg
+│   │   │   ├── money-check.svg
+│   │   │   ├── monitor-heart-rate.svg
+│   │   │   ├── monument.svg
+│   │   │   ├── moon.svg
+│   │   │   ├── mortar-pestle.svg
+│   │   │   ├── motorcycle.svg
+│   │   │   ├── mouse-pointer.svg
+│   │   │   ├── music.svg
+│   │   │   ├── neuter.svg
+│   │   │   ├── newspaper.svg
+│   │   │   ├── not-equal.svg
+│   │   │   ├── notes-medical.svg
+│   │   │   ├── object-group.svg
+│   │   │   ├── object-ungroup.svg
+│   │   │   ├── octagon.svg
+│   │   │   ├── oil-can.svg
+│   │   │   ├── oil-temp.svg
+│   │   │   ├── outdent.svg
+│   │   │   ├── paint-brush-alt.svg
+│   │   │   ├── paint-brush.svg
+│   │   │   ├── paint-roller.svg
+│   │   │   ├── palette.svg
+│   │   │   ├── pallet-alt.svg
+│   │   │   ├── pallet.svg
+│   │   │   ├── paperclip.svg
+│   │   │   ├── paper-plane.svg
+│   │   │   ├── parachute-box.svg
+│   │   │   ├── paragraph.svg
+│   │   │   ├── parking-circle-slash.svg
+│   │   │   ├── parking-circle.svg
+│   │   │   ├── parking-slash.svg
+│   │   │   ├── parking.svg
+│   │   │   ├── passport.svg
+│   │   │   ├── paste.svg
+│   │   │   ├── pause-circle.svg
+│   │   │   ├── pause.svg
+│   │   │   ├── paw.svg
+│   │   │   ├── pen-alt.svg
+│   │   │   ├── pencil-alt.svg
+│   │   │   ├── pencil-paintbrush.svg
+│   │   │   ├── pencil-ruler.svg
+│   │   │   ├── pencil.svg
+│   │   │   ├── pen-fancy.svg
+│   │   │   ├── pennant.svg
+│   │   │   ├── pen-nib.svg
+│   │   │   ├── pen-square.svg
+│   │   │   ├── pen.svg
+│   │   │   ├── people-carry.svg
+│   │   │   ├── percentage.svg
+│   │   │   ├── percent.svg
+│   │   │   ├── person-carry.svg
+│   │   │   ├── person-dolly-empty.svg
+│   │   │   ├── person-dolly.svg
+│   │   │   ├── phone-plus.svg
+│   │   │   ├── phone-slash.svg
+│   │   │   ├── phone-square.svg
+│   │   │   ├── phone.svg
+│   │   │   ├── phone-volume.svg
+│   │   │   ├── piggy-bank.svg
+│   │   │   ├── pills.svg
+│   │   │   ├── plane-alt.svg
+│   │   │   ├── plane-arrival.svg
+│   │   │   ├── plane-departure.svg
+│   │   │   ├── plane.svg
+│   │   │   ├── play-circle.svg
+│   │   │   ├── play.svg
+│   │   │   ├── plug.svg
+│   │   │   ├── plus-circle.svg
+│   │   │   ├── plus-hexagon.svg
+│   │   │   ├── plus-octagon.svg
+│   │   │   ├── plus-square.svg
+│   │   │   ├── plus.svg
+│   │   │   ├── podcast.svg
+│   │   │   ├── poop.svg
+│   │   │   ├── poo.svg
+│   │   │   ├── portrait.svg
+│   │   │   ├── pound-sign.svg
+│   │   │   ├── power-off.svg
+│   │   │   ├── prescription-bottle-alt.svg
+│   │   │   ├── prescription-bottle.svg
+│   │   │   ├── prescription.svg
+│   │   │   ├── print.svg
+│   │   │   ├── procedures.svg
+│   │   │   ├── project-diagram.svg
+│   │   │   ├── puzzle-piece.svg
+│   │   │   ├── qrcode.svg
+│   │   │   ├── question-circle.svg
+│   │   │   ├── question-square.svg
+│   │   │   ├── question.svg
+│   │   │   ├── quidditch.svg
+│   │   │   ├── quote-left.svg
+│   │   │   ├── quote-right.svg
+│   │   │   ├── racquet.svg
+│   │   │   ├── ramp-loading.svg
+│   │   │   ├── random.svg
+│   │   │   ├── receipt.svg
+│   │   │   ├── rectangle-landscape.svg
+│   │   │   ├── rectangle-portrait.svg
+│   │   │   ├── rectangle-wide.svg
+│   │   │   ├── recycle.svg
+│   │   │   ├── redo-alt.svg
+│   │   │   ├── redo.svg
+│   │   │   ├── registered.svg
+│   │   │   ├── repeat-1-alt.svg
+│   │   │   ├── repeat-1.svg
+│   │   │   ├── repeat-alt.svg
+│   │   │   ├── repeat.svg
+│   │   │   ├── reply-all.svg
+│   │   │   ├── reply.svg
+│   │   │   ├── retweet-alt.svg
+│   │   │   ├── retweet.svg
+│   │   │   ├── ribbon.svg
+│   │   │   ├── road.svg
+│   │   │   ├── robot.svg
+│   │   │   ├── rocket.svg
+│   │   │   ├── route-highway.svg
+│   │   │   ├── route-interstate.svg
+│   │   │   ├── route.svg
+│   │   │   ├── rss-square.svg
+│   │   │   ├── rss.svg
+│   │   │   ├── ruble-sign.svg
+│   │   │   ├── ruler-combined.svg
+│   │   │   ├── ruler-horizontal.svg
+│   │   │   ├── ruler.svg
+│   │   │   ├── ruler-triangle.svg
+│   │   │   ├── ruler-vertical.svg
+│   │   │   ├── rupee-sign.svg
+│   │   │   ├── sad-cry.svg
+│   │   │   ├── sad-tear.svg
+│   │   │   ├── save.svg
+│   │   │   ├── scalpel-path.svg
+│   │   │   ├── scalpel.svg
+│   │   │   ├── scanner-keyboard.svg
+│   │   │   ├── scanner.svg
+│   │   │   ├── scanner-touchscreen.svg
+│   │   │   ├── school.svg
+│   │   │   ├── screwdriver.svg
+│   │   │   ├── scrubber.svg
+│   │   │   ├── search-minus.svg
+│   │   │   ├── search-plus.svg
+│   │   │   ├── search.svg
+│   │   │   ├── seedling.svg
+│   │   │   ├── server.svg
+│   │   │   ├── shapes.svg
+│   │   │   ├── share-all.svg
+│   │   │   ├── share-alt-square.svg
+│   │   │   ├── share-alt.svg
+│   │   │   ├── share-square.svg
+│   │   │   ├── share.svg
+│   │   │   ├── shekel-sign.svg
+│   │   │   ├── shield-alt.svg
+│   │   │   ├── shield-check.svg
+│   │   │   ├── shield.svg
+│   │   │   ├── shipping-fast.svg
+│   │   │   ├── shipping-timed.svg
+│   │   │   ├── ship.svg
+│   │   │   ├── shoe-prints.svg
+│   │   │   ├── shopping-bag.svg
+│   │   │   ├── shopping-basket.svg
+│   │   │   ├── shopping-cart.svg
+│   │   │   ├── shower.svg
+│   │   │   ├── shuttlecock.svg
+│   │   │   ├── shuttle-van.svg
+│   │   │   ├── signal.svg
+│   │   │   ├── signature.svg
+│   │   │   ├── sign-in-alt.svg
+│   │   │   ├── sign-in.svg
+│   │   │   ├── sign-language.svg
+│   │   │   ├── sign-out-alt.svg
+│   │   │   ├── sign-out.svg
+│   │   │   ├── sign.svg
+│   │   │   ├── sitemap.svg
+│   │   │   ├── skeleton.svg
+│   │   │   ├── skull.svg
+│   │   │   ├── sliders-h-square.svg
+│   │   │   ├── sliders-h.svg
+│   │   │   ├── sliders-v-square.svg
+│   │   │   ├── sliders-v.svg
+│   │   │   ├── smile-beam.svg
+│   │   │   ├── smile-plus.svg
+│   │   │   ├── smile.svg
+│   │   │   ├── smile-wink.svg
+│   │   │   ├── smoking-ban.svg
+│   │   │   ├── smoking.svg
+│   │   │   ├── snowflake.svg
+│   │   │   ├── solar-panel.svg
+│   │   │   ├── sort-alpha-down.svg
+│   │   │   ├── sort-alpha-up.svg
+│   │   │   ├── sort-amount-down.svg
+│   │   │   ├── sort-amount-up.svg
+│   │   │   ├── sort-down.svg
+│   │   │   ├── sort-numeric-down.svg
+│   │   │   ├── sort-numeric-up.svg
+│   │   │   ├── sort.svg
+│   │   │   ├── sort-up.svg
+│   │   │   ├── space-shuttle.svg
+│   │   │   ├── spade.svg
+│   │   │   ├── spa.svg
+│   │   │   ├── spinner.svg
+│   │   │   ├── spinner-third.svg
+│   │   │   ├── splotch.svg
+│   │   │   ├── spray-can.svg
+│   │   │   ├── square-full.svg
+│   │   │   ├── square.svg
+│   │   │   ├── stamp.svg
+│   │   │   ├── star-exclamation.svg
+│   │   │   ├── star-half-alt.svg
+│   │   │   ├── star-half.svg
+│   │   │   ├── star-of-life.svg
+│   │   │   ├── star.svg
+│   │   │   ├── steering-wheel.svg
+│   │   │   ├── step-backward.svg
+│   │   │   ├── step-forward.svg
+│   │   │   ├── stethoscope.svg
+│   │   │   ├── sticky-note.svg
+│   │   │   ├── stomach.svg
+│   │   │   ├── stop-circle.svg
+│   │   │   ├── stop.svg
+│   │   │   ├── stopwatch.svg
+│   │   │   ├── store-alt.svg
+│   │   │   ├── store.svg
+│   │   │   ├── stream.svg
+│   │   │   ├── street-view.svg
+│   │   │   ├── strikethrough.svg
+│   │   │   ├── stroopwafel.svg
+│   │   │   ├── subscript.svg
+│   │   │   ├── subway.svg
+│   │   │   ├── suitcase-rolling.svg
+│   │   │   ├── suitcase.svg
+│   │   │   ├── sun.svg
+│   │   │   ├── superscript.svg
+│   │   │   ├── surprise.svg
+│   │   │   ├── swatchbook.svg
+│   │   │   ├── swimmer.svg
+│   │   │   ├── swimming-pool.svg
+│   │   │   ├── sync-alt.svg
+│   │   │   ├── sync.svg
+│   │   │   ├── syringe.svg
+│   │   │   ├── table.svg
+│   │   │   ├── tablet-alt.svg
+│   │   │   ├── tablet-android-alt.svg
+│   │   │   ├── tablet-android.svg
+│   │   │   ├── table-tennis.svg
+│   │   │   ├── tablet-rugged.svg
+│   │   │   ├── tablets.svg
+│   │   │   ├── tablet.svg
+│   │   │   ├── tachometer-alt-average.svg
+│   │   │   ├── tachometer-alt-fastest.svg
+│   │   │   ├── tachometer-alt-fast.svg
+│   │   │   ├── tachometer-alt-slowest.svg
+│   │   │   ├── tachometer-alt-slow.svg
+│   │   │   ├── tachometer-alt.svg
+│   │   │   ├── tachometer-average.svg
+│   │   │   ├── tachometer-fastest.svg
+│   │   │   ├── tachometer-fast.svg
+│   │   │   ├── tachometer-slowest.svg
+│   │   │   ├── tachometer-slow.svg
+│   │   │   ├── tachometer.svg
+│   │   │   ├── tags.svg
+│   │   │   ├── tag.svg
+│   │   │   ├── tape.svg
+│   │   │   ├── tasks.svg
+│   │   │   ├── taxi.svg
+│   │   │   ├── teeth-open.svg
+│   │   │   ├── teeth.svg
+│   │   │   ├── tennis-ball.svg
+│   │   │   ├── terminal.svg
+│   │   │   ├── text-height.svg
+│   │   │   ├── text-width.svg
+│   │   │   ├── theater-masks.svg
+│   │   │   ├── thermometer-empty.svg
+│   │   │   ├── thermometer-full.svg
+│   │   │   ├── thermometer-half.svg
+│   │   │   ├── thermometer-quarter.svg
+│   │   │   ├── thermometer.svg
+│   │   │   ├── thermometer-three-quarters.svg
+│   │   │   ├── th-large.svg
+│   │   │   ├── th-list.svg
+│   │   │   ├── th.svg
+│   │   │   ├── thumbs-down.svg
+│   │   │   ├── thumbs-up.svg
+│   │   │   ├── thumbtack.svg
+│   │   │   ├── ticket-alt.svg
+│   │   │   ├── ticket.svg
+│   │   │   ├── times-circle.svg
+│   │   │   ├── times-hexagon.svg
+│   │   │   ├── times-octagon.svg
+│   │   │   ├── times-square.svg
+│   │   │   ├── times.svg
+│   │   │   ├── tint-slash.svg
+│   │   │   ├── tint.svg
+│   │   │   ├── tired.svg
+│   │   │   ├── tire-flat.svg
+│   │   │   ├── tire-pressure-warning.svg
+│   │   │   ├── tire-rugged.svg
+│   │   │   ├── tire.svg
+│   │   │   ├── toggle-off.svg
+│   │   │   ├── toggle-on.svg
+│   │   │   ├── toolbox.svg
+│   │   │   ├── toothbrush.svg
+│   │   │   ├── tooth.svg
+│   │   │   ├── trademark.svg
+│   │   │   ├── traffic-cone.svg
+│   │   │   ├── traffic-light-go.svg
+│   │   │   ├── traffic-light-slow.svg
+│   │   │   ├── traffic-light-stop.svg
+│   │   │   ├── traffic-light.svg
+│   │   │   ├── train.svg
+│   │   │   ├── transgender-alt.svg
+│   │   │   ├── transgender.svg
+│   │   │   ├── trash-alt.svg
+│   │   │   ├── trash.svg
+│   │   │   ├── tree-alt.svg
+│   │   │   ├── tree.svg
+│   │   │   ├── triangle.svg
+│   │   │   ├── trophy-alt.svg
+│   │   │   ├── trophy.svg
+│   │   │   ├── truck-container.svg
+│   │   │   ├── truck-couch.svg
+│   │   │   ├── truck-loading.svg
+│   │   │   ├── truck-monster.svg
+│   │   │   ├── truck-moving.svg
+│   │   │   ├── truck-pickup.svg
+│   │   │   ├── truck-ramp.svg
+│   │   │   ├── truck.svg
+│   │   │   ├── tshirt.svg
+│   │   │   ├── tty.svg
+│   │   │   ├── tv-retro.svg
+│   │   │   ├── tv.svg
+│   │   │   ├── umbrella-beach.svg
+│   │   │   ├── umbrella.svg
+│   │   │   ├── underline.svg
+│   │   │   ├── undo-alt.svg
+│   │   │   ├── undo.svg
+│   │   │   ├── universal-access.svg
+│   │   │   ├── university.svg
+│   │   │   ├── unlink.svg
+│   │   │   ├── unlock-alt.svg
+│   │   │   ├── unlock.svg
+│   │   │   ├── upload.svg
+│   │   │   ├── usd-circle.svg
+│   │   │   ├── usd-square.svg
+│   │   │   ├── user-alt-slash.svg
+│   │   │   ├── user-alt.svg
+│   │   │   ├── user-astronaut.svg
+│   │   │   ├── user-check.svg
+│   │   │   ├── user-circle.svg
+│   │   │   ├── user-clock.svg
+│   │   │   ├── user-cog.svg
+│   │   │   ├── user-edit.svg
+│   │   │   ├── user-friends.svg
+│   │   │   ├── user-graduate.svg
+│   │   │   ├── user-lock.svg
+│   │   │   ├── user-md.svg
+│   │   │   ├── user-minus.svg
+│   │   │   ├── user-ninja.svg
+│   │   │   ├── user-plus.svg
+│   │   │   ├── users-class.svg
+│   │   │   ├── users-cog.svg
+│   │   │   ├── user-secret.svg
+│   │   │   ├── user-shield.svg
+│   │   │   ├── user-slash.svg
+│   │   │   ├── users.svg
+│   │   │   ├── user.svg
+│   │   │   ├── user-tag.svg
+│   │   │   ├── user-tie.svg
+│   │   │   ├── user-times.svg
+│   │   │   ├── utensil-fork.svg
+│   │   │   ├── utensil-knife.svg
+│   │   │   ├── utensils-alt.svg
+│   │   │   ├── utensil-spoon.svg
+│   │   │   ├── utensils.svg
+│   │   │   ├── vector-square.svg
+│   │   │   ├── venus-double.svg
+│   │   │   ├── venus-mars.svg
+│   │   │   ├── venus.svg
+│   │   │   ├── vials.svg
+│   │   │   ├── vial.svg
+│   │   │   ├── video-plus.svg
+│   │   │   ├── video-slash.svg
+│   │   │   ├── video.svg
+│   │   │   ├── volleyball-ball.svg
+│   │   │   ├── volume-down.svg
+│   │   │   ├── volume-mute.svg
+│   │   │   ├── volume-off.svg
+│   │   │   ├── volume-up.svg
+│   │   │   ├── walking.svg
+│   │   │   ├── wallet.svg
+│   │   │   ├── warehouse-alt.svg
+│   │   │   ├── warehouse.svg
+│   │   │   ├── watch-fitness.svg
+│   │   │   ├── watch.svg
+│   │   │   ├── weight-hanging.svg
+│   │   │   ├── weight.svg
+│   │   │   ├── wheelchair.svg
+│   │   │   ├── whistle.svg
+│   │   │   ├── wifi.svg
+│   │   │   ├── window-alt.svg
+│   │   │   ├── window-close.svg
+│   │   │   ├── window-maximize.svg
+│   │   │   ├── window-minimize.svg
+│   │   │   ├── window-restore.svg
+│   │   │   ├── window.svg
+│   │   │   ├── wine-glass-alt.svg
+│   │   │   ├── wine-glass.svg
+│   │   │   ├── won-sign.svg
+│   │   │   ├── wrench.svg
+│   │   │   ├── x-ray.svg
+│   │   │   └── yen-sign.svg
+│   │   └── solid
+│   │       ├── address-book.svg
+│   │       ├── address-card.svg
+│   │       ├── adjust.svg
+│   │       ├── air-freshener.svg
+│   │       ├── alarm-clock.svg
+│   │       ├── align-center.svg
+│   │       ├── align-justify.svg
+│   │       ├── align-left.svg
+│   │       ├── align-right.svg
+│   │       ├── allergies.svg
+│   │       ├── ambulance.svg
+│   │       ├── american-sign-language-interpreting.svg
+│   │       ├── anchor.svg
+│   │       ├── angle-double-down.svg
+│   │       ├── angle-double-left.svg
+│   │       ├── angle-double-right.svg
+│   │       ├── angle-double-up.svg
+│   │       ├── angle-down.svg
+│   │       ├── angle-left.svg
+│   │       ├── angle-right.svg
+│   │       ├── angle-up.svg
+│   │       ├── angry.svg
+│   │       ├── apple-alt.svg
+│   │       ├── archive.svg
+│   │       ├── archway.svg
+│   │       ├── arrow-alt-circle-down.svg
+│   │       ├── arrow-alt-circle-left.svg
+│   │       ├── arrow-alt-circle-right.svg
+│   │       ├── arrow-alt-circle-up.svg
+│   │       ├── arrow-alt-down.svg
+│   │       ├── arrow-alt-from-bottom.svg
+│   │       ├── arrow-alt-from-left.svg
+│   │       ├── arrow-alt-from-right.svg
+│   │       ├── arrow-alt-from-top.svg
+│   │       ├── arrow-alt-left.svg
+│   │       ├── arrow-alt-right.svg
+│   │       ├── arrow-alt-square-down.svg
+│   │       ├── arrow-alt-square-left.svg
+│   │       ├── arrow-alt-square-right.svg
+│   │       ├── arrow-alt-square-up.svg
+│   │       ├── arrow-alt-to-bottom.svg
+│   │       ├── arrow-alt-to-left.svg
+│   │       ├── arrow-alt-to-right.svg
+│   │       ├── arrow-alt-to-top.svg
+│   │       ├── arrow-alt-up.svg
+│   │       ├── arrow-circle-down.svg
+│   │       ├── arrow-circle-left.svg
+│   │       ├── arrow-circle-right.svg
+│   │       ├── arrow-circle-up.svg
+│   │       ├── arrow-down.svg
+│   │       ├── arrow-from-bottom.svg
+│   │       ├── arrow-from-left.svg
+│   │       ├── arrow-from-right.svg
+│   │       ├── arrow-from-top.svg
+│   │       ├── arrow-left.svg
+│   │       ├── arrow-right.svg
+│   │       ├── arrows-alt-h.svg
+│   │       ├── arrows-alt.svg
+│   │       ├── arrows-alt-v.svg
+│   │       ├── arrows-h.svg
+│   │       ├── arrow-square-down.svg
+│   │       ├── arrow-square-left.svg
+│   │       ├── arrow-square-right.svg
+│   │       ├── arrow-square-up.svg
+│   │       ├── arrows.svg
+│   │       ├── arrows-v.svg
+│   │       ├── arrow-to-bottom.svg
+│   │       ├── arrow-to-left.svg
+│   │       ├── arrow-to-right.svg
+│   │       ├── arrow-to-top.svg
+│   │       ├── arrow-up.svg
+│   │       ├── assistive-listening-systems.svg
+│   │       ├── asterisk.svg
+│   │       ├── atlas.svg
+│   │       ├── atom-alt.svg
+│   │       ├── atom.svg
+│   │       ├── at.svg
+│   │       ├── audio-description.svg
+│   │       ├── award.svg
+│   │       ├── backpack.svg
+│   │       ├── backspace.svg
+│   │       ├── backward.svg
+│   │       ├── badge-check.svg
+│   │       ├── badge.svg
+│   │       ├── balance-scale-left.svg
+│   │       ├── balance-scale-right.svg
+│   │       ├── balance-scale.svg
+│   │       ├── band-aid.svg
+│   │       ├── ban.svg
+│   │       ├── barcode-alt.svg
+│   │       ├── barcode-read.svg
+│   │       ├── barcode-scan.svg
+│   │       ├── barcode.svg
+│   │       ├── bars.svg
+│   │       ├── baseball-ball.svg
+│   │       ├── baseball.svg
+│   │       ├── basketball-ball.svg
+│   │       ├── basketball-hoop.svg
+│   │       ├── bath.svg
+│   │       ├── battery-bolt.svg
+│   │       ├── battery-empty.svg
+│   │       ├── battery-full.svg
+│   │       ├── battery-half.svg
+│   │       ├── battery-quarter.svg
+│   │       ├── battery-slash.svg
+│   │       ├── battery-three-quarters.svg
+│   │       ├── bed.svg
+│   │       ├── beer.svg
+│   │       ├── bell-school-slash.svg
+│   │       ├── bell-school.svg
+│   │       ├── bell-slash.svg
+│   │       ├── bell.svg
+│   │       ├── bezier-curve.svg
+│   │       ├── bicycle.svg
+│   │       ├── binoculars.svg
+│   │       ├── birthday-cake.svg
+│   │       ├── blanket.svg
+│   │       ├── blender.svg
+│   │       ├── blind.svg
+│   │       ├── bold.svg
+│   │       ├── bolt.svg
+│   │       ├── bomb.svg
+│   │       ├── bone-break.svg
+│   │       ├── bone.svg
+│   │       ├── bong.svg
+│   │       ├── book-alt.svg
+│   │       ├── book-heart.svg
+│   │       ├── bookmark.svg
+│   │       ├── book-open.svg
+│   │       ├── book-reader.svg
+│   │       ├── books.svg
+│   │       ├── book.svg
+│   │       ├── bowling-ball.svg
+│   │       ├── bowling-pins.svg
+│   │       ├── box-alt.svg
+│   │       ├── box-check.svg
+│   │       ├── boxes-alt.svg
+│   │       ├── boxes.svg
+│   │       ├── box-fragile.svg
+│   │       ├── box-full.svg
+│   │       ├── box-heart.svg
+│   │       ├── boxing-glove.svg
+│   │       ├── box-open.svg
+│   │       ├── box.svg
+│   │       ├── box-up.svg
+│   │       ├── box-usd.svg
+│   │       ├── braille.svg
+│   │       ├── brain.svg
+│   │       ├── briefcase-medical.svg
+│   │       ├── briefcase.svg
+│   │       ├── broadcast-tower.svg
+│   │       ├── broom.svg
+│   │       ├── browser.svg
+│   │       ├── brush.svg
+│   │       ├── bug.svg
+│   │       ├── building.svg
+│   │       ├── bullhorn.svg
+│   │       ├── bullseye.svg
+│   │       ├── burn.svg
+│   │       ├── bus-alt.svg
+│   │       ├── bus-school.svg
+│   │       ├── bus.svg
+│   │       ├── calculator.svg
+│   │       ├── calendar-alt.svg
+│   │       ├── calendar-check.svg
+│   │       ├── calendar-edit.svg
+│   │       ├── calendar-exclamation.svg
+│   │       ├── calendar-minus.svg
+│   │       ├── calendar-plus.svg
+│   │       ├── calendar.svg
+│   │       ├── calendar-times.svg
+│   │       ├── camera-alt.svg
+│   │       ├── camera-retro.svg
+│   │       ├── camera.svg
+│   │       ├── cannabis.svg
+│   │       ├── capsules.svg
+│   │       ├── car-alt.svg
+│   │       ├── car-battery.svg
+│   │       ├── car-bump.svg
+│   │       ├── car-crash.svg
+│   │       ├── caret-circle-down.svg
+│   │       ├── caret-circle-left.svg
+│   │       ├── caret-circle-right.svg
+│   │       ├── caret-circle-up.svg
+│   │       ├── caret-down.svg
+│   │       ├── caret-left.svg
+│   │       ├── caret-right.svg
+│   │       ├── caret-square-down.svg
+│   │       ├── caret-square-left.svg
+│   │       ├── caret-square-right.svg
+│   │       ├── caret-square-up.svg
+│   │       ├── caret-up.svg
+│   │       ├── car-garage.svg
+│   │       ├── car-mechanic.svg
+│   │       ├── car-side.svg
+│   │       ├── car.svg
+│   │       ├── cart-arrow-down.svg
+│   │       ├── car-tilt.svg
+│   │       ├── cart-plus.svg
+│   │       ├── car-wash.svg
+│   │       ├── certificate.svg
+│   │       ├── chalkboard.svg
+│   │       ├── chalkboard-teacher.svg
+│   │       ├── charging-station.svg
+│   │       ├── chart-area.svg
+│   │       ├── chart-bar.svg
+│   │       ├── chart-line.svg
+│   │       ├── chart-pie.svg
+│   │       ├── check-circle.svg
+│   │       ├── check-double.svg
+│   │       ├── check-square.svg
+│   │       ├── check.svg
+│   │       ├── chess-bishop-alt.svg
+│   │       ├── chess-bishop.svg
+│   │       ├── chess-board.svg
+│   │       ├── chess-clock-alt.svg
+│   │       ├── chess-clock.svg
+│   │       ├── chess-king-alt.svg
+│   │       ├── chess-king.svg
+│   │       ├── chess-knight-alt.svg
+│   │       ├── chess-knight.svg
+│   │       ├── chess-pawn-alt.svg
+│   │       ├── chess-pawn.svg
+│   │       ├── chess-queen-alt.svg
+│   │       ├── chess-queen.svg
+│   │       ├── chess-rook-alt.svg
+│   │       ├── chess-rook.svg
+│   │       ├── chess.svg
+│   │       ├── chevron-circle-down.svg
+│   │       ├── chevron-circle-left.svg
+│   │       ├── chevron-circle-right.svg
+│   │       ├── chevron-circle-up.svg
+│   │       ├── chevron-double-down.svg
+│   │       ├── chevron-double-left.svg
+│   │       ├── chevron-double-right.svg
+│   │       ├── chevron-double-up.svg
+│   │       ├── chevron-down.svg
+│   │       ├── chevron-left.svg
+│   │       ├── chevron-right.svg
+│   │       ├── chevron-square-down.svg
+│   │       ├── chevron-square-left.svg
+│   │       ├── chevron-square-right.svg
+│   │       ├── chevron-square-up.svg
+│   │       ├── chevron-up.svg
+│   │       ├── child.svg
+│   │       ├── church.svg
+│   │       ├── circle-notch.svg
+│   │       ├── circle.svg
+│   │       ├── clipboard-check.svg
+│   │       ├── clipboard-list.svg
+│   │       ├── clipboard-prescription.svg
+│   │       ├── clipboard.svg
+│   │       ├── clock.svg
+│   │       ├── clone.svg
+│   │       ├── closed-captioning.svg
+│   │       ├── cloud-download-alt.svg
+│   │       ├── cloud-download.svg
+│   │       ├── cloud.svg
+│   │       ├── cloud-upload-alt.svg
+│   │       ├── cloud-upload.svg
+│   │       ├── club.svg
+│   │       ├── cocktail.svg
+│   │       ├── code-branch.svg
+│   │       ├── code-commit.svg
+│   │       ├── code-merge.svg
+│   │       ├── code.svg
+│   │       ├── coffee.svg
+│   │       ├── cogs.svg
+│   │       ├── cog.svg
+│   │       ├── coins.svg
+│   │       ├── columns.svg
+│   │       ├── comment-alt-check.svg
+│   │       ├── comment-alt-dots.svg
+│   │       ├── comment-alt-edit.svg
+│   │       ├── comment-alt-exclamation.svg
+│   │       ├── comment-alt-lines.svg
+│   │       ├── comment-alt-minus.svg
+│   │       ├── comment-alt-plus.svg
+│   │       ├── comment-alt-slash.svg
+│   │       ├── comment-alt-smile.svg
+│   │       ├── comment-alt.svg
+│   │       ├── comment-alt-times.svg
+│   │       ├── comment-check.svg
+│   │       ├── comment-dots.svg
+│   │       ├── comment-edit.svg
+│   │       ├── comment-exclamation.svg
+│   │       ├── comment-lines.svg
+│   │       ├── comment-minus.svg
+│   │       ├── comment-plus.svg
+│   │       ├── comments-alt.svg
+│   │       ├── comment-slash.svg
+│   │       ├── comment-smile.svg
+│   │       ├── comments.svg
+│   │       ├── comment.svg
+│   │       ├── comment-times.svg
+│   │       ├── compact-disc.svg
+│   │       ├── compass-slash.svg
+│   │       ├── compass.svg
+│   │       ├── compress-alt.svg
+│   │       ├── compress.svg
+│   │       ├── compress-wide.svg
+│   │       ├── concierge-bell.svg
+│   │       ├── container-storage.svg
+│   │       ├── conveyor-belt-alt.svg
+│   │       ├── conveyor-belt.svg
+│   │       ├── cookie-bite.svg
+│   │       ├── cookie.svg
+│   │       ├── copyright.svg
+│   │       ├── copy.svg
+│   │       ├── couch.svg
+│   │       ├── credit-card-blank.svg
+│   │       ├── credit-card-front.svg
+│   │       ├── credit-card.svg
+│   │       ├── cricket.svg
+│   │       ├── crop-alt.svg
+│   │       ├── crop.svg
+│   │       ├── crosshairs.svg
+│   │       ├── crown.svg
+│   │       ├── crow.svg
+│   │       ├── cubes.svg
+│   │       ├── cube.svg
+│   │       ├── curling.svg
+│   │       ├── cut.svg
+│   │       ├── database.svg
+│   │       ├── deaf.svg
+│   │       ├── desktop-alt.svg
+│   │       ├── desktop.svg
+│   │       ├── diagnoses.svg
+│   │       ├── diamond.svg
+│   │       ├── dice-five.svg
+│   │       ├── dice-four.svg
+│   │       ├── dice-one.svg
+│   │       ├── dice-six.svg
+│   │       ├── dice.svg
+│   │       ├── dice-three.svg
+│   │       ├── dice-two.svg
+│   │       ├── digital-tachograph.svg
+│   │       ├── diploma.svg
+│   │       ├── directions.svg
+│   │       ├── divide.svg
+│   │       ├── dizzy.svg
+│   │       ├── dna.svg
+│   │       ├── dollar-sign.svg
+│   │       ├── dolly-empty.svg
+│   │       ├── dolly-flatbed-alt.svg
+│   │       ├── dolly-flatbed-empty.svg
+│   │       ├── dolly-flatbed.svg
+│   │       ├── dolly.svg
+│   │       ├── donate.svg
+│   │       ├── do-not-enter.svg
+│   │       ├── door-closed.svg
+│   │       ├── door-open.svg
+│   │       ├── dot-circle.svg
+│   │       ├── dove.svg
+│   │       ├── download.svg
+│   │       ├── drafting-compass.svg
+│   │       ├── draw-circle.svg
+│   │       ├── draw-polygon.svg
+│   │       ├── draw-square.svg
+│   │       ├── drum-steelpan.svg
+│   │       ├── drum.svg
+│   │       ├── dumbbell.svg
+│   │       ├── ear.svg
+│   │       ├── edit.svg
+│   │       ├── eject.svg
+│   │       ├── ellipsis-h-alt.svg
+│   │       ├── ellipsis-h.svg
+│   │       ├── ellipsis-v-alt.svg
+│   │       ├── ellipsis-v.svg
+│   │       ├── engine-warning.svg
+│   │       ├── envelope-open.svg
+│   │       ├── envelope-square.svg
+│   │       ├── envelope.svg
+│   │       ├── equals.svg
+│   │       ├── eraser.svg
+│   │       ├── euro-sign.svg
+│   │       ├── exchange-alt.svg
+│   │       ├── exchange.svg
+│   │       ├── exclamation-circle.svg
+│   │       ├── exclamation-square.svg
+│   │       ├── exclamation.svg
+│   │       ├── exclamation-triangle.svg
+│   │       ├── expand-alt.svg
+│   │       ├── expand-arrows-alt.svg
+│   │       ├── expand-arrows.svg
+│   │       ├── expand.svg
+│   │       ├── expand-wide.svg
+│   │       ├── external-link-alt.svg
+│   │       ├── external-link-square-alt.svg
+│   │       ├── external-link-square.svg
+│   │       ├── external-link.svg
+│   │       ├── eye-dropper.svg
+│   │       ├── eye-slash.svg
+│   │       ├── eye.svg
+│   │       ├── fast-backward.svg
+│   │       ├── fast-forward.svg
+│   │       ├── fax.svg
+│   │       ├── feather-alt.svg
+│   │       ├── feather.svg
+│   │       ├── female.svg
+│   │       ├── field-hockey.svg
+│   │       ├── fighter-jet.svg
+│   │       ├── file-alt.svg
+│   │       ├── file-archive.svg
+│   │       ├── file-audio.svg
+│   │       ├── file-certificate.svg
+│   │       ├── file-check.svg
+│   │       ├── file-code.svg
+│   │       ├── file-contract.svg
+│   │       ├── file-download.svg
+│   │       ├── file-edit.svg
+│   │       ├── file-excel.svg
+│   │       ├── file-exclamation.svg
+│   │       ├── file-export.svg
+│   │       ├── file-image.svg
+│   │       ├── file-import.svg
+│   │       ├── file-invoice-dollar.svg
+│   │       ├── file-invoice.svg
+│   │       ├── file-medical-alt.svg
+│   │       ├── file-medical.svg
+│   │       ├── file-minus.svg
+│   │       ├── file-pdf.svg
+│   │       ├── file-plus.svg
+│   │       ├── file-powerpoint.svg
+│   │       ├── file-prescription.svg
+│   │       ├── file-signature.svg
+│   │       ├── file.svg
+│   │       ├── file-times.svg
+│   │       ├── file-upload.svg
+│   │       ├── file-video.svg
+│   │       ├── file-word.svg
+│   │       ├── fill-drip.svg
+│   │       ├── fill.svg
+│   │       ├── film-alt.svg
+│   │       ├── film.svg
+│   │       ├── filter.svg
+│   │       ├── fingerprint.svg
+│   │       ├── fire-extinguisher.svg
+│   │       ├── fire.svg
+│   │       ├── first-aid.svg
+│   │       ├── fish.svg
+│   │       ├── flag-checkered.svg
+│   │       ├── flag.svg
+│   │       ├── flask.svg
+│   │       ├── flushed.svg
+│   │       ├── folder-open.svg
+│   │       ├── folder.svg
+│   │       ├── font-awesome-logo-full.svg
+│   │       ├── font.svg
+│   │       ├── football-ball.svg
+│   │       ├── football-helmet.svg
+│   │       ├── forklift.svg
+│   │       ├── forward.svg
+│   │       ├── fragile.svg
+│   │       ├── frog.svg
+│   │       ├── frown-open.svg
+│   │       ├── frown.svg
+│   │       ├── futbol.svg
+│   │       ├── gamepad.svg
+│   │       ├── gas-pump-slash.svg
+│   │       ├── gas-pump.svg
+│   │       ├── gavel.svg
+│   │       ├── gem.svg
+│   │       ├── genderless.svg
+│   │       ├── gift.svg
+│   │       ├── glasses-alt.svg
+│   │       ├── glasses.svg
+│   │       ├── glass-martini-alt.svg
+│   │       ├── glass-martini.svg
+│   │       ├── globe-africa.svg
+│   │       ├── globe-americas.svg
+│   │       ├── globe-asia.svg
+│   │       ├── globe-stand.svg
+│   │       ├── globe.svg
+│   │       ├── golf-ball.svg
+│   │       ├── golf-club.svg
+│   │       ├── graduation-cap.svg
+│   │       ├── greater-than-equal.svg
+│   │       ├── greater-than.svg
+│   │       ├── grimace.svg
+│   │       ├── grin-alt.svg
+│   │       ├── grin-beam.svg
+│   │       ├── grin-beam-sweat.svg
+│   │       ├── grin-hearts.svg
+│   │       ├── grin-squint.svg
+│   │       ├── grin-squint-tears.svg
+│   │       ├── grin-stars.svg
+│   │       ├── grin.svg
+│   │       ├── grin-tears.svg
+│   │       ├── grin-tongue-squint.svg
+│   │       ├── grin-tongue.svg
+│   │       ├── grin-tongue-wink.svg
+│   │       ├── grin-wink.svg
+│   │       ├── grip-horizontal.svg
+│   │       ├── grip-vertical.svg
+│   │       ├── h1.svg
+│   │       ├── h2.svg
+│   │       ├── h3.svg
+│   │       ├── hand-heart.svg
+│   │       ├── hand-holding-box.svg
+│   │       ├── hand-holding-heart.svg
+│   │       ├── hand-holding-seedling.svg
+│   │       ├── hand-holding.svg
+│   │       ├── hand-holding-usd.svg
+│   │       ├── hand-holding-water.svg
+│   │       ├── hand-lizard.svg
+│   │       ├── hand-paper.svg
+│   │       ├── hand-peace.svg
+│   │       ├── hand-point-down.svg
+│   │       ├── hand-pointer.svg
+│   │       ├── hand-point-left.svg
+│   │       ├── hand-point-right.svg
+│   │       ├── hand-point-up.svg
+│   │       ├── hand-receiving.svg
+│   │       ├── hand-rock.svg
+│   │       ├── hand-scissors.svg
+│   │       ├── handshake-alt.svg
+│   │       ├── handshake.svg
+│   │       ├── hands-heart.svg
+│   │       ├── hands-helping.svg
+│   │       ├── hand-spock.svg
+│   │       ├── hands.svg
+│   │       ├── hands-usd.svg
+│   │       ├── hashtag.svg
+│   │       ├── hdd.svg
+│   │       ├── heading.svg
+│   │       ├── headphones-alt.svg
+│   │       ├── headphones.svg
+│   │       ├── headset.svg
+│   │       ├── heartbeat.svg
+│   │       ├── heart-circle.svg
+│   │       ├── heart-rate.svg
+│   │       ├── heart-square.svg
+│   │       ├── heart.svg
+│   │       ├── helicopter.svg
+│   │       ├── hexagon.svg
+│   │       ├── highlighter.svg
+│   │       ├── history.svg
+│   │       ├── hockey-puck.svg
+│   │       ├── hockey-sticks.svg
+│   │       ├── home-heart.svg
+│   │       ├── home.svg
+│   │       ├── hospital-alt.svg
+│   │       ├── hospital.svg
+│   │       ├── hospital-symbol.svg
+│   │       ├── hotel.svg
+│   │       ├── hot-tub.svg
+│   │       ├── hourglass-end.svg
+│   │       ├── hourglass-half.svg
+│   │       ├── hourglass-start.svg
+│   │       ├── hourglass.svg
+│   │       ├── h-square.svg
+│   │       ├── i-cursor.svg
+│   │       ├── id-badge.svg
+│   │       ├── id-card-alt.svg
+│   │       ├── id-card.svg
+│   │       ├── images.svg
+│   │       ├── image.svg
+│   │       ├── inbox-in.svg
+│   │       ├── inbox-out.svg
+│   │       ├── inbox.svg
+│   │       ├── indent.svg
+│   │       ├── industry-alt.svg
+│   │       ├── industry.svg
+│   │       ├── infinity.svg
+│   │       ├── info-circle.svg
+│   │       ├── info-square.svg
+│   │       ├── info.svg
+│   │       ├── inhaler.svg
+│   │       ├── inventory.svg
+│   │       ├── italic.svg
+│   │       ├── jack-o-lantern.svg
+│   │       ├── joint.svg
+│   │       ├── keyboard.svg
+│   │       ├── key.svg
+│   │       ├── kidneys.svg
+│   │       ├── kiss-beam.svg
+│   │       ├── kiss.svg
+│   │       ├── kiss-wink-heart.svg
+│   │       ├── kiwi-bird.svg
+│   │       ├── lamp.svg
+│   │       ├── language.svg
+│   │       ├── laptop-code.svg
+│   │       ├── laptop.svg
+│   │       ├── laugh-beam.svg
+│   │       ├── laugh-squint.svg
+│   │       ├── laugh.svg
+│   │       ├── laugh-wink.svg
+│   │       ├── layer-group.svg
+│   │       ├── layer-minus.svg
+│   │       ├── layer-plus.svg
+│   │       ├── leaf-heart.svg
+│   │       ├── leaf.svg
+│   │       ├── lemon.svg
+│   │       ├── less-than-equal.svg
+│   │       ├── less-than.svg
+│   │       ├── level-down-alt.svg
+│   │       ├── level-down.svg
+│   │       ├── level-up-alt.svg
+│   │       ├── level-up.svg
+│   │       ├── life-ring.svg
+│   │       ├── lightbulb.svg
+│   │       ├── link.svg
+│   │       ├── lips.svg
+│   │       ├── lira-sign.svg
+│   │       ├── list-alt.svg
+│   │       ├── list-ol.svg
+│   │       ├── list.svg
+│   │       ├── list-ul.svg
+│   │       ├── location-arrow.svg
+│   │       ├── location-circle.svg
+│   │       ├── location-slash.svg
+│   │       ├── location.svg
+│   │       ├── lock-alt.svg
+│   │       ├── lock-open-alt.svg
+│   │       ├── lock-open.svg
+│   │       ├── lock.svg
+│   │       ├── long-arrow-alt-down.svg
+│   │       ├── long-arrow-alt-left.svg
+│   │       ├── long-arrow-alt-right.svg
+│   │       ├── long-arrow-alt-up.svg
+│   │       ├── long-arrow-down.svg
+│   │       ├── long-arrow-left.svg
+│   │       ├── long-arrow-right.svg
+│   │       ├── long-arrow-up.svg
+│   │       ├── loveseat.svg
+│   │       ├── low-vision.svg
+│   │       ├── luchador.svg
+│   │       ├── luggage-cart.svg
+│   │       ├── lungs.svg
+│   │       ├── magic.svg
+│   │       ├── magnet.svg
+│   │       ├── male.svg
+│   │       ├── map-marked-alt.svg
+│   │       ├── map-marked.svg
+│   │       ├── map-marker-alt-slash.svg
+│   │       ├── map-marker-alt.svg
+│   │       ├── map-marker-check.svg
+│   │       ├── map-marker-edit.svg
+│   │       ├── map-marker-exclamation.svg
+│   │       ├── map-marker-minus.svg
+│   │       ├── map-marker-plus.svg
+│   │       ├── map-marker-question.svg
+│   │       ├── map-marker-slash.svg
+│   │       ├── map-marker-smile.svg
+│   │       ├── map-marker.svg
+│   │       ├── map-marker-times.svg
+│   │       ├── map-pin.svg
+│   │       ├── map-signs.svg
+│   │       ├── map.svg
+│   │       ├── marker.svg
+│   │       ├── mars-double.svg
+│   │       ├── mars-stroke-h.svg
+│   │       ├── mars-stroke.svg
+│   │       ├── mars-stroke-v.svg
+│   │       ├── mars.svg
+│   │       ├── medal.svg
+│   │       ├── medkit.svg
+│   │       ├── meh-blank.svg
+│   │       ├── meh-rolling-eyes.svg
+│   │       ├── meh.svg
+│   │       ├── memory.svg
+│   │       ├── mercury.svg
+│   │       ├── microchip.svg
+│   │       ├── microphone-alt-slash.svg
+│   │       ├── microphone-alt.svg
+│   │       ├── microphone-slash.svg
+│   │       ├── microphone.svg
+│   │       ├── microscope.svg
+│   │       ├── minus-circle.svg
+│   │       ├── minus-hexagon.svg
+│   │       ├── minus-octagon.svg
+│   │       ├── minus-square.svg
+│   │       ├── minus.svg
+│   │       ├── mobile-alt.svg
+│   │       ├── mobile-android-alt.svg
+│   │       ├── mobile-android.svg
+│   │       ├── mobile.svg
+│   │       ├── money-bill-alt.svg
+│   │       ├── money-bill.svg
+│   │       ├── money-bill-wave-alt.svg
+│   │       ├── money-bill-wave.svg
+│   │       ├── money-check-alt.svg
+│   │       ├── money-check.svg
+│   │       ├── monitor-heart-rate.svg
+│   │       ├── monument.svg
+│   │       ├── moon.svg
+│   │       ├── mortar-pestle.svg
+│   │       ├── motorcycle.svg
+│   │       ├── mouse-pointer.svg
+│   │       ├── music.svg
+│   │       ├── neuter.svg
+│   │       ├── newspaper.svg
+│   │       ├── not-equal.svg
+│   │       ├── notes-medical.svg
+│   │       ├── object-group.svg
+│   │       ├── object-ungroup.svg
+│   │       ├── octagon.svg
+│   │       ├── oil-can.svg
+│   │       ├── oil-temp.svg
+│   │       ├── outdent.svg
+│   │       ├── paint-brush-alt.svg
+│   │       ├── paint-brush.svg
+│   │       ├── paint-roller.svg
+│   │       ├── palette.svg
+│   │       ├── pallet-alt.svg
+│   │       ├── pallet.svg
+│   │       ├── paperclip.svg
+│   │       ├── paper-plane.svg
+│   │       ├── parachute-box.svg
+│   │       ├── paragraph.svg
+│   │       ├── parking-circle-slash.svg
+│   │       ├── parking-circle.svg
+│   │       ├── parking-slash.svg
+│   │       ├── parking.svg
+│   │       ├── passport.svg
+│   │       ├── paste.svg
+│   │       ├── pause-circle.svg
+│   │       ├── pause.svg
+│   │       ├── paw.svg
+│   │       ├── pen-alt.svg
+│   │       ├── pencil-alt.svg
+│   │       ├── pencil-paintbrush.svg
+│   │       ├── pencil-ruler.svg
+│   │       ├── pencil.svg
+│   │       ├── pen-fancy.svg
+│   │       ├── pennant.svg
+│   │       ├── pen-nib.svg
+│   │       ├── pen-square.svg
+│   │       ├── pen.svg
+│   │       ├── people-carry.svg
+│   │       ├── percentage.svg
+│   │       ├── percent.svg
+│   │       ├── person-carry.svg
+│   │       ├── person-dolly-empty.svg
+│   │       ├── person-dolly.svg
+│   │       ├── phone-plus.svg
+│   │       ├── phone-slash.svg
+│   │       ├── phone-square.svg
+│   │       ├── phone.svg
+│   │       ├── phone-volume.svg
+│   │       ├── piggy-bank.svg
+│   │       ├── pills.svg
+│   │       ├── plane-alt.svg
+│   │       ├── plane-arrival.svg
+│   │       ├── plane-departure.svg
+│   │       ├── plane.svg
+│   │       ├── play-circle.svg
+│   │       ├── play.svg
+│   │       ├── plug.svg
+│   │       ├── plus-circle.svg
+│   │       ├── plus-hexagon.svg
+│   │       ├── plus-octagon.svg
+│   │       ├── plus-square.svg
+│   │       ├── plus.svg
+│   │       ├── podcast.svg
+│   │       ├── poop.svg
+│   │       ├── poo.svg
+│   │       ├── portrait.svg
+│   │       ├── pound-sign.svg
+│   │       ├── power-off.svg
+│   │       ├── prescription-bottle-alt.svg
+│   │       ├── prescription-bottle.svg
+│   │       ├── prescription.svg
+│   │       ├── print.svg
+│   │       ├── procedures.svg
+│   │       ├── project-diagram.svg
+│   │       ├── puzzle-piece.svg
+│   │       ├── qrcode.svg
+│   │       ├── question-circle.svg
+│   │       ├── question-square.svg
+│   │       ├── question.svg
+│   │       ├── quidditch.svg
+│   │       ├── quote-left.svg
+│   │       ├── quote-right.svg
+│   │       ├── racquet.svg
+│   │       ├── ramp-loading.svg
+│   │       ├── random.svg
+│   │       ├── receipt.svg
+│   │       ├── rectangle-landscape.svg
+│   │       ├── rectangle-portrait.svg
+│   │       ├── rectangle-wide.svg
+│   │       ├── recycle.svg
+│   │       ├── redo-alt.svg
+│   │       ├── redo.svg
+│   │       ├── registered.svg
+│   │       ├── repeat-1-alt.svg
+│   │       ├── repeat-1.svg
+│   │       ├── repeat-alt.svg
+│   │       ├── repeat.svg
+│   │       ├── reply-all.svg
+│   │       ├── reply.svg
+│   │       ├── retweet-alt.svg
+│   │       ├── retweet.svg
+│   │       ├── ribbon.svg
+│   │       ├── road.svg
+│   │       ├── robot.svg
+│   │       ├── rocket.svg
+│   │       ├── route-highway.svg
+│   │       ├── route-interstate.svg
+│   │       ├── route.svg
+│   │       ├── rss-square.svg
+│   │       ├── rss.svg
+│   │       ├── ruble-sign.svg
+│   │       ├── ruler-combined.svg
+│   │       ├── ruler-horizontal.svg
+│   │       ├── ruler.svg
+│   │       ├── ruler-triangle.svg
+│   │       ├── ruler-vertical.svg
+│   │       ├── rupee-sign.svg
+│   │       ├── sad-cry.svg
+│   │       ├── sad-tear.svg
+│   │       ├── save.svg
+│   │       ├── scalpel-path.svg
+│   │       ├── scalpel.svg
+│   │       ├── scanner-keyboard.svg
+│   │       ├── scanner.svg
+│   │       ├── scanner-touchscreen.svg
+│   │       ├── school.svg
+│   │       ├── screwdriver.svg
+│   │       ├── scrubber.svg
+│   │       ├── search-minus.svg
+│   │       ├── search-plus.svg
+│   │       ├── search.svg
+│   │       ├── seedling.svg
+│   │       ├── server.svg
+│   │       ├── shapes.svg
+│   │       ├── share-all.svg
+│   │       ├── share-alt-square.svg
+│   │       ├── share-alt.svg
+│   │       ├── share-square.svg
+│   │       ├── share.svg
+│   │       ├── shekel-sign.svg
+│   │       ├── shield-alt.svg
+│   │       ├── shield-check.svg
+│   │       ├── shield.svg
+│   │       ├── shipping-fast.svg
+│   │       ├── shipping-timed.svg
+│   │       ├── ship.svg
+│   │       ├── shoe-prints.svg
+│   │       ├── shopping-bag.svg
+│   │       ├── shopping-basket.svg
+│   │       ├── shopping-cart.svg
+│   │       ├── shower.svg
+│   │       ├── shuttlecock.svg
+│   │       ├── shuttle-van.svg
+│   │       ├── signal.svg
+│   │       ├── signature.svg
+│   │       ├── sign-in-alt.svg
+│   │       ├── sign-in.svg
+│   │       ├── sign-language.svg
+│   │       ├── sign-out-alt.svg
+│   │       ├── sign-out.svg
+│   │       ├── sign.svg
+│   │       ├── sitemap.svg
+│   │       ├── skeleton.svg
+│   │       ├── skull.svg
+│   │       ├── sliders-h-square.svg
+│   │       ├── sliders-h.svg
+│   │       ├── sliders-v-square.svg
+│   │       ├── sliders-v.svg
+│   │       ├── smile-beam.svg
+│   │       ├── smile-plus.svg
+│   │       ├── smile.svg
+│   │       ├── smile-wink.svg
+│   │       ├── smoking-ban.svg
+│   │       ├── smoking.svg
+│   │       ├── snowflake.svg
+│   │       ├── solar-panel.svg
+│   │       ├── sort-alpha-down.svg
+│   │       ├── sort-alpha-up.svg
+│   │       ├── sort-amount-down.svg
+│   │       ├── sort-amount-up.svg
+│   │       ├── sort-down.svg
+│   │       ├── sort-numeric-down.svg
+│   │       ├── sort-numeric-up.svg
+│   │       ├── sort.svg
+│   │       ├── sort-up.svg
+│   │       ├── space-shuttle.svg
+│   │       ├── spade.svg
+│   │       ├── spa.svg
+│   │       ├── spinner.svg
+│   │       ├── spinner-third.svg
+│   │       ├── splotch.svg
+│   │       ├── spray-can.svg
+│   │       ├── square-full.svg
+│   │       ├── square.svg
+│   │       ├── stamp.svg
+│   │       ├── star-exclamation.svg
+│   │       ├── star-half-alt.svg
+│   │       ├── star-half.svg
+│   │       ├── star-of-life.svg
+│   │       ├── star.svg
+│   │       ├── steering-wheel.svg
+│   │       ├── step-backward.svg
+│   │       ├── step-forward.svg
+│   │       ├── stethoscope.svg
+│   │       ├── sticky-note.svg
+│   │       ├── stomach.svg
+│   │       ├── stop-circle.svg
+│   │       ├── stop.svg
+│   │       ├── stopwatch.svg
+│   │       ├── store-alt.svg
+│   │       ├── store.svg
+│   │       ├── stream.svg
+│   │       ├── street-view.svg
+│   │       ├── strikethrough.svg
+│   │       ├── stroopwafel.svg
+│   │       ├── subscript.svg
+│   │       ├── subway.svg
+│   │       ├── suitcase-rolling.svg
+│   │       ├── suitcase.svg
+│   │       ├── sun.svg
+│   │       ├── superscript.svg
+│   │       ├── surprise.svg
+│   │       ├── swatchbook.svg
+│   │       ├── swimmer.svg
+│   │       ├── swimming-pool.svg
+│   │       ├── sync-alt.svg
+│   │       ├── sync.svg
+│   │       ├── syringe.svg
+│   │       ├── table.svg
+│   │       ├── tablet-alt.svg
+│   │       ├── tablet-android-alt.svg
+│   │       ├── tablet-android.svg
+│   │       ├── table-tennis.svg
+│   │       ├── tablet-rugged.svg
+│   │       ├── tablets.svg
+│   │       ├── tablet.svg
+│   │       ├── tachometer-alt-average.svg
+│   │       ├── tachometer-alt-fastest.svg
+│   │       ├── tachometer-alt-fast.svg
+│   │       ├── tachometer-alt-slowest.svg
+│   │       ├── tachometer-alt-slow.svg
+│   │       ├── tachometer-alt.svg
+│   │       ├── tachometer-average.svg
+│   │       ├── tachometer-fastest.svg
+│   │       ├── tachometer-fast.svg
+│   │       ├── tachometer-slowest.svg
+│   │       ├── tachometer-slow.svg
+│   │       ├── tachometer.svg
+│   │       ├── tags.svg
+│   │       ├── tag.svg
+│   │       ├── tape.svg
+│   │       ├── tasks.svg
+│   │       ├── taxi.svg
+│   │       ├── teeth-open.svg
+│   │       ├── teeth.svg
+│   │       ├── tennis-ball.svg
+│   │       ├── terminal.svg
+│   │       ├── text-height.svg
+│   │       ├── text-width.svg
+│   │       ├── theater-masks.svg
+│   │       ├── thermometer-empty.svg
+│   │       ├── thermometer-full.svg
+│   │       ├── thermometer-half.svg
+│   │       ├── thermometer-quarter.svg
+│   │       ├── thermometer.svg
+│   │       ├── thermometer-three-quarters.svg
+│   │       ├── th-large.svg
+│   │       ├── th-list.svg
+│   │       ├── th.svg
+│   │       ├── thumbs-down.svg
+│   │       ├── thumbs-up.svg
+│   │       ├── thumbtack.svg
+│   │       ├── ticket-alt.svg
+│   │       ├── ticket.svg
+│   │       ├── times-circle.svg
+│   │       ├── times-hexagon.svg
+│   │       ├── times-octagon.svg
+│   │       ├── times-square.svg
+│   │       ├── times.svg
+│   │       ├── tint-slash.svg
+│   │       ├── tint.svg
+│   │       ├── tired.svg
+│   │       ├── tire-flat.svg
+│   │       ├── tire-pressure-warning.svg
+│   │       ├── tire-rugged.svg
+│   │       ├── tire.svg
+│   │       ├── toggle-off.svg
+│   │       ├── toggle-on.svg
+│   │       ├── toolbox.svg
+│   │       ├── toothbrush.svg
+│   │       ├── tooth.svg
+│   │       ├── trademark.svg
+│   │       ├── traffic-cone.svg
+│   │       ├── traffic-light-go.svg
+│   │       ├── traffic-light-slow.svg
+│   │       ├── traffic-light-stop.svg
+│   │       ├── traffic-light.svg
+│   │       ├── train.svg
+│   │       ├── transgender-alt.svg
+│   │       ├── transgender.svg
+│   │       ├── trash-alt.svg
+│   │       ├── trash.svg
+│   │       ├── tree-alt.svg
+│   │       ├── tree.svg
+│   │       ├── triangle.svg
+│   │       ├── trophy-alt.svg
+│   │       ├── trophy.svg
+│   │       ├── truck-container.svg
+│   │       ├── truck-couch.svg
+│   │       ├── truck-loading.svg
+│   │       ├── truck-monster.svg
+│   │       ├── truck-moving.svg
+│   │       ├── truck-pickup.svg
+│   │       ├── truck-ramp.svg
+│   │       ├── truck.svg
+│   │       ├── tshirt.svg
+│   │       ├── tty.svg
+│   │       ├── tv-retro.svg
+│   │       ├── tv.svg
+│   │       ├── umbrella-beach.svg
+│   │       ├── umbrella.svg
+│   │       ├── underline.svg
+│   │       ├── undo-alt.svg
+│   │       ├── undo.svg
+│   │       ├── universal-access.svg
+│   │       ├── university.svg
+│   │       ├── unlink.svg
+│   │       ├── unlock-alt.svg
+│   │       ├── unlock.svg
+│   │       ├── upload.svg
+│   │       ├── usd-circle.svg
+│   │       ├── usd-square.svg
+│   │       ├── user-alt-slash.svg
+│   │       ├── user-alt.svg
+│   │       ├── user-astronaut.svg
+│   │       ├── user-check.svg
+│   │       ├── user-circle.svg
+│   │       ├── user-clock.svg
+│   │       ├── user-cog.svg
+│   │       ├── user-edit.svg
+│   │       ├── user-friends.svg
+│   │       ├── user-graduate.svg
+│   │       ├── user-lock.svg
+│   │       ├── user-md.svg
+│   │       ├── user-minus.svg
+│   │       ├── user-ninja.svg
+│   │       ├── user-plus.svg
+│   │       ├── users-class.svg
+│   │       ├── users-cog.svg
+│   │       ├── user-secret.svg
+│   │       ├── user-shield.svg
+│   │       ├── user-slash.svg
+│   │       ├── users.svg
+│   │       ├── user.svg
+│   │       ├── user-tag.svg
+│   │       ├── user-tie.svg
+│   │       ├── user-times.svg
+│   │       ├── utensil-fork.svg
+│   │       ├── utensil-knife.svg
+│   │       ├── utensils-alt.svg
+│   │       ├── utensil-spoon.svg
+│   │       ├── utensils.svg
+│   │       ├── vector-square.svg
+│   │       ├── venus-double.svg
+│   │       ├── venus-mars.svg
+│   │       ├── venus.svg
+│   │       ├── vials.svg
+│   │       ├── vial.svg
+│   │       ├── video-plus.svg
+│   │       ├── video-slash.svg
+│   │       ├── video.svg
+│   │       ├── volleyball-ball.svg
+│   │       ├── volume-down.svg
+│   │       ├── volume-mute.svg
+│   │       ├── volume-off.svg
+│   │       ├── volume-up.svg
+│   │       ├── walking.svg
+│   │       ├── wallet.svg
+│   │       ├── warehouse-alt.svg
+│   │       ├── warehouse.svg
+│   │       ├── watch-fitness.svg
+│   │       ├── watch.svg
+│   │       ├── weight-hanging.svg
+│   │       ├── weight.svg
+│   │       ├── wheelchair.svg
+│   │       ├── whistle.svg
+│   │       ├── wifi.svg
+│   │       ├── window-alt.svg
+│   │       ├── window-close.svg
+│   │       ├── window-maximize.svg
+│   │       ├── window-minimize.svg
+│   │       ├── window-restore.svg
+│   │       ├── window.svg
+│   │       ├── wine-glass-alt.svg
+│   │       ├── wine-glass.svg
+│   │       ├── won-sign.svg
+│   │       ├── wrench.svg
+│   │       ├── x-ray.svg
+│   │       └── yen-sign.svg
+│   ├── themes
+│   │   └── silver
+│   │       └── theme.js
+│   ├── tinymce.js
+│   └── webfonts
+│       ├── fa-brands-400.eot
+│       ├── fa-brands-400.svg
+│       ├── fa-brands-400.ttf
+│       ├── fa-brands-400.woff
+│       ├── fa-brands-400.woff2
+│       ├── fa-light-300.eot
+│       ├── fa-light-300.svg
+│       ├── fa-light-300.ttf
+│       ├── fa-light-300.woff
+│       ├── fa-light-300.woff2
+│       ├── fa-regular-400.eot
+│       ├── fa-regular-400.svg
+│       ├── fa-regular-400.ttf
+│       ├── fa-regular-400.woff
+│       ├── fa-regular-400.woff2
+│       ├── fa-solid-900.eot
+│       ├── fa-solid-900.svg
+│       ├── fa-solid-900.ttf
+│       ├── fa-solid-900.woff
+│       └── fa-solid-900.woff2
+├── README.md
+├── routes
+│   ├── index.js
+│   ├── posts.js
+│   └── users.js
+├── tree.txt
+└── views
+    ├── chat.ejs
+    ├── dashboard.ejs
+    ├── detailview.ejs
+    ├── layout.ejs
+    ├── login.ejs
+    ├── partials
+    │   └── messages.ejs
+    ├── post.ejs
+    ├── postInputForm.ejs
+    ├── profile.ejs
+    ├── register.ejs
+    ├── site registration form
+    └── welcome.ejs
+
+637 directories, 7383 files
