@@ -94,6 +94,12 @@ io.on('connection', (socket) => {
     socket.handshake.session.save();
   }
   // Socket Routes
+
+  socket.on('stream', function(image) {
+    socket.broadcast.emit('stream', image);
+    socket.emit('stream', image);
+  });
+
   socket.on('hello', async (data) => {
     const id = socket.handshake.session.passport.user;
     console.log(id);
