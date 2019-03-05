@@ -78,7 +78,7 @@ module.exports = class db {
 
   async getLastTenPosts() {
     const response = await this.Post.find()
-        .sort({_id: -1})
+        .sort({_id: 1})
         .then((res) => res) // resolve the promise
         .catch((e)=>false);
     return response;

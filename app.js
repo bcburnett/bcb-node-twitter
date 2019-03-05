@@ -130,7 +130,7 @@ io.on('connection', (socket) => {
       post.postImage = await Image.resizeDbImage(data.image);
       console.log(post.postImage);
     }
-    post.postImage = post.postImage || '/img/cat.large.jpg';
+    post.postImage = post.postImage || 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNiYAAAAAkAAxkR2eQAAAAASUVORK5CYII=';
     post.userid = socket.handshake.session.passport.user;
     post.poster = (await DB.getUserData(post.user_id)).name;
     if (!DB.verifyPost(post, socket)) {
@@ -141,12 +141,9 @@ io.on('connection', (socket) => {
 
     const res = {};
     res.data=post;
-    socket.emit('newPost', res);
-    socket.broadcast.emit('newPost', res);
-    const messg =
-        post.poster + ' has Posted an article';
-    socket.emit('hello', messg);
-    socket.broadcast.emit('hello', messg);
+    res.currentUser = socket.handshake.session.passport.user;
+    socket.emit('dele');
+    socket.broadcast.emit('dele');
   });
 
 
@@ -181,25 +178,20 @@ io.on('connection', (socket) => {
       return;
     }
     socket.emit('dele');
-    socket.broadcast.emit('reload');
+    socket.broadcast.emit('dele');
     socket.broadcast.emit('hello', 'POST EDITED');
   });
 
   socket.on('loadPosts', async (e) => {
     const result = await DB.getLastTenPosts();
     result.map((e) => {
-      const data = e;
-      app.render('post', {data}, (err, html) => {
-        if (err) {
-          value = err;
-          socket.emit('hello', 'SOMETHING WENT WRONG APP.JS 228');
-          return;
-        }
-        const res = {};
-        res.html = html;
-        res.data = data;
-        socket.emit('newPost', res);
-      });
+      const data=e;
+      data.currentUser=socket.handshake.session.passport.user;
+      console.log(data.user_id, data.currentUser);
+      const res = {};
+      res.data = data;
+      res.currentUser=socket.handshake.session.passport.user;
+      socket.emit('newPost', res);
     });
   });
 
@@ -224,8 +216,7 @@ io.on('connection', (socket) => {
     const result = await DB.deletePost(data);
     if (!result) return;
     socket.emit('dele');
-    socket.broadcast.emit('reload');
-    socket.broadcast.emit('hello', 'POST DELETED');
+    socket.broadcast.emit('dele');
   });
 
   socket.on('edit', async (data) => {
