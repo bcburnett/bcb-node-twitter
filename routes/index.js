@@ -9,7 +9,7 @@ const DB = new (require('../js/data'))();
 // Welcome Page
 router.get('/', (req, res) =>{
   if (req.user) {
-    res.redirect('http://localhost:8081'); // logged in
+    res.redirect('/dashboard.html'); // logged in
   } else {
     res.redirect('/login.html'); // not logged in
   }
@@ -20,10 +20,7 @@ router.get('/dashboard', ensureAuthenticated, async (req, res) =>{
   const result = await DB.getLastFiveMessages();
   console.log(result);
   if (!result) result = [];
-  res.render('dashboard', {
-    user: req.user,
-    posts: result,
-  });
+  res.redirect('/dashboard.html');
   req.app.io.emit('hello', req.user.name + ' Has Joined' );
 });
 

@@ -11,7 +11,7 @@ export const bcbNavbarStyle = html`
   color: var(--primary-color);
   padding-top: .5rem;
   padding-bottom: .5rem;
-  background-color: rgba(0,0,0,.2);
+  background-color: rgba(0,0,0,1);
   background-image: var(--header-img);
   background-blend-mode:multiply;
   background-size: cover;

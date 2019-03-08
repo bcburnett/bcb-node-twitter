@@ -1,6 +1,7 @@
 /* eslint-disable one-var */
 // constant declarations
 const express = require('express'),
+  fs=require('fs'),
   mongoose = require('mongoose'),
   passport = require('passport'),
   flash = require('connect-flash'),
@@ -10,7 +11,7 @@ const express = require('express'),
   Image = new (require('./js/image'))(),
   // abstracted image manipulation functions
   socket = require('socket.io'),
-  http = require('http'),
+  https = require('https'),
   uuidv1 = require('uuid/v1'),
   app = express(),
   lastFiveMessages = [];
@@ -63,15 +64,21 @@ app.use('/users', require('./routes/users.js'));
 
 // create the server
 const port = process.env.PORT || 5000,
-  server = http.createServer(app),
+  httpsOptions = {
+    cert: fs.readFileSync('./ssh/cert.pem'),
+    key: fs.readFileSync('./ssh/key.pem'),
+    passphrase: 'password',
+  },
+  server = https.createServer(httpsOptions, app),
   io = socket(server);
+
 
 // share the session with socket.io
 io.use(require('express-socket.io-session')(session, {
   autoSave: true,
 })
 );
-// assigb io to app.io so it is available everywhere
+// assign io to app.io so it is available everywhere
 app.io = io;
 // Start the server
 server.listen(port);

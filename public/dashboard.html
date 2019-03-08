@@ -1,0 +1,46 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Affordable and professional web design">
+    <meta name="keywords" content="web design, affordable web design, professional web design">
+    <meta name="author" content="Brian Burnett">
+    <title>bcb-feed</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="css/all.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/dashboard-style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js" async="" defer=""></script>
+    <script src="js/bcb-feed.js" type="module"></script>
+    <script src="js/bcb-navbar.js" type="module"></script>
+    <script src="js/bcb-chat.js" type="module"></script>
+    <script src="js/bcb-post-form.js" type="module"></script>
+    <script src="js/bcb-video.js" type="module"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  </head>
+
+  <body>
+    <bcb-navbar branding="Your Feed"></bcb-navbar>
+
+    <div class="container">
+      <bcb-feed></bcb-feed>
+      <div class="userarea">
+        <h1>User</h1>
+        <bcb-video></bcb-video>
+      </div>
+      <div class="chatdiv">
+        <bcb-chat></bcb-chat>
+        <bcb-post-form></bcb-post-form>
+      </div>
+    </div>
+
+
+
+
+
+    <script src="js/main.js"></script>
+  
+
+
+</body></html>

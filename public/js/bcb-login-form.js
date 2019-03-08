@@ -1,12 +1,14 @@
-import { LitElement, html } from "../node_modules/@polymer/lit-element/lit-element.js";
-import "./bcb-input.js";
+/* eslint-disable require-jsdoc */
+// eslint-disable-next-line max-len
+import {LitElement, html} from '../node_modules/@polymer/lit-element/lit-element.js';
+import './bcb-input.js';
 export class BcbLoginForm extends LitElement {
   static get properties() {
     return {
       submit: String,
       width: Number,
       method: String,
-      tooltip: String
+      tooltip: String,
     };
   }
 
@@ -152,6 +154,5 @@ export class BcbLoginForm extends LitElement {
   clickListener(e) {
     console.log(e);
   }
-
 }
 customElements.define('bcb-login-form', BcbLoginForm);
