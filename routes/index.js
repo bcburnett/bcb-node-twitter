@@ -17,9 +17,6 @@ router.get('/', (req, res) =>{
 
 // Dashboard
 router.get('/dashboard', ensureAuthenticated, async (req, res) =>{
-  const result = await DB.getLastFiveMessages();
-  console.log(result);
-  if (!result) result = [];
   res.redirect('/dashboard.html');
   req.app.io.emit('hello', req.user.name + ' Has Joined' );
 });

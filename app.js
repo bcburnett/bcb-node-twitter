@@ -21,6 +21,7 @@ require('./config/passport')(passport);
 // Connect to MongoDB
 mongoose
     .connect('mongodb://localhost/mysocialmedia', {useNewUrlParser: true})
+    // .connect('mongodb://bcburnett:peachpie01@ds159840.mlab.com:59840/mysocialmedia', {useNewUrlParser: true})
     .then(() => console.log('MongoDB Connected'))
     .catch((err) => console.log(err));
 // EJS
@@ -30,6 +31,7 @@ app.use(express.urlencoded({extended: true}));
 // mongo store
 const store = new MongoDBStore({
   uri: 'mongodb://localhost',
+  // uri: 'mongodb://bcburnett:peachpie01@ds033086.mlab.com:59840/',
   databaseName: 'mysocialmedia',
   collection: 'mySessions',
 });

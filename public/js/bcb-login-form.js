@@ -145,7 +145,7 @@ export class BcbLoginForm extends LitElement {
       <p>
         <button @click="${this.clickListener}" >Login</button>
       </p>
-      <p class="footnote">Not registered? <a href="#">Create an account</a></p>
+      <p class="footnote">Not registered? <a href="/users/register">Create an account</a></p>
     </form>
   </div>
     `;

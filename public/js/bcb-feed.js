@@ -24,7 +24,7 @@ export class BcbFeed extends LitElement {
                         margin:10px auto;
                         border-radius:10px;
                         display:flex;
-                        flex-direction:row;
+                        flex-direction:column;
                         overflow:hidden;
                         padding:10px;
                         justify-content:center;
