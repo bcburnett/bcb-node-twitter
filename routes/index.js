@@ -2,10 +2,7 @@ const express = require('express');
 // eslint-disable-next-line new-cap
 const router = express.Router();
 const {ensureAuthenticated} = require('../config/auth');
-// const Mydb = require('../views/js/data');
-// const DB = new Mydb();
 
-const DB = new (require('../js/data'))();
 // Welcome Page
 router.get('/', (req, res) =>{
   if (req.user) {

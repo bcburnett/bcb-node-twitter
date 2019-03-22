@@ -27,17 +27,6 @@ module.exports = class db {
     return result;
   }
 
-  // check post data
-  // post object
-  // post.user_id = socket.handshake.session.passport.user;
-  // post.post_id = uuidv1();
-  // post.postText = data.text;
-  // post.postTitle = data.title;
-  // post.postImage = data.image;
-  // post.thumbnail = data.thumbnail;
-  // post.userid = socket.handshake.session.passport.user;
-  // post.poster = socket.handshake.session.userinfo.name;
-
   verifyPost(post) {
     if (!post.user_id || !post.post_id || !post.userid || !post.poster) {
       return false;

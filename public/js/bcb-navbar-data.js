@@ -1,10 +1,13 @@
 export const Buttons = [{
   id: 'Top of Page',
-  icon: "fas fa-arrow-up"
+  icon: 'fas fa-arrow-up',
 }, {
   id: 'Middle of Page',
-  icon: "fas fa-arrow-right"
+  icon: 'fas fa-arrow-right',
 }, {
   id: 'Bottom of Page',
-  icon: "fas fa-arrow-down"
+  icon: 'fas fa-arrow-down',
+}, {
+  id: 'logout',
+  icon: 'fas fa-times',
 }];

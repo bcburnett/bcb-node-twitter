@@ -1,9 +1,9 @@
 // eslint-disable-next-line max-len
-document.querySelector('bcb-navbar').addEventListener('bcbnavbar', e => navigate(e.detail));
+document.querySelector('bcb-navbar').addEventListener('bcbnavbar', (e) => {
+  return navigate( e.detail );
+});
 
-const navigate = e => {
-  console.log(e);
-
+const navigate = (e) => {
   switch (e) {
     case 'Top of Page':
       document.documentElement.scrollTop = 0;
@@ -16,11 +16,15 @@ const navigate = e => {
     case 'Bottom of Page':
       window.scrollTo(0, document.body.scrollHeight);
       break;
+
+    case 'logout':
+      window.location = '/users/logout';
+      break;
   }
 };
 
 let scrollPos = 0;
-document.addEventListener('scroll', function () {
+document.addEventListener('scroll', function() {
   if (document.body.getBoundingClientRect().top > scrollPos) {
     document.querySelector('bcb-navbar').classList.remove('hidden');
   } else {

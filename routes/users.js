@@ -10,7 +10,7 @@ const User = require('../models/user');
 router.get('/login', (req, res) => res.redirect('/login.html'));
 
 // Register Page
-router.get('/register', (req, res) => res.render('register'));
+router.get('/register', (req, res) => res.redirect('/register.html'));
 
 // Register
 router.post('/register', (req, res) => {

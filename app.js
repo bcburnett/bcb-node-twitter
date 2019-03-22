@@ -15,25 +15,31 @@ const express = require('express'),
   uuidv1 = require('uuid/v1'),
   app = express(),
   lastFiveMessages = [];
+
 mongoose.set('useFindAndModify', false);
+
 // Passport Config
 require('./config/passport')(passport);
+
 // Connect to MongoDB
 mongoose
     .connect('mongodb://localhost/mysocialmedia', {useNewUrlParser: true})
+    // mongodb://<dbuser>:<dbpassword>@ds257314.mlab.com:57314/heroku_j29hpnm9
     // .connect('mongodb://bcburnett:peachpie01@ds159840.mlab.com:59840/mysocialmedia', {useNewUrlParser: true})
     .then(() => console.log('MongoDB Connected'))
     .catch((err) => console.log(err));
+
 // EJS
 app.set('view engine', 'ejs');
+
 // Express body parser
 app.use(express.urlencoded({extended: true}));
+
 // mongo store
 const store = new MongoDBStore({
-  uri: 'mongodb://localhost',
-  // uri: 'mongodb://bcburnett:peachpie01@ds033086.mlab.com:59840/',
-  databaseName: 'mysocialmedia',
-  collection: 'mySessions',
+  uri: 'mongodb://localhost/mysocialmedia',
+  session: 'mySessions',
+  // uri: 'mongodb://bcburnett:peachpie01@ds033086.mlab.com:59840/mysocialmedia/mySessions',
 });
 // express session
 const session = mysession({
@@ -86,8 +92,6 @@ app.io = io;
 server.listen(port);
 // socket routes
 io.on('connection', (socket) => {
-  console.info(`Client connected [id=${socket.id}]`);
-
   // when socket disconnects, remove it from the list:
   socket.on('disconnect', () => {
     console.info(`Client gone [id=${socket.id}]`);
@@ -111,9 +115,7 @@ io.on('connection', (socket) => {
 
   socket.on('hello', async (data) => {
     const id = socket.handshake.session.passport.user;
-    console.log(id);
     const result = await DB.getUserData(id);
-    console.log(result.name);
     socket.emit('hello', result.name +' says ' + data);
     socket.broadcast.emit('hello', result.name +' says ' + data);
     lastFiveMessages.push(result.name +' says ' + data);
@@ -145,6 +147,7 @@ io.on('connection', (socket) => {
       post.postImage = await Image.resizeDbImage(data.image);
       console.log(post.postImage);
     }
+    // eslint-disable-next-line max-len
     post.postImage = post.postImage || 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNiYAAAAAkAAxkR2eQAAAAASUVORK5CYII=';
     post.userid = socket.handshake.session.passport.user;
     post.poster = (await DB.getUserData(post.user_id)).name;
@@ -245,5 +248,11 @@ io.on('connection', (socket) => {
     app.render('postInputForm', {data: result}, (err, html) => {
       socket.emit('edit', html);
     });
+  });
+
+  socket.on('welcome', async (e)=>{
+    const id = socket.handshake.session.passport.user;
+    const info = await DB.getUserData(id);
+    socket.emit('welcome', info);
   });
 });
