@@ -1,13 +1,19 @@
 module.exports = {
-  "parserOptions": {
-    "ecmaVersion": 10,
-    "sourceType": "module",
-    "ecmaFeatures": {
-        "jsx": true
+    "env": {
+        "browser": true,
+        "es6": true,
+        "node": true
+    },
+    "extends": "google",
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "parserOptions": {
+        "ecmaVersion": 2018,
+        "sourceType": "module",
+    },
+    "rules": {
+      "no-console": ["error", "always"],
     }
-},
-"rules": {
-    "semi": "error"
-},
-"extends": "google"
 };

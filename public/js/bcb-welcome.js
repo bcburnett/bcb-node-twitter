@@ -16,9 +16,7 @@ export class BcbWelcome extends LitElement {
     this.socket.on('welcome', (data) => {
       this.user = data.name;
       delete data.password;
-      console.log(data);
       localStorage.setItem('data', JSON.stringify(data));
-      this.socket.disconnect();
     });
   }
 

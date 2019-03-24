@@ -1,19 +1,30 @@
 const express = require('express');
 // eslint-disable-next-line new-cap
-const router = express.Router();
+const app = express();
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 // Load User model
 const User = require('../models/user');
-
+const DB= new (require('../js/data'))();
 // Login Page
-router.get('/login', (req, res) => res.redirect('/login.html'));
+app.get('/login', (req, res) => res.redirect('/login.html'));
 
+// check e-mail
+app.get('/checkemail', async (req, res)=>{
+  const email = req.query.email;
+  res.send(await DB.userExists(email));
+});
+
+// check user name
+app.get('/checkname', async (req, res)=>{
+  const name = req.query.name;
+  res.send(await DB.userNameExists(name));
+});
 // Register Page
-router.get('/register', (req, res) => res.redirect('/register.html'));
+app.get('/register', (req, res) => res.redirect('/register.html'));
 
 // Register
-router.post('/register', (req, res) => {
+app.post('/register', (req, res) => {
   const {name, email, password, password2} = req.body;
   const errors = [];
 
@@ -77,7 +88,7 @@ router.post('/register', (req, res) => {
 });
 
 // Login
-router.post('/login', (req, res, next) => {
+app.post('/login', (req, res, next) => {
   passport.authenticate('local', {
     successRedirect: '/dashboard',
     failureRedirect: '/users/login',
@@ -86,10 +97,10 @@ router.post('/login', (req, res, next) => {
 });
 
 // Logout
-router.get('/logout', (req, res) => {
+app.get('/logout', (req, res) => {
   req.logout();
   req.flash('success_msg', 'You are logged out');
   res.redirect('/users/login');
 });
 
-module.exports = router;
+module.exports = app;

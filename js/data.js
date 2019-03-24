@@ -4,33 +4,18 @@ module.exports = class db {
   /**
   */
   constructor() {
-    this. mongoose = require('mongoose');
-    this. User = require('../models/user');
-    this. Chat = require('../models/chatstate');
-    this. Post = require('../models/posts/postModel');
+    this.mongoose = require('mongoose');
+    this.User = require('../models/user');
+    this.Chat = require('../models/chatstate');
+    this.Post = require('../models/posts/postModel');
   }
 
-  /**
-   * @param {array} arry
-  */
-  saveMessages(arry) {
-    this.Chat.findOne({room: 'room1'}).then((res, err) => {
-      res.lastFiveMessages = arry;
-      res.save().then((res, err) => console.log(res, err));
-    });
-  }
 
-  async getLastFiveMessages() {
-    const result = await this.Chat.findOne({room: 'room1'})
-        .then((res)=>res.lastFiveMessages)
-        .catch((e)=>false);
-    return result;
-  }
+
+  // posts
 
   verifyPost(post) {
-    if (!post.user_id || !post.post_id || !post.userid || !post.poster) {
-      return false;
-    }
+    if (!post.user_id || !post.post_id || !post.userid || !post.poster) {return false;}
     return true;
   }
 
@@ -73,10 +58,36 @@ module.exports = class db {
     return response;
   }
 
+  // users
+
   async getUserData(id) {
     const result = await this.User.findById(id)
         .then((res)=>res)
         .catch((e)=>false);
+    return result;
+  }
+
+  async userExists(email) {
+    let result = await this.User.findOne({'email': email})
+        .then((res)=>res)
+        .catch((e)=>{
+          return {false: false};
+        });
+    if (result === null) {
+      result = {false: false};
+    }
+    return result;
+  }
+
+  async userNameExists(name) {
+    let result = await this.User.findOne({'name': name})
+        .then((res)=>res)
+        .catch((e)=>{
+          return {false: false};
+        });
+    if (result === null) {
+      result = {false: false};
+    }
     return result;
   }
 };

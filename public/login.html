@@ -8,13 +8,15 @@
     <title>meetups-frontend</title>
 
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="css/all.css">
+    <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/bcb-navbar.js" type="module"></script>
     <script src="js/bcb-login-form.js" type="module"></script>
   </head>
 
   <body>
-    <bcb-navbar branding="Please Log In"></bcb-navbar>
+    <bcb-navbar branding="Please Log In" nonav="nonav"></bcb-navbar>
 
     <div class="container">
       <bcb-login-form submit="/users/login" method="POST" width="325px" tooltip="Please Log In">

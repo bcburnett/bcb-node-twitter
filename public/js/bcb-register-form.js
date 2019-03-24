@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 
 /* eslint-disable require-jsdoc */
-import { LitElement, html } from "../node_modules/@polymer/lit-element/lit-element.js";
+import {LitElement, html} from '../node_modules/@polymer/lit-element/lit-element.js';
 import './bcb-input.js';
 export class BcbRegisterForm extends LitElement {
   static get properties() {
@@ -9,21 +9,18 @@ export class BcbRegisterForm extends LitElement {
       submit: String,
       width: Number,
       method: String,
-      tooltip: String
+      tooltip: String,
+      emailerror: String,
+      nameerror: String,
+      passworderror: String,
     };
   }
 
   constructor() {
     super();
-    this.socket = io.connect('https://localhost:5000');
-    this.socket.emit('errors');
-    this.socket.on('errors', data => {
-      this.errors = data.map(err => {
-        return html`
-        <p style = "background-color:pink;">${err}</p>
-        `;
-      });
-    });
+    this.emailerror = undefined;
+    this.nameerror = undefined;
+    this.passworderror = undefined;
   }
 
   render() {
@@ -33,9 +30,10 @@ export class BcbRegisterForm extends LitElement {
       display:block;
       color: inherit;
       font: 16px Arial, sans-serif;
-      width:${this.width};
-      margin:0;
+      max-width:350px;
+      margin:0 auto;
       border-radius: 10px;
+      background: rgba(0,0,0,.7);
     }
 
     .hidden{
@@ -65,14 +63,13 @@ export class BcbRegisterForm extends LitElement {
       width: 100%;
       text-align: center;
       border-color: grey;
-      margin-top:5px;
+      margin-top:15px;
       height: 25px;
     }
 
     .container {
       max-width: 300px;
       padding: 0 10px 10px 10px;
-      border: 1px solid black;
       border-radius: 10px;
       margin: 10px auto;
     }
@@ -137,123 +134,152 @@ export class BcbRegisterForm extends LitElement {
     <h1 >
       <i class="fas fa-user-plus"></i> Register
     </h1>
-    <form action="${this.submit}" method="${this.method}">
+    <form
+    id="register"
+    action="${this.submit}"
+    method="${this.method}"
+    @submit="${this.validateForm}"
+    >
       <p>
         <bcb-input
         tooltip="Enter Your E-Mail Address"
         name="email"
-        id="bcb-input1"
+        id="email"
         label="E Mail Address"
         width="100%"
         type="email"
+        @bcbinputchange="${this.checkemail}"
         />
       </p>
+      <div style="color:#f55;">${this.emailerror}</div>
       <p>
         <bcb-input
-        tooltip="Enter Your Uesr Name"
+        tooltip="Enter Your User Name"
         name="name"
-        id="bcb-input3"
+        id="name"
         label="User Name"
         width="100%"
         type="name"
+        @bcbinputchange="${this.checkusername}"
         />
       </p>
+      <div style="color:#f55;">${this.nameerror}</div>
       <p>
         <bcb-input
         tooltip="Enter Your Password"
         name="password"
-        id="bcb-input2"
+        id="password"
         label="Password"
         width="100%"
-        type="password"
+        type="text"
         />
       </p>
       <p>
         <bcb-input
         tooltip="RepeatPassword"
         name="password2"
-        id="bcb-input4"
+        id="password2"
         label="Repeat Password"
         width="100%"
-        type="password"
+        type="text"
         />
       </p>
+      <div style="color:#f55;">${this.passworderror}</div>
       <p>
-        <button type="submit">Register</button>
+        <button
+        type="submit"
+        >Register</button>
       </p>
       <p class="footnote">Already registered? <a href="/users/login">Login</a></p>
-    </form>
+</form>
   </div>
     `;
   }
 
-  clickListener(e) {
-    console.log(e);
+
+  checkemail(e) {
+    const email = e.detail.value;
+    this.validateEmail(email);
   }
 
-} //   <h1>bcb-register-form</h1>
-//   <div class="row mt-5">
-//   <div class="col-md-6 m-auto">
-//     <div class="card card-body">
-//       <h1 class="text-center mb-3">
-//         <i class="fas fa-user-plus"></i> Register
-//       </h1>
-//       <% include ./partials/messages %>
-//       <form action="/users/register" method="POST">
-//         <div class="form-group">
-//           <label for="name">Name</label>
-//           <input
-//             type="name"
-//             id="name"
-//             name="name"
-//             class="form-control"
-//             placeholder="Enter Name"
-//             value="<%= typeof name != 'undefined' ? name : '' %>"
-//           />
-//         </div>
-//         <div class="form-group">
-//           <label for="email">Email</label>
-//           <input
-//             type="email"
-//             id="email"
-//             name="email"
-//             class="form-control"
-//             placeholder="Enter Email"
-//             value="<%= typeof email != 'undefined' ? email : '' %>"
-//           />
-//         </div>
-//         <div class="form-group">
-//           <label for="password">Password</label>
-//           <input
-//             type="password"
-//             id="password"
-//             name="password"
-//             class="form-control"
-//             placeholder="Create Password"
-//             value="<%= typeof password != 'undefined' ? password : '' %>"
-//           />
-//         </div>
-//         <div class="form-group">
-//           <label for="password2">Confirm Password</label>
-//           <input
-//             type="password"
-//             id="password2"
-//             name="password2"
-//             class="form-control"
-//             placeholder="Confirm Password"
-//             value="<%= typeof password2 != 'undefined' ? password2 : '' %>"
-//           />
-//         </div>
-//         <button type="submit" class="btn btn-primary btn-block">
-//           Register
-//         </button>
-//       </form>
-//       <p class="lead mt-4">Have An Account? <a href="/users/login">Login</a></p>
-//     </div>
-//   </div>
-// </div>
-//     `;
-//   }
-// }
+  async validateEmail(email) {
+    if (!email) {
+      this.emailerror = html`<br> Please enter a valid email`;
+      this.shadowRoot.getElementById('email').shadowRoot.getElementById('input').focus();
+      return false;
+    };
+    const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (re.test(email)) {
+      const result = await fetch(`/users/checkemail?email=${email}`)
+          .then((res) => res.json())
+          .then((text) => {
+            if (text._id) {
+              this.emailerror = html`<br> Email is already Registered`;
+              this.shadowRoot.getElementById('email').shadowRoot.getElementById('input').focus();
+              return false;
+            } else {
+              this.emailerror = undefined;
+              return true;
+            }
+          });
+      return result;
+    } else {
+      this.emailerror = html`<br> Please enter a valid email`;
+      this.shadowRoot.getElementById('email').shadowRoot.getElementById('input').focus();
+      return false;
+    }
+  }
+
+  checkusername(e) {
+    const name = e.detail.value;
+    this.validateName(name);
+  }
+
+  async validateName(name) {
+    if (name.length < 6) {
+      this.nameerror = html`<br> User Name must be at least 6 characters`;
+      this.shadowRoot.getElementById('name').shadowRoot.getElementById('input').focus();
+      return false;
+    }
+    const result = await fetch(`/users/checkname?name=${name}`)
+        .then((res) => res.json())
+        .then((text) => {
+          if (text._id) {
+            this.nameerror = html`<br> User Name is already Registered`;
+            this.shadowRoot.getElementById('name').shadowRoot.getElementById('input').focus();
+            return false;
+          } else {
+            this.nameerror = undefined;
+            return true;
+          }
+        });
+    return result;
+  }
+
+  validateForm(e) {
+    const email = this.shadowRoot.getElementById('email').value;
+    const name = this.shadowRoot.getElementById('name').value;
+    const password = this.shadowRoot.getElementById('password').value;
+    const password2 = this.shadowRoot.getElementById('password2').value;
+    let result = true;
+    if (!this.validateEmail(email) || !email) {
+      e.preventDefault();
+      result = false;
+      return false;
+    };
+    if (!this.validateName(name) || !name) {
+      e.preventDefault();
+      result = false;
+      return false;
+    };
+    if (password !== password2 || !password || !password2) {
+      e.preventDefault();
+      result = false;
+      this.passworderror = html`<br> Passwords must match`;
+      return false;
+    };
+    return result;
+  }
+}
 
 customElements.define('bcb-register-form', BcbRegisterForm);

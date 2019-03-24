@@ -24,13 +24,9 @@ require('./config/passport')(passport);
 // Connect to MongoDB
 mongoose
     .connect('mongodb://localhost/mysocialmedia', {useNewUrlParser: true})
-    // mongodb://<dbuser>:<dbpassword>@ds257314.mlab.com:57314/heroku_j29hpnm9
-    // .connect('mongodb://bcburnett:peachpie01@ds159840.mlab.com:59840/mysocialmedia', {useNewUrlParser: true})
     .then(() => console.log('MongoDB Connected'))
     .catch((err) => console.log(err));
 
-// EJS
-app.set('view engine', 'ejs');
 
 // Express body parser
 app.use(express.urlencoded({extended: true}));
@@ -39,7 +35,6 @@ app.use(express.urlencoded({extended: true}));
 const store = new MongoDBStore({
   uri: 'mongodb://localhost/mysocialmedia',
   session: 'mySessions',
-  // uri: 'mongodb://bcburnett:peachpie01@ds033086.mlab.com:59840/mysocialmedia/mySessions',
 });
 // express session
 const session = mysession({
@@ -47,10 +42,11 @@ const session = mysession({
   cookie: {
     maxAge: 1000 * 60 * 60 * 24 * 7, // 1 week
   },
-  store: store, // MongoStore
+  store, // MongoStore
   resave: true,
   saveUninitialized: true,
 });
+
 // use Express session
 app.use(session);
 // Passport middleware
@@ -167,9 +163,11 @@ io.on('connection', (socket) => {
 
   socket.on('getLastFiveMessages', async ( data)=>{
     const result = await DB.getLastFiveMessages();
+    if (result !== []){
     for ( messg of result) {
       socket.emit('hello', messg );
     }
+  }
   });
 
   socket.on('editSend', async (data) => {

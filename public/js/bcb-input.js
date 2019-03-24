@@ -1,25 +1,27 @@
-import { LitElement, html } from "../node_modules/@polymer/lit-element/lit-element.js";
+/* eslint-disable require-jsdoc */
+// eslint-disable-next-line max-len
+import {LitElement, html} from '../node_modules/@polymer/lit-element/lit-element.js';
 export class BcbInput extends LitElement {
   static get properties() {
     return {
       label: String,
       bg: {
         type: String,
-        reflect: true
+        reflect: true,
       },
       name: String,
       type: {
         type: String,
         attribute: true,
-        reflect: true
+        reflect: true,
       },
       width: Number,
       value: {
-        type: String
+        type: String,
       },
       max: Number,
       min: Number,
-      title: String
+      title: String,
     };
   }
 
@@ -34,9 +36,9 @@ export class BcbInput extends LitElement {
 
   constructor() {
     super();
-    this.value = "";
+    this.value = '';
     this.bg = 'transparent';
-    this.width = "75px";
+    this.width = '75px';
     this.name = '';
     this.type = 'text';
     this.max = Number.MAX_VALUE;
@@ -48,7 +50,7 @@ export class BcbInput extends LitElement {
     <style>
 :host {
   --form-width:${this.width};
-  margin:0;
+  margin:10px 0;
   padding:0;
   display:block;
   width: var(--form-width);
@@ -69,7 +71,7 @@ export class BcbInput extends LitElement {
 
 .form-control-placeholder {
   position: absolute;
-  top: 5px;
+  top: 0px;
   padding: 9px 0 0 13px;
   transition: all 200ms;
   opacity: .5;
@@ -78,7 +80,7 @@ export class BcbInput extends LitElement {
   font-size: 10px;
   margin-left:-12px;
   color:white;
-  font-size: 110%;
+  font-size: 98%;
 }
 
 .form-control{
@@ -153,38 +155,64 @@ input[type=range]::-moz-range-thumb {
     </style>
       <div class="form-group">
         <input
-         type="${this.type}"
-         id="input"
-         class="form-control"
-         value=""
-         max="${this.max}"
-         min="${this.min}"
-      	 @input="${this.inputChange}"
+        autocomplete="on"
+        type="${this.type}"
+        id="input"
+        class="form-control"
+        value=""
+        max="${this.max}"
+        min="${this.min}"
+        @input="${this.input}"
+        @change="${this.change}"
         title="${this.value}"
-         required>
-        <label class="form-control-placeholder" for="input">${this.label}</label>
+        name="this.name"
+        required>
+        <label
+          class="form-control-placeholder"
+          for="input">
+          ${this.label}
+        </label>
       </div>
 
     `;
   }
 
-  inputChange(e) {
+  input(e) {
     this.value = this.shadowRoot.getElementById('input').value;
     this.childNodes[1].value = this.value;
     this.title = this.value;
 
     if (this.type === 'checkbox') {
+      // eslint-disable-next-line max-len
       this.childNodes[1].checked = this.shadowRoot.getElementById('input').checked;
       this.value = this.childNodes[1].checked ? 'false' : 'true';
       this.getElementById(this.name).value = this.value;
     }
 
-    this.dispatchEvent(new CustomEvent("bcb-input", {
+    this.dispatchEvent(new CustomEvent('bcbinputinput', {
       detail: {
-        value: this.value
-      }
+        value: this.value,
+      },
     }));
   }
 
+  change(e) {
+    this.value = this.shadowRoot.getElementById('input').value;
+    this.childNodes[1].value = this.value;
+    this.title = this.value;
+
+    if (this.type === 'checkbox') {
+      // eslint-disable-next-line max-len
+      this.childNodes[1].checked = this.shadowRoot.getElementById('input').checked;
+      this.value = this.childNodes[1].checked ? 'false' : 'true';
+      this.getElementById(this.name).value = this.value;
+    }
+
+    this.dispatchEvent(new CustomEvent('bcbinputchange', {
+      detail: {
+        value: this.value,
+      },
+    }));
+  }
 }
 customElements.define('bcb-input', BcbInput);

@@ -6,9 +6,9 @@ const {ensureAuthenticated} = require('../config/auth');
 // Welcome Page
 router.get('/', (req, res) =>{
   if (req.user) {
-    res.redirect('/dashboard.html'); // logged in
+    res.redirect('/dashboard'); // logged in
   } else {
-    res.redirect('/login.html'); // not logged in
+    res.redirect('/users/login'); // not logged in
   }
 });
 

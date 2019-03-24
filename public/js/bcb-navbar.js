@@ -1,7 +1,9 @@
-import { LitElement, html } from "../node_modules/@polymer/lit-element/lit-element.js";
-import { afterNextRender, beforeNextRender } from "../node_modules/@polymer/polymer/lib/utils/render-status.js";
-import { bcbNavbarStyle } from "./bcb-navbar-style.js";
-import { Buttons } from "./bcb-navbar-data.js";
+/* eslint-disable require-jsdoc */
+/* eslint-disable max-len */
+import {LitElement, html} from '../node_modules/@polymer/lit-element/lit-element.js';
+import {beforeNextRender} from '../node_modules/@polymer/polymer/lib/utils/render-status.js';
+import {bcbNavbarStyle} from './bcb-navbar-style.js';
+import {Buttons} from './bcb-navbar-data.js';
 export class BcbNavbar extends LitElement {
   static get properties() {
     return {
@@ -10,10 +12,11 @@ export class BcbNavbar extends LitElement {
       arry: {
         type: Array,
         reflect: true,
-        attribute: true
+        attribute: true,
       },
       e: String,
-      tooltip: String
+      tooltip: String,
+      nonav: String,
     };
   }
 
@@ -23,19 +26,18 @@ export class BcbNavbar extends LitElement {
     this.branding = this.branding || 'Branding';
 
     if (this.arry.length !== 0) {
-      beforeNextRender(this, e => {
+      beforeNextRender(this, (e) => {
         this.shadowRoot.getElementById([this.arry[0].id]).classList.add('active');
         this.shadowRoot.getElementById([this.arry[0].id] + 's').classList.add('active');
       });
     } else {
-      console.log('in else loop');
-      document.documentElement.style.setProperty('--float-button', "none");
+      document.documentElement.style.setProperty('--float-button', 'none');
     }
   }
 
   render() {
     const dropdownItems = () => {
-      return this.arry.map(e => e ? html`
+      return this.arry.map((e) => e ? html`
         <span  style="display:block;" @click="${this.btnClick}" class="main-nav__item__link ${e.icon}" id="${e.id}s" >
           ${e.id}
         </span >` : '');
@@ -43,7 +45,7 @@ export class BcbNavbar extends LitElement {
 
     const navItems = () => {
       if (this.arry === []) return;
-      return this.arry.map(e => e ? html`
+      return this.arry.map((e) => e ? html`
         <li class="main-nav__item hide_me ">
           <button @click="${this.btnClick}" class="main-nav__item__link ${e.icon}" id="${e.id}">
             ${e.id}
@@ -61,11 +63,11 @@ ${bcbNavbarStyle}
          <li>
           <div class="dropdown">
             <span class="bars" @click="e=>e.stopPropagation()" >
-              ${[1, 2, 3].map(e => html`<div class="bar"></div>`)}
+              ${[1, 2, 3].map((e) => html`<div class="bar"></div>`)}
             </span>
             <div class="dropdown-content">
 
-              ${dropdownItems()}
+              ${this.nonav !=='nonav'?dropdownItems(): document.documentElement.style.setProperty('--float-button', 'none')}
 
             </div>
           </div>
@@ -76,7 +78,7 @@ ${bcbNavbarStyle}
         <li>
           <div class="main-nav__menu">
 
-                ${navItems()}
+                ${this.nonav !=='nonav'?navItems():''}
           </div>
         </li>
       </ul>
@@ -87,24 +89,23 @@ ${bcbNavbarStyle}
   }
 
   btnClick(e) {
-    console.log(e);
     this.btnactive = e.path[0];
     this.setactive(this.btnactive);
     let id = e.path[0].id;
     if (e.path[0].nodeName === 'SPAN') id = id.substring(0, id.length - 1);
-    this.dispatchEvent(new CustomEvent("bcbnavbar", {
-      detail: id
+    this.dispatchEvent(new CustomEvent('bcbnavbar', {
+      detail: id,
     }));
   }
 
   setactive(active) {
-    this.shadowRoot.querySelectorAll('button').forEach(button => {
+    this.shadowRoot.querySelectorAll('button').forEach((button) => {
       button.classList.remove('active');
     });
-    this.shadowRoot.querySelectorAll('span').forEach(span => {
+    this.shadowRoot.querySelectorAll('span').forEach((span) => {
       span.classList.remove('active');
     });
-    let id = active.id;
+    const id = active.id;
     let oActive = {};
 
     if (active.nodeName === 'SPAN') {
@@ -116,6 +117,5 @@ ${bcbNavbarStyle}
     active.classList.add('active');
     oActive.classList.add('active');
   }
-
 }
 customElements.define('bcb-navbar', BcbNavbar);

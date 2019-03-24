@@ -21,12 +21,16 @@ export class BcbLoginForm extends LitElement {
       <style>
     :host {
       display:block;
-      color: #333333;
+      color: inherit;
       font: 16px Arial, sans-serif;
       width:${this.width};
       margin:0;
       background: rgba(0,0,0,.7);
       border-radius: 10px;
+    }
+
+    h1{
+      color: white;
     }
 
     .hidden{
@@ -49,19 +53,19 @@ export class BcbLoginForm extends LitElement {
     button {
       font: ${this.width / 10}vw Arial, sans-serif;
       color: white;
-      background: rgba(0,0,0,.5);
+      background: rgba(0,125,0,.5);
       border: 1px solid dkgrey;
       box-shadow: rgba(0,0,0,.7);
       border-radius: 4px;
       width: 100%;
       text-align: center;
       border-color: grey;
+      padding: 3px;
     }
 
     .container {
       max-width: 300px;
       padding: 0 10px 10px 10px;
-      border: 1px solid grey;
       border-radius: 10px;
     }
 
@@ -121,7 +125,10 @@ export class BcbLoginForm extends LitElement {
   </style>
 
   <div class="container ${this.tooltip ? 'tooltip' : ''}"><span class="${this.tooltip ? '' : 'hidden'}">${this.tooltip}</span>
-    <form action="${this.submit}" method="${this.method}">
+    <h1>
+      <i class="fas fa-user-plus"></i> Login
+    </h1>
+    <form action="${this.submit}" method="${this.method}" autocomplete="on">
       <p>
         <bcb-input
         tooltip="Enter Your E-Mail Address"

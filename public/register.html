@@ -11,12 +11,11 @@
   <link rel="stylesheet" href="css/all.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/style.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js" async="" defer=""></script>
   <script src="js/bcb-register-form.js" type="module"></script>
 <script src="js/bcb-navbar.js" type="module"></script>
 </head>
 <body>
-  <bcb-navbar></bcb-navbar>
+  <bcb-navbar branding="Please Register" nonav="nonav"></bcb-navbar>
 <div class="container">
   <div>
     <bcb-register-form submit="https://brian.newlondonweb.com:5000/users/register" method="post">
