@@ -1,10 +1,10 @@
 
 :root{
   box-sizing: border-box;
-  --primary-light: #3d3d3d;
-  --highlight-color: #ee645f;
-  --primary-color:  #cecece;
-  --background-color:rgb(80, 80, 80);
+  --primary-light: #555;
+  --highlight-color: #f66;
+  --primary-color:  #999;
+  --background-color:#333;
   --br: 10px;
   --calc-color:var(--primary-color);
   --wrapper-color:transparent;
@@ -39,7 +39,7 @@ body {
   "u f c";
   grid-gap: 15px;
   margin:0;
-  background-color: var(--primary-light);
+  background-color: var(--background-color);
   background-image: url('');
   background-position: center;
   background-size: cover;

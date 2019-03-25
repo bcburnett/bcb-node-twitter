@@ -87,7 +87,7 @@ app.io = io;
 // Start the server
 server.listen(port);
 // socket routes
-io.on('connection', (socket) => {
+io.on('connection', async (socket) => {
   // when socket disconnects, remove it from the list:
   socket.on('disconnect', () => {
     console.info(`Client gone [id=${socket.id}]`);
@@ -95,7 +95,7 @@ io.on('connection', (socket) => {
 
   id = socket.handshake.session.passport.user|| false;
   if (id) {
-    const result = DB.getUserData(id);
+    const result = await DB.getUserData(id);
     if (!result) {
       return;
     }
@@ -141,18 +141,15 @@ io.on('connection', (socket) => {
     post.postTitle = data.title;
     if (data.image) {
       post.postImage = await Image.resizeDbImage(data.image);
-      console.log(post.postImage);
     }
     // eslint-disable-next-line max-len
     post.postImage = post.postImage || 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNiYAAAAAkAAxkR2eQAAAAASUVORK5CYII=';
     post.userid = socket.handshake.session.passport.user;
     post.poster = (await DB.getUserData(post.user_id)).name;
     if (!DB.verifyPost(post, socket)) {
-      console.log('ERROR something went wrong saving post');
       return;
     }
     DB.savePost(post);
-
     const res = {};
     res.data=post;
     res.currentUser = socket.handshake.session.passport.user;

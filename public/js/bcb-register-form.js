@@ -127,6 +127,10 @@ export class BcbRegisterForm extends LitElement {
   margin-top: -5px;
 }
 
+h1{
+  color: white;
+}
+
   </style>
   ${this.errors}
 

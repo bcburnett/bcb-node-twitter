@@ -4,7 +4,7 @@ import { Styles } from './bcb-feed-css.js';
 export class BcbFeed extends LitElement {
   static get properties() {
     return {
-      posts: Array
+      posts: Array,
     };
   }
 
@@ -14,6 +14,9 @@ export class BcbFeed extends LitElement {
     this.socket = io.connect('/');
     this.socket.on('newPost', e => {
       const data = e.data;
+      const textDiv = document.createElement('pre');
+      textDiv.style.textAlign="left";
+      textDiv.innerHTML=data.postText;
       const currentUser = e.currentUser;
       const myhtml = html`
         <div style="
@@ -35,10 +38,8 @@ export class BcbFeed extends LitElement {
             ${data.poster} |
             ${data.postTitle}
           </h2>
-          <textarea readonly name="postText" id="postText" placeholder="What's going on?">${data.postText}</textarea>
+          ${textDiv}
           <br />
-          <center>
-
             <br />
             ${data.user_id === currentUser ? html`
             <button @click="${e => this.editPost(data)}">Edit</button>
