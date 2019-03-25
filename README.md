@@ -51,8 +51,11 @@ modular front end design, the components just snap together to form the page
 ### Version: 0.0.0
 
 This is a Work In Progress
+
 node starter repo in node_passport_login-master.zip
+
 Thanks to https://github.com/bradtraversy/node_passport_login (have to rename users model to users.js)
+
 tutorial for the package https://www.youtube.com/watch?v=6FOq4cUdH8k&t=2s By Traversy Media
 
 ### Usage
