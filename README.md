@@ -25,15 +25,25 @@ You should now be able to register and login.
 ### Features
 
 registration form with validation
+
 login form
+
 real-time chat
+
 video stream (limited to one at a time may be removed or improved at a later date)
+
 create posts with pictures
+
 edit posts
+
 delete posts
+
 express sessions
+
 passport local auth
+
 session persistence via mongodb
+
 modular front end design, the components just snap together to form the page
 
 
