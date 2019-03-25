@@ -14,6 +14,7 @@ export class BcbWelcome extends LitElement {
     this.socket = io.connect('/');
     this.socket.emit('welcome');
     this.socket.on('welcome', (data) => {
+      if(!data) window.location.href ="/"
       this.user = data.name;
       delete data.password;
       localStorage.setItem('data', JSON.stringify(data));

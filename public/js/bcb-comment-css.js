@@ -6,27 +6,33 @@ export const Styles = html`
 :host{
 margin:0;
 font-size:1rem;
-margin-top:15px;
+color:inherit;
+
 }
 
 .wrapper{
-  border: 1px solid #000;
-  width:350px;
-  margin:10px auto;
-  border-radius:10px;
-  padding:5px;
-}
-
-input, textarea{
-  background: transparent;
-  border: 1px solid black;
-  border-radius: 3px;
-  color: inherit;
+  display:flex;
+  flex-direction: row;
 }
 
 textarea{
-  width:250px;
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 1px solid black;
+  border-radius: 3px;
 }
+
+button{
+  height:20px;
+  margin: 0px 5px;
+}
+
+.hidden{
+  display:none;
+}
+
+
+
 
 
 

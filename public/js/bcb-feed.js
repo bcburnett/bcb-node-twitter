@@ -1,6 +1,8 @@
 /* eslint-disable require-jsdoc */
-import { LitElement, html } from "../node_modules/@polymer/lit-element/lit-element.js";
-import { Styles } from './bcb-feed-css.js';
+// eslint-disable-next-line max-len
+import {LitElement, html} from '../node_modules/@polymer/lit-element/lit-element.js';
+import {Styles} from './bcb-feed-css.js';
+import './bcb-comment-module.js';
 export class BcbFeed extends LitElement {
   static get properties() {
     return {
@@ -12,10 +14,10 @@ export class BcbFeed extends LitElement {
     super();
     this.posts = [];
     this.socket = io.connect('/');
-    this.socket.on('newPost', e => {
+    this.socket.on('newPost', (e) => {
       const data = e.data;
       const textDiv = document.createElement('pre');
-      textDiv.style.textAlign="left";
+      textDiv.style.textAlign='left';
       textDiv.innerHTML=data.postText;
       const currentUser = e.currentUser;
       const myhtml = html`
@@ -32,19 +34,20 @@ export class BcbFeed extends LitElement {
                         padding:10px;
                         justify-content:center;
                         ">
-          <img src="${data.postImage}">
+
         <div class="data">
         <h2>
-            ${data.poster} |
             ${data.postTitle}
           </h2>
+          <p>
+          ${data.poster}
+          </p>
+          <img src="${data.postImage}">
           ${textDiv}
-          <br />
-            <br />
+            <bcb-comment-module data="${data}" style="display:inline-block;"></bcb-comment-module>
             ${data.user_id === currentUser ? html`
-            <button @click="${e => this.editPost(data)}">Edit</button>
-            <button @click="${e => this.deletePost(data)}">Delete</button>
-            <br>
+            <button @click="${(e) => this.editPost(data)}">Edit</button>
+            <button @click="${(e) => this.deletePost(data)}">Delete</button>
             <br>
             ` : ''}
         </div>
@@ -52,7 +55,7 @@ export class BcbFeed extends LitElement {
       `;
       this.posts = [...this.posts.reverse(), myhtml].reverse();
     });
-    this.socket.on('dele', data => {
+    this.socket.on('dele', (data) => {
       this.posts = [];
       this.socket.emit('loadPosts');
     });
@@ -76,6 +79,5 @@ export class BcbFeed extends LitElement {
   deletePost(e) {
     this.socket.emit('dele', e.post_id);
   }
-
 }
 customElements.define('bcb-feed', BcbFeed);
