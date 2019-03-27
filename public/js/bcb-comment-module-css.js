@@ -6,6 +6,7 @@ export const Styles = html`
 :host{
 margin:0;
 font-size:1rem;
+text-align:left;
 }
 
 </style>

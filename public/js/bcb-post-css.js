@@ -54,6 +54,7 @@ button{
 
 .dropdown {
   z-index: 100;
+  cursor: pointer;
 }
 
 .dropdown-content {

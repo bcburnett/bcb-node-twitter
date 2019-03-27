@@ -36,11 +36,17 @@ create posts with pictures
 
 edit posts
 
+  (edits are propagated in real-time)
+
 delete posts
 
 create comments
 
-delete comments (owner of post can delete any comment)
+delete comments
+
+  (owners of posts can delete any comment attached to the post)
+
+  (owners of comments can delete their own comments)
 
 like posts
 
