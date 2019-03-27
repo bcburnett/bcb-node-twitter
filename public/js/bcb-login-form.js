@@ -150,16 +150,12 @@ export class BcbLoginForm extends LitElement {
         />
       </p>
       <p>
-        <button @click="${this.clickListener}" >Login</button>
+        <button>Login</button>
       </p>
       <p class="footnote">Not registered? <a href="/users/register">Create an account</a></p>
     </form>
   </div>
     `;
-  }
-
-  clickListener(e) {
-    console.log(e);
   }
 }
 customElements.define('bcb-login-form', BcbLoginForm);

@@ -38,6 +38,12 @@ edit posts
 
 delete posts
 
+create comments
+
+delete comments (owner of post can delete any comment)
+
+like posts
+
 express sessions
 
 passport local auth

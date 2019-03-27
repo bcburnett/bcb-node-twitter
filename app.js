@@ -167,16 +167,16 @@ io.on('connection', async (socket) => {
     }
   });
 
-  socket.on('editSend', async (data) => {
+  socket.on('editPost', async (data) => {
+    console.log(data);
     const post = {};
     post.user_id = socket.handshake.session.passport.user;
-    post.postText = data.text;
-    post.postTitle = data.title;
+    post.postText = data.postText;
+    post.postTitle = data.postTitle;
     post.postLink = data.link;
-    post.postImage = data.image;
-    post.thumbnail = data.thumbnail;
+    post.postImage = data.postImage;
     post.userid = socket.handshake.session.passport.user;
-    post.post_id = data.postid;
+    post.post_id = data.post_id;
     post.poster = data.poster;
     if (!DB.verifyPost(post)) {
       socket.emit('hello', 'Something went wrong,');
@@ -190,9 +190,8 @@ io.on('connection', async (socket) => {
       socket.emit('hello', 'Something went wrong, app.js 211');
       return;
     }
-    socket.emit('dele');
-    socket.broadcast.emit('dele');
-    socket.broadcast.emit('hello', 'POST EDITED');
+    socket.emit('editPost', data);
+    socket.broadcast.emit('editPost', data);
   });
 
   socket.on('loadPosts', async (e) => {
@@ -255,8 +254,16 @@ io.on('connection', async (socket) => {
   });
 
   socket.on('deleteComment', async (e)=> {
-    console.log('delete comment', e);
     io.emit('deleteComment', e);
     await DB.deleteComment(e.id);
+  });
+
+  socket.on('like', async (e)=>{
+    result = await DB.saveLike(e);
+    io.emit('like', result);
+  });
+
+  socket.on('deleteLikes', async (e)=>{
+    await DB.deleteLikes(e);
   });
 });

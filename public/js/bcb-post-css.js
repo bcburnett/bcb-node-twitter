@@ -51,5 +51,24 @@ button{
   height:20px;
   margin: 0px 3px;
 }
+
+.dropdown {
+  z-index: 100;
+}
+
+.dropdown-content {
+  display:none;
+  opacity: 0;
+  transition: opacity 400ms linear,
+              visibility 400ms linear;
+  text-align: left;
+  width:max-content;
+
+}
+
+.dropdown:hover .dropdown-content {
+  opacity: 1;
+  display: block;
+}
 </style>
 `;

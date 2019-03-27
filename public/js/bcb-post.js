@@ -25,6 +25,9 @@ export class BcbPost extends LitElement {
     const textDiv = document.createElement('pre');
     textDiv.style.textAlign = 'left';
     textDiv.innerHTML = data.postText;
+    const likes = data.likes.map((like)=>{
+      return html`${like.name} <br> `;
+    });
     return html`
   ${Styles}
   <div class="container">
@@ -39,11 +42,21 @@ export class BcbPost extends LitElement {
       <img src="${data.postImage}">
       ${textDiv}
       <bcb-comment-module data="${JSON.stringify(data)}" style="display:inline-block;"></bcb-comment-module>
+
+
       ${data.user_id === this.userdata._id ? html`
       <button @click="${(e) => this.editPost(data)}">Edit</button>
       <button @click="${(e) => this.deletePost(data)}">Delete</button>
       <br>
       ` : ''}
+      <br>
+      <br>
+      <div class="dropdown" @click="${(e) => this.likePost(data)}">
+        ${data.likes.length}
+        <i class="fas fa-heart" style="color:red; margin-left:5px">
+        </i>
+        <div class="dropdown-content">${likes}</div>
+      </div>
     </div>
   </div>
     `;
@@ -51,15 +64,25 @@ export class BcbPost extends LitElement {
 
   editPost(e) {
     const form = document.querySelector('bcb-post-form');
-    form.setAttribute('data', JSON.stringify(e));
+    const data = e;
+    data.action = 'edit';
+    form.setAttribute('data', JSON.stringify(data));
   }
 
   deletePost(e) {
-    console.log(e.comments);
-    e.comments.forEach((e)=>{
+    e.comments.forEach((e) => {
       this.socket.emit('deleteComment', {id: e._id, post: e.post});
     });
+    this.socket.emit('deleteLikes', e.post_id);
     this.socket.emit('dele', e.post_id);
+  }
+
+  likePost(e) {
+    const like = {};
+    like.userid = this.userdata._id;
+    like.post = e.post_id;
+    like.name = this.userdata.name;
+    this.socket.emit('like', like);
   }
 }
 customElements.define('bcb-post', BcbPost);

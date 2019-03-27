@@ -49,6 +49,7 @@ export class BcbComment extends LitElement {
     this.shadowRoot.querySelector('#wrapper').classList.remove('hidden');
     this.shadowRoot.querySelector('#commentbutton').classList.add('hidden');
     this.shadowRoot.querySelector('textarea').value='';
+    this.shadowRoot.querySelector('textarea').focus();
   }
 
   hideform() {

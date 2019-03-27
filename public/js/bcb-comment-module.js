@@ -21,7 +21,6 @@ export class BcbCommentModule extends LitElement {
   }
 
   render() {
-    console.log(this.data)
     const comments = this.data.comments;
     const myhtml = comments.map((comment)=>{
       return html`

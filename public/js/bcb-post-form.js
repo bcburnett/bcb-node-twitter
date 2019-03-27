@@ -1,7 +1,8 @@
 /* eslint-disable require-jsdoc */
-import { LitElement, html } from "../node_modules/@polymer/lit-element/lit-element.js";
-import { Styles } from './bcb-post-form-css.js';
-import "./bcb-process-image.js";
+// eslint-disable-next-line max-len
+import {LitElement, html} from '../node_modules/@polymer/lit-element/lit-element.js';
+import {Styles} from './bcb-post-form-css.js';
+import './bcb-process-image.js';
 export class BcbPostForm extends LitElement {
   static get properties() {
     return {
@@ -9,22 +10,22 @@ export class BcbPostForm extends LitElement {
       text: {
         type: String,
         attribute: true,
-        reflected: true
+        reflected: true,
       },
       postTitle: {
         type: String,
         attribute: true,
-        reflected: true
+        reflected: true,
       },
       image: {
         type: String,
         attribute: true,
-        reflected: true
+        reflected: true,
       },
       data: {
         type: Object,
-        attribute: true
-      }
+        attribute: true,
+      },
     };
   }
 
@@ -34,6 +35,7 @@ export class BcbPostForm extends LitElement {
     this.text = '';
     this.postTitle = '';
     this.image = '/img/noImageSelected.jpg';
+    this.updatedata = {};
   }
 
   render() {
@@ -50,35 +52,43 @@ ${Styles}
           name="postTitle"
           id="postTitle"
           placeholder="Post Title"
-          @change="${e => this.postTitle = this.shadowRoot.querySelector('input').value}"
+          @change="${(e) => this.postTitle = this.shadowRoot.querySelector('input').value}"
            value="${this.postTitle}" />
           <textarea
           name="postText"
           id="postText"
           placeholder="What's going on?"
           style="height: 75px; width: 95%; margin: 5px 7px;"
-           @change="${e => this.text = this.shadowRoot.querySelector('textarea').value}"
+           @change="${(e) => this.text = this.shadowRoot.querySelector('textarea').value}"
            >${this.text ? this.text : ''}</textarea>
           <!--Add Image-->
         </div>
         <bcb-process-image
-        @bcbprocessimage="${e => this.imageLoaded(e)}"
+        @bcbprocessimage="${(e) => this.imageLoaded(e)}"
         image="${this.image || '/img/noImageSelected.jpg'}"
         >
         </bcb-process-image>
 
-        <button @click="${e => this.submitForm(e)}">submit</button>
-        <button @click="${e => this.clearForm()}">cancel</button>
+        <button @click="${(e) => this.submitForm(e)}">submit</button>
+        <button @click="${(e) => this.clearForm()}">cancel</button>
       </div>
     `;
   }
 
   imageLoaded(e) {
-    console.log(e);
     this.image = e.detail.image;
   }
 
   submitForm(e) {
+    if (this.updatedata.action) {
+      const data = this.updatedata;
+      data.postText = this.text;
+      data.postTitle = this.postTitle;
+      data.postImage = this.image;
+      this.socket.emit('editPost', data);
+      this.clearForm();
+      return;
+    }
     if (this.postTitle === '' || this.text === '') {
       this.error = 'text or title fields Empty';
       return;
@@ -92,7 +102,7 @@ ${Styles}
     const responseObject = {
       text: this.text,
       title: this.postTitle,
-      image: this.image
+      image: this.image,
     };
     this.socket.emit('dele', this.postid);
     this.socket.emit('newPost', responseObject);
@@ -110,12 +120,14 @@ ${Styles}
     this.shadowRoot.querySelector('bcb-process-image').setAttribute('image', '/img/noImageSelected.jpg');
     this.setAttribute('data', JSON.stringify({
       postText: '',
-      postTitle: ''
+      postTitle: '',
     }));
+    this.updatedata = {};
   }
 
   async updateProps(e) {
     const data = await e;
+    this.updatedata = data;
     this.shadowRoot.querySelector('#postTitle').value = data.postTitle;
     this.shadowRoot.querySelector('#postText').value = data.postText;
     this.postTitle = data.postTitle;
@@ -129,6 +141,5 @@ ${Styles}
       this.updateProps(this.data);
     }
   }
-
 }
 customElements.define('bcb-post-form', BcbPostForm);

@@ -17,13 +17,14 @@ export class BcbFeed extends LitElement {
     this.socket = io.connect('/');
 
     this.socket.on('newPost', async (e) => {
-      console.log(e);
       const comments = await fetch(`/users/getComments?post=${e.data.post_id}`);
-      const commentsData=await comments.json() || {};
+      const commentsData=await comments.json() || [];
+      const likes = await fetch(`/users/getLikes?post=${e.data.post_id}`);
+      const likesData=await likes.json() || [];
       const data = e.data;
+      data.likes = likesData;
       data.comments = commentsData;
       data.currentUser = e.currentUser;
-      console.log(this.posts);
       this.posts = [...this.posts, data].sort((a, b)=>{
         return new Date(b.date) - new Date(a.date);
       });
@@ -45,6 +46,20 @@ export class BcbFeed extends LitElement {
     this.socket.on('dele', (data)=>{
       const id = this.posts.map((item) => item.post_id).indexOf(data);
       this.posts.splice(id, 1);
+      this.posts = [...this.posts];
+    });
+
+    this.socket.on('editPost', (data)=>{
+      const id = this.posts.map((item) => item.post_id).indexOf(data.post_id);
+      this.posts.splice(id, 1);
+      this.posts = [...this.posts, data].sort((a, b)=>{
+        return new Date(b.date) - new Date(a.date);
+      });
+    });
+
+    this.socket.on('like', (data)=>{
+      const id = this.posts.map((item) => item.post_id).indexOf(data.post);
+      this.posts[id].likes = [...this.posts[id].likes, data];
       this.posts = [...this.posts];
     });
 

@@ -8,6 +8,7 @@ module.exports = class db {
     this.Chat = require('../models/chatstate');
     this.Post = require('../models/posts/postModel');
     this.Comment = require('../models/posts/commentModel');
+    this.Like = require('../models/posts/likesModel');
   }
 
 
@@ -116,6 +117,38 @@ module.exports = class db {
     const result = await this.Comment.findOneAndDelete({'_id': id})
         .then((res)=>res)
         .catch((e)=>false);
+    return result;
+  }
+
+  async saveLike(e) {
+    const test = await this.Like.find({'post': e.post, 'userid': e.userid}).then((res)=>res || []);
+    console.log(test);
+    if (test.length !== 0) return;
+    // eslint-disable-next-line new-cap
+    const mylike = this.Like(e);
+    const result = await mylike.save()
+        .then((res)=>res)// resolve the promise
+        .catch((e)=>{
+          return {false: false};
+        });
+    return result;
+  }
+
+  async getLikes(e) {
+    const result = await this.Like.find({'post': e})
+        .then((res)=>res || {})// resolve the promise
+        .catch((e)=>{
+          return {false: false};
+        });
+    return result;
+  }
+
+  async deleteLikes(e) {
+    const result = await this.Like.deleteMany({'post': e})
+        .then((res)=>res || {})// resolve the promise
+        .catch((e)=>{
+          return {false: false};
+        });
     return result;
   }
 };

@@ -1,11 +1,12 @@
 const express = require('express');
-// eslint-disable-next-line new-cap
 const app = express();
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 // Load User model
 const User = require('../models/user');
 const DB= new (require('../js/data'))();
+const {ensureAuthenticated} = require('../config/auth');
+
 // Login Page
 app.get('/login', (req, res) => res.redirect('/login.html'));
 
@@ -15,12 +16,18 @@ app.get('/checkemail', async (req, res)=>{
   res.send(await DB.userExists(email));
 });
 
-app.get('/getComments', async (req, res)=>{
+// get comments
+app.get('/getComments', ensureAuthenticated, async (req, res)=>{
   const post = req.query.post;
-  console.log(post);
   const comments = await DB.getComments(post);
-  console.log(comments);
   res.send(comments);
+});
+
+// get likes
+app.get('/getLikes', ensureAuthenticated, async (req, res)=>{
+  const post = req.query.post;
+  const likes = await DB.getLikes(post);
+  res.send(likes);
 });
 
 // check user name
@@ -28,6 +35,7 @@ app.get('/checkname', async (req, res)=>{
   const name = req.query.name;
   res.send(await DB.userNameExists(name));
 });
+
 // Register Page
 app.get('/register', (req, res) => res.redirect('/register.html'));
 
@@ -60,13 +68,7 @@ app.post('/register', (req, res) => {
     User.findOne({email: email}).then((user) => {
       if (user) {
         errors.push({msg: 'Email already exists'});
-        res.render('register', {
-          errors,
-          name,
-          email,
-          password,
-          password2,
-        });
+        res.redirect('/register.html');
       } else {
         const newUser = new User({
           name,
@@ -97,9 +99,10 @@ app.post('/register', (req, res) => {
 
 // Login
 app.post('/login', (req, res, next) => {
+  
   passport.authenticate('local', {
-    successRedirect: '/dashboard',
-    failureRedirect: '/users/login',
+    successRedirect: '/dashboard.html',
+    failureRedirect: '/login.html',
     failureFlash: true,
   })(req, res, next);
 });
