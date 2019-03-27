@@ -1,7 +1,5 @@
 // eslint-disable-next-line max-len
-document.querySelector('bcb-navbar').addEventListener('bcbnavbar', (e) => {
-  return navigate( e.detail );
-});
+document.querySelector('bcb-navbar').addEventListener('bcbnavbar', (e) => navigate( e.detail ));
 
 const navigate = (e) => {
   switch (e) {

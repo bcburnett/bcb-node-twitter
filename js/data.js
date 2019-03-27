@@ -4,18 +4,19 @@ module.exports = class db {
   /**
   */
   constructor() {
-    this.mongoose = require('mongoose');
     this.User = require('../models/user');
     this.Chat = require('../models/chatstate');
     this.Post = require('../models/posts/postModel');
+    this.Comment = require('../models/posts/commentModel');
   }
-
 
 
   // posts
 
   verifyPost(post) {
-    if (!post.user_id || !post.post_id || !post.userid || !post.poster) {return false;}
+    if (!post.user_id || !post.post_id || !post.userid || !post.poster) {
+      return false;
+    }
     return true;
   }
 
@@ -23,7 +24,7 @@ module.exports = class db {
     // eslint-disable-next-line new-cap
     const mypost = this.Post(post);
     const result = await mypost.save()
-        .then((res)=>true)// resolve the promise
+        .then((res)=>res)// resolve the promise
         .catch((e)=>false);
     return result;
   }
@@ -88,6 +89,33 @@ module.exports = class db {
     if (result === null) {
       result = {false: false};
     }
+    return result;
+  }
+
+  async postComment(comment) {
+    // eslint-disable-next-line new-cap
+    const myComment = this.Comment(comment);
+    const result = await myComment.save()
+        .then((res)=>res)// resolve the promise
+        .catch((e)=>{
+          return {false: false};
+        });
+    return result;
+  }
+
+  async getComments(postid) {
+    const result = await this.Comment.find({'post': postid})
+        .then((res)=>res)// resolve the promise
+        .catch((e)=>{
+          return {false: false};
+        });
+    return result;
+  }
+
+  async deleteComment(id) {
+    const result = await this.Comment.findOneAndDelete({'_id': id})
+        .then((res)=>res)
+        .catch((e)=>false);
     return result;
   }
 };

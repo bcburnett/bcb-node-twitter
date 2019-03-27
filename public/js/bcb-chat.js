@@ -1,11 +1,12 @@
 /* eslint-disable require-jsdoc */
-import { LitElement, html } from "../node_modules/@polymer/lit-element/lit-element.js";
-import { Styles } from './bcb-chat-css.js';
-import "./bcb-input.js";
+// eslint-disable-next-line max-len
+import {LitElement, html} from '../node_modules/@polymer/lit-element/lit-element.js';
+import {Styles} from './bcb-chat-css.js';
+import './bcb-input.js';
 export class BcbChat extends LitElement {
   static get properties() {
     return {
-      chat: Array
+      chat: Array,
     };
   }
 
@@ -14,7 +15,7 @@ export class BcbChat extends LitElement {
     this.chat = [];
     this.socket = io.connect('/');
     this.socket.emit('getLastFiveMessages');
-    this.socket.on('hello', data => {
+    this.socket.on('hello', (data) => {
       const myData = html`
       <p> ${data} </p>
       `;
@@ -40,7 +41,7 @@ export class BcbChat extends LitElement {
         label="Chat Here"
         width="350px"
         type="text"
-        @change="${e => this.doChat(e, this)}"
+        @change="${(e) => this.doChat(e, this)}"
         placeholder="Say Something"
         />
   </div>
@@ -48,7 +49,6 @@ export class BcbChat extends LitElement {
   }
 
   doChat(e, f) {
-    console.log(e, f);
     let value;
 
     if (e.path) {
@@ -64,6 +64,5 @@ export class BcbChat extends LitElement {
     this.socket.emit('hello', value1);
     value.value = '';
   }
-
 }
 customElements.define('bcb-chat', BcbChat);

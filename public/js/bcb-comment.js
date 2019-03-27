@@ -5,11 +5,18 @@ import './bcb-input.js';
 import {Styles} from './bcb-comment-css.js';
 export class BcbComment extends LitElement {
   static get properties() {
-    return {};
+    return {
+      data: {
+        type:Object,
+        attribute:true
+      }
+    };
   }
 
   constructor() {
     super();
+    this.socket = io.connect('/');
+    this.userdata = JSON.parse(localStorage.getItem('data'))
   }
 
   render() {
@@ -29,7 +36,7 @@ export class BcbComment extends LitElement {
     placeholder="Comment Here"
     ></textarea>
     <button
-      @click="${}"
+      @click="${this.submitform}"
     >Submit</button>
     <button
       @click="${this.hideform}"
@@ -41,11 +48,28 @@ export class BcbComment extends LitElement {
   showform() {
     this.shadowRoot.querySelector('#wrapper').classList.remove('hidden');
     this.shadowRoot.querySelector('#commentbutton').classList.add('hidden');
+    this.shadowRoot.querySelector('textarea').value='';
   }
 
   hideform() {
     this.shadowRoot.querySelector('#wrapper').classList.add('hidden');
     this.shadowRoot.querySelector('#commentbutton').classList.remove('hidden');
+  }
+
+  submitform() {
+    this.hideform();
+    const data = {};
+    data.comment = this.shadowRoot.querySelector('textarea').value;
+    data.post = this.data.post_id;
+    data.userid = this.data.user_id;
+    data.currentUser = this.data.currentUser;
+    data.poster = this.data.poster;
+    data.name = this.userdata.name;
+    console.log(data);
+    this.socket.emit('postComment', data);
+    // this.dispatchEvent(new CustomEvent('bcbnavbar', {
+    //   detail: data,
+    // }));
   }
 }
 customElements.define('bcb-comment', BcbComment);

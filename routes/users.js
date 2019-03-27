@@ -15,6 +15,14 @@ app.get('/checkemail', async (req, res)=>{
   res.send(await DB.userExists(email));
 });
 
+app.get('/getComments', async (req, res)=>{
+  const post = req.query.post;
+  console.log(post);
+  const comments = await DB.getComments(post);
+  console.log(comments);
+  res.send(comments);
+});
+
 // check user name
 app.get('/checkname', async (req, res)=>{
   const name = req.query.name;

@@ -149,22 +149,22 @@ io.on('connection', async (socket) => {
     if (!DB.verifyPost(post, socket)) {
       return;
     }
-    DB.savePost(post);
+    const savedPost = await DB.savePost(post);
     const res = {};
-    res.data=post;
+    res.data=savedPost;
     res.currentUser = socket.handshake.session.passport.user;
-    socket.emit('dele');
-    socket.broadcast.emit('dele');
+    socket.emit('newPost', res);
+    socket.broadcast.emit('newPost', res);
   });
 
 
   socket.on('getLastFiveMessages', async ( data)=>{
-    const result = await DB.getLastFiveMessages();
-    if (result !== []){
-    for ( messg of result) {
-      socket.emit('hello', messg );
+    const result = [];
+    if (result !== []) {
+      for ( messg of result) {
+        socket.emit('hello', messg );
+      }
     }
-  }
   });
 
   socket.on('editSend', async (data) => {
@@ -200,7 +200,6 @@ io.on('connection', async (socket) => {
     result.map((e) => {
       const data=e;
       data.currentUser=socket.handshake.session.passport.user;
-      console.log(data.user_id, data.currentUser);
       const res = {};
       res.data = data;
       res.currentUser=socket.handshake.session.passport.user;
@@ -228,8 +227,8 @@ io.on('connection', async (socket) => {
   socket.on('dele', async (data) => {
     const result = await DB.deletePost(data);
     if (!result) return;
-    socket.emit('dele');
-    socket.broadcast.emit('dele');
+    socket.emit('dele', data);
+    socket.broadcast.emit('dele', data);
   });
 
   socket.on('edit', async (data) => {
@@ -239,7 +238,6 @@ io.on('connection', async (socket) => {
       return;
     }
     result.userid = socket.handshake.session.passport.user;
-    console.log(result);
     app.render('postInputForm', {data: result}, (err, html) => {
       socket.emit('edit', html);
     });
@@ -249,5 +247,16 @@ io.on('connection', async (socket) => {
     const id = socket.handshake.session.passport.user;
     const info = await DB.getUserData(id);
     socket.emit('welcome', info);
+  });
+
+  socket.on('postComment', async (e)=> {
+    const res = await DB.postComment(e);
+    io.emit('newComment', res);
+  });
+
+  socket.on('deleteComment', async (e)=> {
+    console.log('delete comment', e);
+    io.emit('deleteComment', e);
+    await DB.deleteComment(e.id);
   });
 });

@@ -2,9 +2,14 @@
 /* eslint-disable max-len */
 import {LitElement, html} from '../node_modules/@polymer/lit-element/lit-element.js';
 import {beforeNextRender} from '../node_modules/@polymer/polymer/lib/utils/render-status.js';
+// style sheet
 import {bcbNavbarStyle} from './bcb-navbar-style.js';
+// navbar buttons file (see file for format)
 import {Buttons} from './bcb-navbar-data.js';
+
+// main class
 export class BcbNavbar extends LitElement {
+  // watch variables (triggers render on change)
   static get properties() {
     return {
       btnactive: Object,
@@ -20,11 +25,13 @@ export class BcbNavbar extends LitElement {
     };
   }
 
+  // setup set buttons and branding title
   constructor() {
     super();
+    // setup set buttons and branding title
     this.arry = Buttons;
     this.branding = this.branding || 'Branding';
-
+    // disable buttons and hamburger menu if no buttons are defined
     if (this.arry.length !== 0) {
       beforeNextRender(this, (e) => {
         this.shadowRoot.getElementById([this.arry[0].id]).classList.add('active');
@@ -36,6 +43,7 @@ export class BcbNavbar extends LitElement {
   }
 
   render() {
+    // render the dropdown menu items to an array
     const dropdownItems = () => {
       return this.arry.map((e) => e ? html`
         <span  style="display:block;" @click="${this.btnClick}" class="main-nav__item__link ${e.icon}" id="${e.id}s" >
@@ -43,6 +51,7 @@ export class BcbNavbar extends LitElement {
         </span >` : '');
     };
 
+    // render the nav buttons to an array
     const navItems = () => {
       if (this.arry === []) return;
       return this.arry.map((e) => e ? html`
@@ -52,10 +61,8 @@ export class BcbNavbar extends LitElement {
           </button>
         </li>` : '');
     };
-
     return html`
 ${bcbNavbarStyle}
-<!-- HTML-->
 <div class="navbar ${this.tooltip ? 'tooltip' : ''}"><span class="${this.tooltip ? '' : 'hidden'}">${this.tooltip}</span>
   <header class="main-title">
     <nav class="main-nav">
@@ -88,6 +95,7 @@ ${bcbNavbarStyle}
     `;
   }
 
+  // on button click dispatch an event with the data of the button name
   btnClick(e) {
     this.btnactive = e.path[0];
     this.setactive(this.btnactive);
@@ -98,6 +106,7 @@ ${bcbNavbarStyle}
     }));
   }
 
+  // sets the class of the dropdown and the button to active
   setactive(active) {
     this.shadowRoot.querySelectorAll('button').forEach((button) => {
       button.classList.remove('active');

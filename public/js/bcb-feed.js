@@ -2,7 +2,7 @@
 // eslint-disable-next-line max-len
 import {LitElement, html} from '../node_modules/@polymer/lit-element/lit-element.js';
 import {Styles} from './bcb-feed-css.js';
-import './bcb-comment-module.js';
+import './bcb-post.js';
 export class BcbFeed extends LitElement {
   static get properties() {
     return {
@@ -13,71 +13,56 @@ export class BcbFeed extends LitElement {
   constructor() {
     super();
     this.posts = [];
-    this.socket = io.connect('/');
-    this.socket.on('newPost', (e) => {
-      const data = e.data;
-      const textDiv = document.createElement('pre');
-      textDiv.style.textAlign='left';
-      textDiv.innerHTML=data.postText;
-      const currentUser = e.currentUser;
-      const myhtml = html`
-        <div style="
-                        width:100%;
-                        min-height:100px;
-                        border: 1px solid #000;
-                        padding-top:5px;
-                        margin:10px auto;
-                        border-radius:10px;
-                        display:flex;
-                        flex-direction:column;
-                        overflow:hidden;
-                        padding:10px;
-                        justify-content:center;
-                        ">
 
-        <div class="data">
-        <h2>
-            ${data.postTitle}
-          </h2>
-          <p>
-          ${data.poster}
-          </p>
-          <img src="${data.postImage}">
-          ${textDiv}
-            <bcb-comment-module data="${data}" style="display:inline-block;"></bcb-comment-module>
-            ${data.user_id === currentUser ? html`
-            <button @click="${(e) => this.editPost(data)}">Edit</button>
-            <button @click="${(e) => this.deletePost(data)}">Delete</button>
-            <br>
-            ` : ''}
-        </div>
-        </div>
-      `;
-      this.posts = [...this.posts.reverse(), myhtml].reverse();
+    this.socket = io.connect('/');
+
+    this.socket.on('newPost', async (e) => {
+      console.log(e);
+      const comments = await fetch(`/users/getComments?post=${e.data.post_id}`);
+      const commentsData=await comments.json() || {};
+      const data = e.data;
+      data.comments = commentsData;
+      data.currentUser = e.currentUser;
+      console.log(this.posts);
+      this.posts = [...this.posts, data].sort((a, b)=>{
+        return new Date(b.date) - new Date(a.date);
+      });
     });
-    this.socket.on('dele', (data) => {
-      this.posts = [];
-      this.socket.emit('loadPosts');
+
+    this.socket.on('newComment', (data)=>{
+      const id = this.posts.map((item) => item.post_id).indexOf(data.post);
+      this.posts[id].comments = [...this.posts[id].comments, data];
+      this.posts = [...this.posts];
     });
+
+    this.socket.on('deleteComment', (data)=>{
+      const id = this.posts.map((item) => item.post_id).indexOf(data.post);
+      const commentId = this.posts[id].comments.map((item) => item._id).indexOf(data.id);
+      this.posts[id].comments.splice(commentId, 1);
+      this.posts = [...this.posts];
+    });
+
+    this.socket.on('dele', (data)=>{
+      const id = this.posts.map((item) => item.post_id).indexOf(data);
+      this.posts.splice(id, 1);
+      this.posts = [...this.posts];
+    });
+
     this.socket.emit('loadPosts');
   }
 
   render() {
+    const posts = this.posts.map((data)=>{
+      return html`
+      <bcb-post data="${JSON.stringify(data)}"></bcb-post>
+      `;
+    });
     return html`
   ${Styles}
   <div>
-    ${this.posts}
+    ${posts}
   </div>
     `;
-  }
-
-  editPost(e) {
-    const form = document.querySelector('bcb-post-form');
-    form.setAttribute('data', JSON.stringify(e));
-  }
-
-  deletePost(e) {
-    this.socket.emit('dele', e.post_id);
   }
 }
 customElements.define('bcb-feed', BcbFeed);

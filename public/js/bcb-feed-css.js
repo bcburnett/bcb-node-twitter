@@ -10,40 +10,7 @@ background-color:transparent;
 text-align:center;
 }
 
-img{
-  border-radius: 4px;
-  max-width:75px;
-  max-height:75px;
-  margin: 0 auto;
-  align-self:center;
-}
 
-img:hover{
-  max-width:300px;
-  max-height:300px;
-}
-
-textarea{
-  background: transparent;
-  border: 1px solid black;
-  border-radius: 3px;
-  color: inherit;
-  height: 75px;
-  margin: 5px 7px;
-  width:350px;
-  outline:none;
-  padding:5px;
-}
-
-.data{
-  margin: 0 auto;
-  align-self:center;
-}
-
-button{
-  height:20px;
-  margin: 0px 3px;
-}
 
 </style>
 `;

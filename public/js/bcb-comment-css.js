@@ -25,6 +25,7 @@ textarea{
 button{
   height:20px;
   margin: 0px 5px;
+  justify-self: right;
 }
 
 .hidden{
