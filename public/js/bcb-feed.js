@@ -21,10 +21,14 @@ export class BcbFeed extends LitElement {
       const commentsData=await comments.json() || [];
       const likes = await fetch(`/users/getLikes?post=${e.data.post_id}`);
       const likesData=await likes.json() || [];
+      const avatar = await fetch(`/users/getProfileImage?user=${e.data.user_id}`);
+      const avatarData=await avatar.text();
+      console.log(avatarData);
       const data = e.data;
       data.likes = likesData;
       data.comments = commentsData;
       data.currentUser = e.currentUser;
+      data.avatar = avatarData;
       this.posts = [...this.posts, data].sort((a, b)=>{
         return new Date(b.date) - new Date(a.date);
       });
@@ -75,6 +79,7 @@ export class BcbFeed extends LitElement {
     return html`
   ${Styles}
   <div>
+  <h2>Posts</h2>
     ${posts}
   </div>
     `;

@@ -1,18 +1,15 @@
 // eslint-disable-next-line max-len
 document.querySelector('bcb-navbar').addEventListener('bcbnavbar', (e) => navigate( e.detail ));
+const content = document.getElementById('bcbcontent');
 
 const navigate = (e) => {
   switch (e) {
-    case 'Top of Page':
-      document.documentElement.scrollTop = 0;
+    case 'Posts':
+      content.slot = 'slot1';
       break;
 
-    case 'Middle of Page':
-      window.scrollTo(0, document.body.scrollHeight / 4);
-      break;
-
-    case 'Bottom of Page':
-      window.scrollTo(0, document.body.scrollHeight);
+    case 'Profile':
+      content.slot = 'slot2';
       break;
 
     case 'logout':
@@ -28,6 +25,5 @@ document.addEventListener('scroll', function() {
   } else {
     document.querySelector('bcb-navbar').classList.add('hidden');
   }
-
   scrollPos = document.body.getBoundingClientRect().top;
 });

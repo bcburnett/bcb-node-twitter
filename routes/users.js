@@ -23,6 +23,13 @@ app.get('/getComments', ensureAuthenticated, async (req, res)=>{
   res.send(comments);
 });
 
+// get Profile Image
+app.get('/getProfileImage', ensureAuthenticated, async (req, res)=>{
+  const user = req.query.user;
+  const image = await DB.getProfileImage(user);
+  res.send(image);
+});
+
 // get likes
 app.get('/getLikes', ensureAuthenticated, async (req, res)=>{
   const post = req.query.post;
@@ -99,7 +106,7 @@ app.post('/register', (req, res) => {
 
 // Login
 app.post('/login', (req, res, next) => {
-  
+
   passport.authenticate('local', {
     successRedirect: '/dashboard.html',
     failureRedirect: '/login.html',

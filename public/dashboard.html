@@ -1,36 +1,48 @@
-<!DOCTYPE html><html lang="en"><head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="Affordable and professional web design">
-    <meta name="keywords" content="web design, affordable web design, professional web design">
-    <meta name="author" content="Brian Burnett">
-    <title>Feed</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link rel="stylesheet" href="css/all.css">
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/dashboard-style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js" async="" defer=""></script>
-    <script src="js/bcb-feed.js" type="module"async="" defer=""></script>
-    <script src="js/bcb-navbar.js" type="module"async="" defer=""></script>
-    <script src="js/bcb-chat.js" type="module"async="" defer=""></script>
-    <script src="js/bcb-post-form.js" type="module"async="" defer=""></script>
-    <script src="js/bcb-video.js" type="module"async="" defer=""></script>
-    <script src="js/bcb-welcome.js" type="module"async="" defer=""></script>
-  </head>
-  <body>
-    <bcb-navbar branding="Your Feed"></bcb-navbar>
-    <div class="container">
+<!DOCTYPE html>
+<html lang="en">
 
-      <bcb-feed></bcb-feed>
-      <div class="userarea">
-          <bcb-welcome></bcb-welcome>
-        <bcb-video></bcb-video>
-      </div>
-      <div class="chatdiv">
-        <bcb-chat></bcb-chat>
-        <bcb-post-form></bcb-post-form>
-      </div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="Affordable and professional web design">
+  <meta name="keywords" content="web design, affordable web design, professional web design">
+  <meta name="author" content="Brian Burnett">
+  <title>Feed</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link rel="stylesheet" href="css/all.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/dashboard-style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js" async="" defer=""></script>
+  <script src="js/bcb-feed.js" type="module" async="" defer=""></script>
+  <script src="js/bcb-navbar.js" type="module" async="" defer=""></script>
+  <script src="js/bcb-chat.js" type="module" async="" defer=""></script>
+  <script src="js/bcb-post-form.js" type="module" async="" defer=""></script>
+  <script src="js/bcb-video.js" type="module" async="" defer=""></script>
+  <script src="js/bcb-welcome.js" type="module" async="" defer=""></script>
+  <script src="js/bcb-content.js" type="module" async="" defer=""></script>
+  <script src="js/bcb-profile.js" type="module" async="" defer=""></script>
+</head>
+
+<body>
+  <bcb-navbar branding="Your Feed"></bcb-navbar>
+  <div class="container">
+    <div class="content">
+      <bcb-content slot="slot1" tooltip="bcb-content" id="bcbcontent">
+        <div slot="slot1" id="slot1" class="slotted"><bcb-feed></bcb-feed></div>
+        <div slot="slot2" id="slot2" class="slotted"><bcb-profile></bcb-profile> </div>
+      </bcb-content>
     </div>
-    <script src="js/main.js"></script>
-</body></html>
+    <div class="userarea">
+      <bcb-welcome></bcb-welcome>
+      <bcb-video></bcb-video>
+    </div>
+    <div class="chatdiv">
+      <bcb-chat></bcb-chat>
+      <bcb-post-form></bcb-post-form>
+    </div>
+  </div>
+  <script src="js/main.js"></script>
+</body>
+
+</html>

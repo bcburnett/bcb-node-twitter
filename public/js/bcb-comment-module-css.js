@@ -7,6 +7,8 @@ export const Styles = html`
 margin:0;
 font-size:1rem;
 text-align:left;
+width:400px;
+overflow:auto;
 }
 
 </style>

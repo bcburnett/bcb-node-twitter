@@ -1,13 +1,14 @@
-export const Buttons = [{
-  id: 'Top of Page',
-  icon: 'fas fa-arrow-up',
-}, {
-  id: 'Middle of Page',
-  icon: 'fas fa-arrow-right',
-}, {
-  id: 'Bottom of Page',
-  icon: 'fas fa-arrow-down',
-}, {
-  id: 'logout',
-  icon: 'fas fa-times',
-}];
+export const Buttons = [
+  {
+    id: 'Posts',
+    icon: 'fas fa-address-card',
+  },
+  {
+    id: 'Profile',
+    icon: 'fas fa-user',
+  },
+  {
+    id: 'logout',
+    icon: 'fas fa-times',
+  },
+];

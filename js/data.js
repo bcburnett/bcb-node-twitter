@@ -1,3 +1,4 @@
+/* eslint-disable new-cap */
 /* eslint-disable require-jsdoc */
 
 module.exports = class db {
@@ -9,6 +10,7 @@ module.exports = class db {
     this.Post = require('../models/posts/postModel');
     this.Comment = require('../models/posts/commentModel');
     this.Like = require('../models/posts/likesModel');
+    this.Profile = require('../models/profile.model');
   }
 
 
@@ -149,6 +151,41 @@ module.exports = class db {
         .catch((e)=>{
           return {false: false};
         });
+    return result;
+  }
+
+  async saveProfile(profile) {
+    const test = await this.Profile.findOne({'userid': profile.userid})
+        .then((res)=>res.userid?true:false)
+        .catch((e)=>false);
+    if (test) {
+      // update
+      // eslint-disable-next-line max-len
+      const result = await this.Profile.findOneAndUpdate({'userid': profile.userid}, profile)
+          .then((res)=>res)
+          .catch((e)=>false);
+      return result;
+    } else {
+      // new
+      const myprofile = this.Profile(profile);
+      const result = await myprofile.save()
+          .then((res)=>res)
+          .catch((e)=>false);
+      return result;
+    }
+  }
+
+  async getProfile(e) {
+    const result = this.Profile.findOne({'userid': e})
+        .then((res)=>res)
+        .catch((e)=>false);
+    return result;
+  }
+
+  async getProfileImage(e) {
+    const result = this.Profile.findOne({'userid': e})
+        .then((res)=>res.image)
+        .catch((e)=>false);
     return result;
   }
 };

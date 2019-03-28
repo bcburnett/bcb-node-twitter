@@ -6,6 +6,7 @@ export class BcbWelcome extends LitElement {
   static get properties() {
     return {
       user: String,
+      image: String,
     };
   }
 
@@ -14,16 +15,24 @@ export class BcbWelcome extends LitElement {
     this.socket = io.connect('/');
     this.socket.emit('welcome');
     this.socket.on('welcome', (data) => {
-      if(!data) window.location.href ="/"
+      if (!data) window.location ='/users/login';
       this.user = data.name;
       delete data.password;
       localStorage.setItem('data', JSON.stringify(data));
     });
+    this.socket.on('login', (e)=> window.location = '/users/login');
   }
 
   render() {
     return html`
   ${Styles}
+  <img src="${this.image}" style="
+  width:75px;
+  height: 75px;
+  border-radius:50%;
+  margin-bottom: 0;
+  margin-top: 10px;
+  ">
   <h2>Welcome <br> ${this.user}</h2>
     `;
   }

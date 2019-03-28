@@ -18,6 +18,7 @@ export class BcbInput extends LitElement {
       width: Number,
       value: {
         type: String,
+        attribute: true,
       },
       max: Number,
       min: Number,

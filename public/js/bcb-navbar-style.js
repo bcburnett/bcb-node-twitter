@@ -195,7 +195,7 @@ button {
 
 
 .active{
-
+background-color: var(--highlight-color);
 }
 
 span{

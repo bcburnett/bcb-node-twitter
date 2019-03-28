@@ -28,7 +28,7 @@ export class BcbCommentModule extends LitElement {
       textDiv.style.display = 'inline';
       textDiv.innerHTML = comment.comment.trim();
       return html`${textDiv}
-        <br> <span style="font-size: .75rem;"> Comment by: ${' '+comment.name}
+        <br> <span style="font-size: .75rem; color:lightgrey;"> Comment by: ${' '+comment.name}
         ${(comment.currentUser === this.userdata._id || this.userdata._id === this.data.user_id)? html`
           -:|<button style="height:13px;font-size: .5rem;" @click="${(e)=>this.deleteComment(comment)}">Delete</button>|:-
         `: ''}</span>

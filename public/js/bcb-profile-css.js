@@ -8,10 +8,6 @@ margin:0;
 font-size:1rem;
 }
 
-input{
-  color:transparent;
-  width:100px;
-}
 </style>
 `;
 

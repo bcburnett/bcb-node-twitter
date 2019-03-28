@@ -28,6 +28,9 @@ export class BcbPost extends LitElement {
     const likes = data.likes.map((like)=>{
       return html`${like.name} <br> `;
     });
+
+    data.avatar = data.avatar!=='false'? data.avatar : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNiYAAAAAkAAxkR2eQAAAAASUVORK5CYII=';
+    const image = data.postImage;
     return html`
   ${Styles}
   <div class="container">
@@ -37,9 +40,17 @@ export class BcbPost extends LitElement {
         ${data.postTitle}
       </h2>
       <p>
-        ${data.poster}
+        Posted by: &nbsp;${data.poster}
+        <img src="${data.avatar}"
+        style="
+          width:50px;
+          height: 50px;
+          border-radius:50%;
+        "
+        >
+
       </p>
-      <img src="${data.postImage}">
+      <img src="${image}">
       ${textDiv}
       <bcb-comment-module data="${JSON.stringify(data)}" style="display:inline-block;"></bcb-comment-module>
 

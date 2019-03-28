@@ -2,7 +2,7 @@
 :root{
   box-sizing: border-box;
   --primary-light: #555;
-  --highlight-color: #f66;
+  --highlight-color: rgb(116, 13, 13);
   --primary-color:  #999;
   --background-color:#333;
   --br: 10px;
@@ -58,7 +58,7 @@ bcb-navbar{
   transition: top 200ms linear;
 }
 
-bcb-feed{
+.content{
   grid-area: f;
 }
 

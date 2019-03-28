@@ -1,25 +1,25 @@
 /* eslint-disable require-jsdoc */
-import { LitElement, html } from "../node_modules/@polymer/lit-element/lit-element.js";
-import { Styles } from './bcb-process-image-css.js';
+import {LitElement, html} from '../node_modules/@polymer/lit-element/lit-element.js';
+import {Styles} from './bcb-process-image-css.js';
 export class BcbProcessImage extends LitElement {
   static get properties() {
     return {
       image: {
         type: String,
         attribute: true,
-        reflected: true
+        reflected: true,
       },
       data: {
-        type: String
+        type: String,
       },
       thumbnail: {
-        type: String
+        type: String,
       },
       reset: {
         type: Function,
         attribute: true,
-        reflected: true
-      }
+        reflected: true,
+      },
     };
   }
 
@@ -42,7 +42,7 @@ export class BcbProcessImage extends LitElement {
   type="file"
   name="file"
   id="file"
-  @change="${e => this.processFile(this.shadowRoot.querySelector('input'))}"
+  @change="${(e) => this.processFile(this.shadowRoot.querySelector('#file'))}"
   />
     `;
   }
@@ -51,15 +51,13 @@ export class BcbProcessImage extends LitElement {
     const postDisplay = this.shadowRoot.querySelector('#postDisplay');
     const reader = new FileReader();
 
-    reader.onload = e => {
+    reader.onload = (e) => {
       postDisplay.setAttribute('src', e.target.result);
       this.image = e.target.result;
       this.width = postDisplay.clientWidth;
       this.height = postDisplay.clientHeight;
       this.sendEvent();
     };
-
-    console.log(e);
     reader.readAsDataURL(e.files[0]);
   }
 
@@ -68,8 +66,8 @@ export class BcbProcessImage extends LitElement {
       detail: {
         image: this.image,
         width: this.width,
-        height: this.height
-      }
+        height: this.height,
+      },
     }));
   }
 
@@ -77,6 +75,5 @@ export class BcbProcessImage extends LitElement {
     const file = this.shadowRoot.querySelector('#file');
     file.value = '';
   }
-
 }
 customElements.define('bcb-process-image', BcbProcessImage);

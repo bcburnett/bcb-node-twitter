@@ -76,27 +76,31 @@ const port = process.env.PORT || 5000,
   server = https.createServer(httpsOptions, app),
   io = socket(server);
 
-
 // share the session with socket.io
 io.use(require('express-socket.io-session')(session, {
   autoSave: true,
-})
-);
+}));
+
 // assign io to app.io so it is available everywhere
 app.io = io;
+
 // Start the server
 server.listen(port);
+
 // socket routes
 io.on('connection', async (socket) => {
+
   // when socket disconnects, remove it from the list:
   socket.on('disconnect', () => {
     console.info(`Client gone [id=${socket.id}]`);
   });
 
+
   id = socket.handshake.session.passport.user|| false;
   if (id) {
     const result = await DB.getUserData(id);
     if (!result) {
+      socket.emit('login');
       return;
     }
     socket.handshake.session.userinfo = result;
@@ -265,5 +269,15 @@ io.on('connection', async (socket) => {
 
   socket.on('deleteLikes', async (e)=>{
     await DB.deleteLikes(e);
+  });
+
+  socket.on('submitProfile', async (data)=>{
+    const res = await DB.saveProfile(data);
+    socket.emit('loadProfile', data);
+  });
+
+  socket.on('loadProfile', async (data)=>{
+    const res = await DB.getProfile(data);
+    socket.emit('loadProfile', res);
   });
 });
