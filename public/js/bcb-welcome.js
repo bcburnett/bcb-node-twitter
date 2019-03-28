@@ -6,12 +6,19 @@ export class BcbWelcome extends LitElement {
   static get properties() {
     return {
       user: String,
-      image: String,
+      profile: Object,
+
     };
   }
 
   constructor() {
     super();
+    this.profile ={
+      facebook: '',
+      twitter: '',
+      hobbies: '',
+      image: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNiYAAAAAkAAxkR2eQAAAAASUVORK5CYII=',
+    };
     this.socket = io.connect('/');
     this.socket.emit('welcome');
     this.socket.on('welcome', (data) => {
@@ -26,7 +33,12 @@ export class BcbWelcome extends LitElement {
   render() {
     return html`
   ${Styles}
-  <img src="${this.image}" style="
+  <style>
+    p{
+      font-size:.6rem;
+    }
+  </style>
+  <img src="${this.profile.image}" style="
   width:75px;
   height: 75px;
   border-radius:50%;
@@ -34,6 +46,9 @@ export class BcbWelcome extends LitElement {
   margin-top: 10px;
   ">
   <h2>Welcome <br> ${this.user}</h2>
+  <p>${this.profile.facebook}</p>
+  <p>${this.profile.twitter}</p>
+  <p>${this.profile.hobbies}</p>
     `;
   }
 }

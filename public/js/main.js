@@ -1,4 +1,6 @@
 // eslint-disable-next-line max-len
+
+// eslint-disable-next-line max-len
 document.querySelector('bcb-navbar').addEventListener('bcbnavbar', (e) => navigate( e.detail ));
 const content = document.getElementById('bcbcontent');
 
@@ -13,6 +15,8 @@ const navigate = (e) => {
       break;
 
     case 'logout':
+      localStorage.removeItem('data');
+      localStorage.removeItem('profile');
       window.location = '/users/logout';
       break;
   }

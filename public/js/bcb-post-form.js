@@ -66,6 +66,7 @@ ${Styles}
         <bcb-process-image
         @bcbprocessimage="${(e) => this.imageLoaded(e)}"
         image="${this.image || '/img/noImageSelected.jpg'}"
+        scale="300"
         >
         </bcb-process-image>
 

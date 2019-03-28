@@ -30,7 +30,7 @@ export class BcbNavbar extends LitElement {
     super();
     // setup set buttons and branding title
     this.arry = Buttons;
-    this.branding = this.branding || 'Branding';
+    this.branding = this.branding || '';
     // disable buttons and hamburger menu if no buttons are defined
     if (this.arry.length !== 0) {
       beforeNextRender(this, (e) => {

@@ -1,7 +1,6 @@
 /* eslint-disable require-jsdoc */
 // eslint-disable-next-line max-len
 import {LitElement, html} from '../node_modules/@polymer/lit-element/lit-element.js';
-import {Styles} from './bcb-comment-module-css.js';
 import './bcb-input.js';
 import './bcb-process-image.js';
 
@@ -29,7 +28,11 @@ export class BcbProfile extends LitElement {
 
   constructor() {
     super();
-    this.userdata = JSON.parse(localStorage.getItem('data'));
+    setTimeout(()=>{
+      this.userdata = JSON.parse(localStorage.getItem('data'));
+      this.socket.emit('loadProfile', this.userdata._id);
+    }, 1000);
+
     this.socket = io.connect('/');
     this.socket.on('loadProfile', (data)=>{
       if (!data) return;
@@ -41,10 +44,9 @@ export class BcbProfile extends LitElement {
       this.shadowRoot.querySelector('#hobbies').shadowRoot.querySelector('input').value = data.hobbies;
       this.image = data.image;
       localStorage.setItem('profile', JSON.stringify(data));
-      document.querySelector('bcb-welcome').image = data.image;
-      console.log(this.facebook, this.twitter, this.hobbies);
+      document.querySelector('bcb-welcome').profile = data;
+      document.querySelector('bcb-navbar').branding = this.userdata.name;
     });
-    this.socket.emit('loadProfile', this.userdata._id);
   }
 
   render() {
@@ -200,6 +202,7 @@ export class BcbProfile extends LitElement {
       <bcb-process-image
       @bcbprocessimage="${(e) => this.image=e.detail.image}"
       image="${this.image || '/img/noImageSelected.jpg'}"
+      scale="100"
       ></bcb-process-image>
         <button
         type="submit"

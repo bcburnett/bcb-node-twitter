@@ -20,6 +20,7 @@ export class BcbProcessImage extends LitElement {
         attribute: true,
         reflected: true,
       },
+      scale: String,
     };
   }
 
@@ -31,34 +32,36 @@ export class BcbProcessImage extends LitElement {
   render() {
     return html`
   ${Styles}
-  <img
-  src="${this.image}"
-  alt="placeholder"
-  style="max-width:300px;max-height:300px"
-  id="postDisplay"
-  />
-    <br />
-  <input
-  type="file"
-  name="file"
-  id="file"
-  @change="${(e) => this.processFile(this.shadowRoot.querySelector('#file'))}"
-  />
+  <img src="${this.image}" alt="placeholder"  id="postDisplay" />
+  <br />
+  <input type="file" name="file" id="file" @change="${(e) => this.processFile(this.shadowRoot.querySelector('#file'))}" />
     `;
   }
 
   processFile(e) {
     const postDisplay = this.shadowRoot.querySelector('#postDisplay');
     const reader = new FileReader();
-
-    reader.onload = (e) => {
-      postDisplay.setAttribute('src', e.target.result);
-      this.image = e.target.result;
-      this.width = postDisplay.clientWidth;
-      this.height = postDisplay.clientHeight;
-      this.sendEvent();
-    };
     reader.readAsDataURL(e.files[0]);
+    reader.onload = (e) => {
+      console.log(e);
+      const img = new Image();
+      img.src = e.target.result;
+      img.onload = () => {
+        const elem = document.createElement('canvas');
+        const scale = this.scale/Math.max(img.width, img.height);
+        elem.width = img.width * scale;
+        elem.height = img.height * scale;
+        const ctx = elem.getContext('2d');
+        // img.width and img.height will contain the original dimensions
+        ctx.drawImage(img, 0, 0, img.width * scale, img.height * scale);
+        const data = ctx.canvas.toDataURL(img, 'image/webp', 1);
+        postDisplay.setAttribute('src', data);
+        this.image = data;
+        this.width = postDisplay.clientWidth;
+        this.height = postDisplay.clientHeight;
+        this.sendEvent();
+      };
+    };
   }
 
   sendEvent() {

@@ -25,7 +25,7 @@ export class BcbComment extends LitElement {
   <div id="commentbutton">
     <button
       @click="${this.showform}"
-    >Comment</button>
+    >Leave A Comment</button>
   </div>
   <div id="wrapper" class="wrapper hidden">
     <textarea

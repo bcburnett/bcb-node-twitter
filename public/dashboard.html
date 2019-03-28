@@ -23,9 +23,15 @@
   <script src="js/bcb-content.js" type="module" async="" defer=""></script>
   <script src="js/bcb-profile.js" type="module" async="" defer=""></script>
 </head>
-
 <body>
-  <bcb-navbar branding="Your Feed"></bcb-navbar>
+  <script>
+    document.querySelector('body').style.opacity = '0';
+    document.querySelector('body').style.transition = 'opacity 1s';
+    setTimeout((e)=>{
+      document.querySelector('body').style.opacity = '1';
+    },750)
+  </script>
+  <bcb-navbar branding=""></bcb-navbar>
   <div class="container">
     <div class="content">
       <bcb-content slot="slot1" tooltip="bcb-content" id="bcbcontent">

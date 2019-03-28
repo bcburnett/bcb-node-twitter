@@ -34,4 +34,25 @@ module.exports = class Image {
         });
     return image;
   }
+
+  async resizeProfileImage(data) {
+    // strip off the data: url prefix to get just the base64-encoded bytes
+    const myData = data.replace(/^data:image\/\w+;base64,/, '');
+    const buf = new Buffer(myData, 'base64');
+    const image = await this.sharp(buf)
+        .resize(75, 75, {
+          fit: this.sharp.fit.inside,
+          withoutEnlargement: true,
+        })
+        .trim()
+        .toFormat('webp')
+        .toBuffer()
+        .then(function(outputBuffer) {
+          // outputBuffer contains JPEG image data
+          // no wider and no higher than 300 pixels
+          // and no larger than the input image
+          return 'data:image/webp;base64,' + outputBuffer.toString('base64');
+        });
+    return image;
+  }
 };

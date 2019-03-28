@@ -272,8 +272,10 @@ io.on('connection', async (socket) => {
   });
 
   socket.on('submitProfile', async (data)=>{
-    const res = await DB.saveProfile(data);
-    socket.emit('loadProfile', data);
+    const mydata = data;
+    mydata.image = await Image.resizeProfileImage(data.image);
+    DB.saveProfile(data);
+    socket.emit('loadProfile', mydata);
   });
 
   socket.on('loadProfile', async (data)=>{
