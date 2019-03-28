@@ -29,7 +29,6 @@ export class BcbPost extends LitElement {
       return html`${like.name} <br> `;
     });
 
-    data.avatar = data.avatar!=='false'? data.avatar : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNiYAAAAAkAAxkR2eQAAAAASUVORK5CYII=';
     const image = data.postImage;
     return html`
   ${Styles}

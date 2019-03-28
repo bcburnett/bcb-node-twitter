@@ -22,8 +22,8 @@ export class BcbFeed extends LitElement {
       const likes = await fetch(`/users/getLikes?post=${e.data.post_id}`);
       const likesData=await likes.json() || [];
       const avatar = await fetch(`/users/getProfileImage?user=${e.data.user_id}`);
-      const avatarData=await avatar.text();
-      console.log(avatarData);
+      let avatarData=await avatar.text();
+      avatarData = avatarData!=='false'? avatarData : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNiYAAAAAkAAxkR2eQAAAAASUVORK5CYII=';
       const data = e.data;
       data.likes = likesData;
       data.comments = commentsData;
