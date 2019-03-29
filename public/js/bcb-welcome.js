@@ -19,7 +19,7 @@ export class BcbWelcome extends LitElement {
       hobbies: '',
       image: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNiYAAAAAkAAxkR2eQAAAAASUVORK5CYII=',
     };
-    this.socket = io.connect('/');
+    this.socket = SOCKET;
     this.socket.emit('welcome');
     this.socket.on('welcome', (data) => {
       if (!data) window.location ='/users/login';

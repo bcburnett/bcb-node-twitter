@@ -1,7 +1,7 @@
 /* eslint-disable require-jsdoc */
 // eslint-disable-next-line max-len
-import {LitElement, html} from '../node_modules/@polymer/lit-element/lit-element.js';
-import {Styles} from './bcb-chat-css.js';
+import { LitElement, html } from '../node_modules/@polymer/lit-element/lit-element.js';
+import { Styles } from './bcb-chat-css.js';
 import './bcb-input.js';
 export class BcbChat extends LitElement {
   static get properties() {
@@ -13,7 +13,7 @@ export class BcbChat extends LitElement {
   constructor() {
     super();
     this.chat = [];
-    this.socket = io.connect('/');
+    this.socket = SOCKET;
     this.socket.emit('getLastFiveMessages');
     this.socket.on('hello', (data) => {
       const myData = html`
@@ -32,18 +32,20 @@ export class BcbChat extends LitElement {
   ${Styles}
   <div>
     <h2>Chat</h2>
-    <div class="chatDiv" id="chatDiv">
-    ${this.chat}
+    <div class="chatDivWrapper">
+      <div  class="chatDiv" id="chatDiv">
+        ${this.chat}
+      </div>
+      <bcb-input
+      fg="black"
+      name="bcb-input1"
+      id="bcb-input1"
+      label="Chat Here"
+      width="75%"
+      type="text"
+      @bcbinputchange="${(e) => this.doChat(e)}" />
     </div>
-    <input
-        name="bcb-input1"
-        id="bcb-input1"
-        label="Chat Here"
-        width="350px"
-        type="text"
-        @change="${(e) => this.doChat(e, this)}"
-        placeholder="Say Something"
-        />
+
   </div>
     `;
   }

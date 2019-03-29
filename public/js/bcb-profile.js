@@ -33,7 +33,7 @@ export class BcbProfile extends LitElement {
       this.socket.emit('loadProfile', this.userdata._id);
     }, 1000);
 
-    this.socket = io.connect('/');
+    this.socket = SOCKET;
     this.socket.on('loadProfile', (data)=>{
       if (!data) return;
       this.facebook = data.facebook;

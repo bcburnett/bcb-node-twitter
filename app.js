@@ -103,6 +103,7 @@ io.on('connection', async (socket) => {
       socket.emit('login');
       return;
     }
+    io.emit('hello', result.name + ' ' +result._id+' has joined '+ socket.id)
     socket.handshake.session.userinfo = result;
     socket.handshake.session.save();
   }
@@ -118,12 +119,6 @@ io.on('connection', async (socket) => {
     const result = await DB.getUserData(id);
     socket.emit('hello', result.name +' says ' + data);
     socket.broadcast.emit('hello', result.name +' says ' + data);
-    lastFiveMessages.push(result.name +' says ' + data);
-    if (lastFiveMessages.length > 5) {
-      lastFiveMessages.splice(0, 1);
-    }
-    // save the message array
-    DB.saveMessages(lastFiveMessages);
   });
 
   socket.on('getPostForm', (data) => {

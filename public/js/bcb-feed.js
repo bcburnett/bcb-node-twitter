@@ -14,7 +14,7 @@ export class BcbFeed extends LitElement {
     super();
     this.posts = [];
 
-    this.socket = io.connect('/');
+    this.socket = SOCKET;
 
     this.socket.on('newPost', async (e) => {
       const comments = await fetch(`/users/getComments?post=${e.data.post_id}`);

@@ -29,7 +29,18 @@ input{
   margin: 10px auto;
   text-align:left;
   padding: 10px;
+
+}
+.chatDivWrapper{
+  width:375px;
+  height: 300px;
+  margin: 10px auto;
 }
 
+bcb-input{
+  margin: 5 auto;
+  margin-left: -15%;
+  color:black;
+}
 </style>
 `;

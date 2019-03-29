@@ -9,6 +9,10 @@ export class BcbInput extends LitElement {
         type: String,
         reflect: true,
       },
+      fg: {
+        type: String,
+        reflect: true,
+      },
       name: String,
       type: {
         type: String,
@@ -44,6 +48,7 @@ export class BcbInput extends LitElement {
     this.type = 'text';
     this.max = Number.MAX_VALUE;
     this.min = Number.MIN_VALUE;
+    this.fg = this.fg| 'grey';
   }
 
   render() {
@@ -88,7 +93,7 @@ export class BcbInput extends LitElement {
   position:absolute;
   top: 10px;
   border:0;
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid ${this.fg};
   background:${this.bg};
   outline: none;
   width: var(--form-width);

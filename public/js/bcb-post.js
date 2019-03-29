@@ -1,7 +1,7 @@
 /* eslint-disable require-jsdoc */
 // eslint-disable-next-line max-len
-import {LitElement, html} from '../node_modules/@polymer/lit-element/lit-element.js';
-import {Styles} from './bcb-post-css.js';
+import { LitElement, html } from '../node_modules/@polymer/lit-element/lit-element.js';
+import { Styles } from './bcb-post-css.js';
 import './bcb-comment-module.js';
 export class BcbPost extends LitElement {
   static get properties() {
@@ -15,7 +15,7 @@ export class BcbPost extends LitElement {
 
   constructor() {
     super();
-    this.socket = io.connect('/');
+    this.socket = SOCKET;
     this.data = JSON.parse(this.getAttribute('data'));
     this.userdata = JSON.parse(localStorage.getItem('data'));
   }
@@ -25,8 +25,8 @@ export class BcbPost extends LitElement {
     const textDiv = document.createElement('pre');
     textDiv.style.textAlign = 'left';
     textDiv.innerHTML = data.postText;
-    const likes = data.likes.map((like)=>{
-      return html`${like.name} <br> `;
+    const likes = data.likes.map((like) => {
+      return html`${like.name} <br>`;
     });
 
     const image = data.postImage;
@@ -39,24 +39,22 @@ export class BcbPost extends LitElement {
         ${data.postTitle}
       </h2>
       <p>
+        <img src="${data.avatar}" style="
+            width:50px;
+            height: 50px;
+            border-radius:50%;
+          ">
         Posted by: &nbsp;${data.poster}
-        <img src="${data.avatar}"
-        style="
-          width:50px;
-          height: 50px;
-          border-radius:50%;
-        "
-        >
+
 
       </p>
       <img src="${image}">
       ${textDiv}
       <bcb-comment-module data="${JSON.stringify(data)}" style="display:inline-block;"></bcb-comment-module>
-
-
+      <br>
       ${data.user_id === this.userdata._id ? html`
-      <button @click="${(e) => this.editPost(data)}">Edit</button>
-      <button @click="${(e) => this.deletePost(data)}">Delete</button>
+      <button class="button-cancel" @click="${(e) => this.editPost(data)}">Edit</button>
+      <button  @click="${(e) => this.deletePost(data)}">Delete</button>
       <br>
       ` : ''}
       <br>
@@ -81,7 +79,7 @@ export class BcbPost extends LitElement {
 
   deletePost(e) {
     e.comments.forEach((e) => {
-      this.socket.emit('deleteComment', {id: e._id, post: e.post});
+      this.socket.emit('deleteComment', { id: e._id, post: e.post });
     });
     this.socket.emit('deleteLikes', e.post_id);
     this.socket.emit('dele', e.post_id);

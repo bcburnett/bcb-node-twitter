@@ -15,7 +15,7 @@ export class BcbCommentModule extends LitElement {
 
   constructor() {
     super();
-    this.socket = io.connect('/');
+    this.socket = SOCKET;
     this.data=JSON.parse(this.getAttribute('data'));
     this.userdata = JSON.parse(localStorage.getItem('data'));
   }

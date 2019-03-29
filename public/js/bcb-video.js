@@ -8,7 +8,7 @@ export class BcbVideo extends LitElement {
 
   constructor() {
     super();
-    this.socket = io.connect('/');
+    this.socket = SOCKET;
     this.socket.on('stream', image => {
       this.shadowRoot.querySelector('#play').setAttribute('src', image);
     });

@@ -31,7 +31,7 @@ export class BcbPostForm extends LitElement {
 
   constructor() {
     super();
-    this.socket = io.connect('/');
+    this.socket = SOCKET;
     this.text = '';
     this.postTitle = '';
     this.image = '/img/noImageSelected.jpg';

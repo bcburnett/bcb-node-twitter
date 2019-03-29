@@ -1,5 +1,4 @@
-// eslint-disable-next-line max-len
-
+const SOCKET = io.connect();
 // eslint-disable-next-line max-len
 document.querySelector('bcb-navbar').addEventListener('bcbnavbar', (e) => navigate( e.detail ));
 const content = document.getElementById('bcbcontent');

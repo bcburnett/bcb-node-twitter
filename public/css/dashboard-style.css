@@ -66,8 +66,11 @@ bcb-navbar{
   grid-area: c;
 }
 
-.userarea{
+.usercontainer {
   grid-area: u;
+}
+
+.userarea{
   width:200px;
   height:700px;
   border: 1px solid black;
