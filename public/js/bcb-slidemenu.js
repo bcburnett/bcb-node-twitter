@@ -3,7 +3,6 @@
 // eslint-disable-next-line max-len
 import {LitElement, html} from '../node_modules/@polymer/lit-element/lit-element.js';
 import {Styles} from './bcb-slidemenu-style.js';
-import {arry} from './bcb-slidemenu-data.js';
 export class BcbSlideMenu extends LitElement {
   static get properties() {
     return {
@@ -13,7 +12,6 @@ export class BcbSlideMenu extends LitElement {
 
   constructor() {
     super();
-    this.arry = arry;
   }
   /**
    * *Main Routine to render the web component

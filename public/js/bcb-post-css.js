@@ -10,7 +10,7 @@ background-color:dodgerblue;
 }
 
 .container{
-  width:100%;
+  width:95%;
   min-height:100px;
   border: 1px solid #000;
   padding-top:5px;

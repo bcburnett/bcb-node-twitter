@@ -159,9 +159,9 @@ export class BcbProfile extends LitElement {
 
   <div class="container ${this.tooltip ? 'tooltip' : ''}">
   <span class="${this.tooltip ? '' : 'hidden'}">${this.tooltip}</span>
-    <h1 >
+    <h2>
       <i class="fas fa-address-card"></i>Update Profile
-    </h1>
+    </h2>
       <p>
         <bcb-input
         tooltip="Facebook"
@@ -171,6 +171,7 @@ export class BcbProfile extends LitElement {
         width="100%"
         type="text"
         @bcbinputchange="${(e)=>this.facebook = e.detail.value}"
+        fg="black"
         />
       </p>
       <p>
@@ -183,6 +184,7 @@ export class BcbProfile extends LitElement {
         type="text"
         value="${this.twitter}"
         @bcbinputchange="${(e)=>this.twitter = e.detail.value}"
+        fg="black"
         />
       </p>
       <p>
@@ -195,6 +197,7 @@ export class BcbProfile extends LitElement {
         type="text"
         value="this.hobbies"
         @bcbinputchange="${(e)=>this.hobbies = e.detail.value}"
+        fg="black"
         />
       </p>
       <p>

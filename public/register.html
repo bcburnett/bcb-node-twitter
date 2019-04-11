@@ -1,4 +1,7 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -12,21 +15,18 @@
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/style.css">
   <script src="js/bcb-register-form.js" type="module"></script>
-<script src="js/bcb-navbar.js" type="module"></script>
+  <script src="js/bcb-navbar.js" type="module"></script>
 </head>
+
 <body>
   <bcb-navbar branding="Please Register" nonav="nonav"></bcb-navbar>
-<div class="container">
-  <div>
-    <bcb-register-form submit="https://brian.newlondonweb.com:5000/users/register" method="post">
-    </bcb-register-form>
+  <div class="container">
+    <div>
+      <bcb-register-form submit="/users/register" method="post">
+      </bcb-register-form>
+    </div>
   </div>
-</div>
-
-
-
   <script src="js/main.js"></script>
+</body>
 
-
-
-</body></html>
+</html>

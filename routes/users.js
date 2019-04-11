@@ -8,16 +8,21 @@ const DB= new (require('../js/data'))();
 const {ensureAuthenticated} = require('../config/auth');
 
 // Login Page
-app.get('/login', (req, res) => res.redirect('/login.html'));
+app.get('/login', (req, res) => {
+  console.log(req.connection.remoteAddress);
+  res.redirect('/login.html');
+});
 
 // check e-mail
 app.get('/checkemail', async (req, res)=>{
+  console.log(req.connection.remoteAddress);
   const email = req.query.email;
   res.send(await DB.userExists(email));
 });
 
 // get comments
 app.get('/getComments', ensureAuthenticated, async (req, res)=>{
+  console.log(req.connection.remoteAddress);
   const post = req.query.post;
   const comments = await DB.getComments(post);
   res.send(comments);
@@ -25,6 +30,7 @@ app.get('/getComments', ensureAuthenticated, async (req, res)=>{
 
 // get Profile Image
 app.get('/getProfileImage', ensureAuthenticated, async (req, res)=>{
+  console.log(req.connection.remoteAddress);
   const user = req.query.user;
   const image = await DB.getProfileImage(user);
   res.send(image);
@@ -32,6 +38,7 @@ app.get('/getProfileImage', ensureAuthenticated, async (req, res)=>{
 
 // get likes
 app.get('/getLikes', ensureAuthenticated, async (req, res)=>{
+  console.log(req.connection.remoteAddress);
   const post = req.query.post;
   const likes = await DB.getLikes(post);
   res.send(likes);
@@ -39,15 +46,20 @@ app.get('/getLikes', ensureAuthenticated, async (req, res)=>{
 
 // check user name
 app.get('/checkname', async (req, res)=>{
+  console.log(req.connection.remoteAddress);
   const name = req.query.name;
   res.send(await DB.userNameExists(name));
 });
 
 // Register Page
-app.get('/register', (req, res) => res.redirect('/register.html'));
+app.get('/register', (req, res) => {
+  console.log(req.connection.remoteAddress);
+  res.redirect('/register.html');
+});
 
 // Register
 app.post('/register', (req, res) => {
+  console.log(req.connection.remoteAddress);
   const {name, email, password, password2} = req.body;
   const errors = [];
 
@@ -106,7 +118,7 @@ app.post('/register', (req, res) => {
 
 // Login
 app.post('/login', (req, res, next) => {
-
+  console.log(req.connection.remoteAddress);
   passport.authenticate('local', {
     successRedirect: '/dashboard.html',
     failureRedirect: '/login.html',
@@ -116,6 +128,7 @@ app.post('/login', (req, res, next) => {
 
 // Logout
 app.get('/logout', (req, res) => {
+  console.log(req.connection.remoteAddress);
   req.logout();
   req.flash('success_msg', 'You are logged out');
   res.redirect('/users/login');

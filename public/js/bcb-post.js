@@ -35,26 +35,28 @@ export class BcbPost extends LitElement {
   <div class="container">
 
     <div class="data">
-      <h2>
+
+      <p>
+      <br>
+        <img src="${data.avatar}" style="
+              width:50px;
+              height: 50px;
+              border-radius:50%;
+            ">
+        Posted by: &nbsp;${data.poster}
+      </p>
+      <h2 style="display:inline;">
         ${data.postTitle}
       </h2>
-      <p>
-        <img src="${data.avatar}" style="
-            width:50px;
-            height: 50px;
-            border-radius:50%;
-          ">
-        Posted by: &nbsp;${data.poster}
-
-
-      </p>
+      <br>
       <img src="${image}">
       ${textDiv}
       <bcb-comment-module data="${JSON.stringify(data)}" style="display:inline-block;"></bcb-comment-module>
       <br>
+      <br>
       ${data.user_id === this.userdata._id ? html`
       <button class="button-cancel" @click="${(e) => this.editPost(data)}">Edit</button>
-      <button  @click="${(e) => this.deletePost(data)}">Delete</button>
+      <button @click="${(e) => this.deletePost(data)}">Delete</button>
       <br>
       ` : ''}
       <br>

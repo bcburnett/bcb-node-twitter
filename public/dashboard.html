@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="css/all.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/dashboard-style.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js" async="" defer=""></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
   <script src="js/bcb-feed.js" type="module" async="" defer=""></script>
   <script src="js/bcb-navbar.js" type="module" async="" defer=""></script>
   <script src="js/bcb-chat.js" type="module" async="" defer=""></script>
@@ -24,17 +24,17 @@
   <script src="js/bcb-profile.js" type="module" async="" defer=""></script>
 </head>
 
-<body>
+<body class="style-2" style="height:100vh;">
   <script>
     document.querySelector('body').style.opacity = '0';
     document.querySelector('body').style.transition = 'opacity 1s';
     setTimeout((e) => {
       document.querySelector('body').style.opacity = '1';
-    }, 750)
+    }, 1750)
   </script>
   <bcb-navbar branding=""></bcb-navbar>
   <div class="container">
-    <div class="content">
+    <div class="content style-2" id="contentContainer">
       <bcb-content slot="slot1" tooltip="bcb-content" id="bcbcontent">
         <div slot="slot1" id="slot1" class="slotted">
           <bcb-feed></bcb-feed>

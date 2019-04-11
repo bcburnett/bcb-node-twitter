@@ -24,6 +24,7 @@ export class BcbComment extends LitElement {
   ${Styles}
   <div id="commentbutton">
     <button
+      style="width: 97%; height:36px"
       @click="${this.showform}"
     >Leave A Comment</button>
   </div>

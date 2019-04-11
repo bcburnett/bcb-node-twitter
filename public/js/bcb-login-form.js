@@ -124,7 +124,8 @@ export class BcbLoginForm extends LitElement {
 
   </style>
 
-  <div class="container ${this.tooltip ? 'tooltip' : ''}"><span class="${this.tooltip ? '' : 'hidden'}">${this.tooltip}</span>
+  <div class="container ${this.tooltip ? 'tooltip' : ''}">
+    <span class="${this.tooltip ? '' : 'hidden'}">${this.tooltip}</span>
     <h1>
       <i class="fas fa-user-plus"></i> Login
     </h1>
@@ -137,6 +138,7 @@ export class BcbLoginForm extends LitElement {
         label="E Mail Address"
         width="100%"
         type="text"
+        fg="grey"
         />
       </p>
       <p>
@@ -147,12 +149,15 @@ export class BcbLoginForm extends LitElement {
         label="Password"
         width="100%"
         type="password"
+        fg="grey"
         />
       </p>
       <p>
         <button>Login</button>
       </p>
-      <p class="footnote">Not registered? <a href="/users/register">Create an account</a></p>
+      <p class="footnote">Not registered?
+        <a href="/users/register">Create an account</a>
+      </p>
     </form>
   </div>
     `;

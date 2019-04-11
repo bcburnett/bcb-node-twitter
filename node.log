@@ -1,0 +1,114 @@
+[33m[nodemon] 1.18.10[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching: *.*[39m
+[32m[nodemon] starting `node app.js`[39m
+MongoDB Connected
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/dashboard.html[0m ([90m[31mUnknown[0m - [90m61ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/css/all.css[0m ([90m[31mUnknown[0m - [90m160ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/css/dashboard-style.css[0m ([90m[31mUnknown[0m - [90m140ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/css/normalize.css[0m ([90m[31mUnknown[0m - [90m144ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/js/main.js[0m ([90m[31mUnknown[0m - [90m143ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/js/bcb-feed.js[0m ([90m[31mUnknown[0m - [90m148ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/js/bcb-navbar.js[0m ([90m[31mUnknown[0m - [90m153ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/js/bcb-chat.js[0m ([90m[31mUnknown[0m - [90m22ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/js/bcb-post-form.js[0m ([90m[31mUnknown[0m - [90m55ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/js/bcb-welcome.js[0m ([90m[31mUnknown[0m - [90m54ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/js/bcb-content.js[0m ([90m[31mUnknown[0m - [90m66ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/css/dashboard-style.css[0m ([90m[31mUnknown[0m - [90m25ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/js/bcb-profile.js[0m ([90m[31mUnknown[0m - [90m72ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/js/bcb-video.js[0m ([90m[31mUnknown[0m - [90m101ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/js/bcb-feed-css.js[0m ([90m[31mUnknown[0m - [90m46ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/js/bcb-navbar-style.js[0m ([90m[31mUnknown[0m - [90m41ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/js/bcb-post.js[0m ([90m[31mUnknown[0m - [90m59ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/node_modules/@polymer/lit-element/lit-element.js[0m ([90m[31mUnknown[0m - [90m76ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/node_modules/@polymer/polymer/lib/utils/render-status.js[0m ([90m[31mUnknown[0m - [90m74ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/js/bcb-post-form-css.js[0m ([90m[31mUnknown[0m - [90m13ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/js/bcb-navbar-data.js[0m ([90m[31mUnknown[0m - [90m55ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/js/bcb-welcome-css.js[0m ([90m[31mUnknown[0m - [90m33ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/js/bcb-video-css.js[0m ([90m[31mUnknown[0m - [90m30ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/js/bcb-post-css.js[0m ([90m[31mUnknown[0m - [90m40ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/js/bcb-comment-module.js[0m ([90m[31mUnknown[0m - [90m22ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/node_modules/lit-html/lit-html.js[0m ([90m[31mUnknown[0m - [90m18ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/js/bcb-chat-css.js[0m ([90m[31mUnknown[0m - [90m106ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/js/bcb-input.js[0m ([90m[31mUnknown[0m - [90m106ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/node_modules/lit-html/lib/shady-render.js[0m ([90m[31mUnknown[0m - [90m15ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/js/bcb-process-image.js[0m ([90m[31mUnknown[0m - [90m86ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/node_modules/@polymer/lit-element/lib/updating-element.js[0m ([90m[31mUnknown[0m - [90m52ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/node_modules/@polymer/lit-element/lib/decorators.js[0m ([90m[31mUnknown[0m - [90m40ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/node_modules/@polymer/polymer/lib/utils/boot.js[0m ([90m[31mUnknown[0m - [90m38ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/node_modules/@polymer/lit-element/lib/css-tag.js[0m ([90m[31mUnknown[0m - [90m40ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/node_modules/lit-html/lib/default-template-processor.js[0m ([90m[31mUnknown[0m - [90m40ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/node_modules/lit-html/lib/directive.js[0m ([90m[31mUnknown[0m - [90m18ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/node_modules/lit-html/lib/part.js[0m ([90m[31mUnknown[0m - [90m17ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/node_modules/lit-html/lib/template-result.js[0m ([90m[31mUnknown[0m - [90m21ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/node_modules/lit-html/lib/dom.js[0m ([90m[31mUnknown[0m - [90m31ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/node_modules/lit-html/lib/render.js[0m ([90m[31mUnknown[0m - [90m21ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/node_modules/lit-html/lib/parts.js[0m ([90m[31mUnknown[0m - [90m31ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/node_modules/lit-html/lib/template-factory.js[0m ([90m[31mUnknown[0m - [90m24ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/node_modules/lit-html/lib/template-instance.js[0m ([90m[31mUnknown[0m - [90m26ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/node_modules/lit-html/lib/template.js[0m ([90m[31mUnknown[0m - [90m29ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/js/bcb-comment-module-css.js[0m ([90m[31mUnknown[0m - [90m39ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/node_modules/lit-html/lib/modify-template.js[0m ([90m[31mUnknown[0m - [90m37ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/js/bcb-process-image-css.js[0m ([90m[31mUnknown[0m - [90m39ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/js/bcb-comment.js[0m ([90m[31mUnknown[0m - [90m56ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/css/all.css[0m ([90m[31mUnknown[0m - [90m14ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/dashboard.html[0m ([90m[31mUnknown[0m - [90m6ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/js/bcb-comment-css.js[0m ([90m[31mUnknown[0m - [90m17ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/img/noImageSelected.jpg[0m ([90m[31mUnknown[0m - [90m15ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/webfonts/fa-solid-900.woff2[0m ([90m[31mUnknown[0m - [90m26ms[0m)
+::ffff:216.255.173.209
+::ffff:216.255.173.209
+::ffff:216.255.173.209
+::ffff:216.255.173.209
+::ffff:216.255.173.209
+::ffff:216.255.173.209
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/getComments[0m ([90m/getComments[0m - [90m25ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/getComments[0m ([90m/getComments[0m - [90m27ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/getComments[0m ([90m/getComments[0m - [90m34ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/getComments[0m ([90m/getComments[0m - [90m30ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/getComments[0m ([90m/getComments[0m - [90m32ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/getComments[0m ([90m/getComments[0m - [90m33ms[0m)
+[90m19.04.11 14:44:20[0m [32m200[0m [35mGET[0m [90m/dashboard.html[0m ([90m[31mUnknown[0m - [90m4ms[0m)
+::ffff:216.255.173.209
+::ffff:216.255.173.209
+::ffff:216.255.173.209
+[90m19.04.11 14:44:21[0m [32m200[0m [35mGET[0m [90m/getComments[0m ([90m/getComments[0m - [90m17ms[0m)
+[90m19.04.11 14:44:21[0m [32m200[0m [35mGET[0m [90m/getLikes[0m ([90m/getLikes[0m - [90m15ms[0m)
+[90m19.04.11 14:44:21[0m [32m200[0m [35mGET[0m [90m/favicon.ico[0m ([90m[31mUnknown[0m - [90m18ms[0m)
+[90m19.04.11 14:44:21[0m [32m200[0m [35mGET[0m [90m/getLikes[0m ([90m/getLikes[0m - [90m15ms[0m)
+::ffff:216.255.173.209
+[90m19.04.11 14:44:21[0m [32m200[0m [35mGET[0m [90m/getLikes[0m ([90m/getLikes[0m - [90m5ms[0m)
+::ffff:216.255.173.209
+[90m19.04.11 14:44:21[0m [32m200[0m [35mGET[0m [90m/getLikes[0m ([90m/getLikes[0m - [90m8ms[0m)
+::ffff:216.255.173.209
+[90m19.04.11 14:44:21[0m [32m200[0m [35mGET[0m [90m/getLikes[0m ([90m/getLikes[0m - [90m9ms[0m)
+::ffff:216.255.173.209
+[90m19.04.11 14:44:21[0m [32m200[0m [35mGET[0m [90m/getLikes[0m ([90m/getLikes[0m - [90m11ms[0m)
+::ffff:216.255.173.209
+::ffff:216.255.173.209
+[90m19.04.11 14:44:21[0m [32m200[0m [35mGET[0m [90m/getLikes[0m ([90m/getLikes[0m - [90m10ms[0m)
+[90m19.04.11 14:44:21[0m [32m200[0m [35mGET[0m [90m/getProfileImage[0m ([90m/getProfileImage[0m - [90m9ms[0m)
+::ffff:216.255.173.209
+::ffff:216.255.173.209
+[90m19.04.11 14:44:21[0m [32m200[0m [35mGET[0m [90m/getProfileImage[0m ([90m/getProfileImage[0m - [90m10ms[0m)
+[90m19.04.11 14:44:21[0m [32m200[0m [35mGET[0m [90m/getProfileImage[0m ([90m/getProfileImage[0m - [90m9ms[0m)
+::ffff:216.255.173.209
+[90m19.04.11 14:44:21[0m [32m200[0m [35mGET[0m [90m/getProfileImage[0m ([90m/getProfileImage[0m - [90m6ms[0m)
+::ffff:216.255.173.209
+[90m19.04.11 14:44:21[0m [32m200[0m [35mGET[0m [90m/getProfileImage[0m ([90m/getProfileImage[0m - [90m8ms[0m)
+::ffff:216.255.173.209
+[90m19.04.11 14:44:21[0m [32m200[0m [35mGET[0m [90m/getProfileImage[0m ([90m/getProfileImage[0m - [90m8ms[0m)
+::ffff:216.255.173.209
+[90m19.04.11 14:44:21[0m [32m200[0m [35mGET[0m [90m/getProfileImage[0m ([90m/getProfileImage[0m - [90m8ms[0m)
+[90m19.04.11 14:44:21[0m [36m304[0m [35mGET[0m [90m/css/all.css[0m ([90m[31mUnknown[0m - [90m7ms[0m)
+[90m19.04.11 14:44:21[0m [36m304[0m [35mGET[0m [90m/css/all.css[0m ([90m[31mUnknown[0m - [90m5ms[0m)
+[90m19.04.11 14:44:21[0m [36m304[0m [35mGET[0m [90m/css/all.css[0m ([90m[31mUnknown[0m - [90m8ms[0m)
+::ffff:5.188.210.101 http://5.188.210.101/echo.php 5.188.210.101 2019-04-11T19:41:59.917Z
+::ffff:71.6.143.90
+[90m19.04.11 15:57:51[0m [36m302[0m [35mGET[0m [90m/[0m ([90m/[0m - [90m7ms[0m)
+::ffff:71.6.143.90
+[90m19.04.11 15:57:51[0m [36m302[0m [35mGET[0m [90m/login[0m ([90m/login[0m - [90m6ms[0m)
+[90m19.04.11 15:57:51[0m [32m200[0m [35mGET[0m [90m/login.html[0m ([90m[31mUnknown[0m - [90m25ms[0m)
+::ffff:201.69.195.30 / 216.255.173.209:80 2019-04-11T20:18:23.972Z
+::ffff:38.91.107.250 / 216.255.173.209 2019-04-11T20:44:28.082Z
+::ffff:77.247.109.75 /robots.txt undefined 2019-04-11T20:54:02.778Z

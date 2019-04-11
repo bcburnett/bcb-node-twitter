@@ -1,0 +1,24 @@
+.style-2::-webkit-scrollbar-track
+{
+  background-color: transparent;
+  margin-left: 3px;
+  top: 25px;
+}
+
+.style-2::-webkit-scrollbar
+{
+	width: 5px;
+	background-color: transparent;
+}
+
+.style-2::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+  background-color: rgba(0,0,0,.3);
+  color: rgba(0,0,0,.3);
+  height: 50px;
+}
+
+.style-2 {
+  scrollbar-color: rgba(0,0,0,.3) transparent;
+}

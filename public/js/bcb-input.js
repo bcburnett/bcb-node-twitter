@@ -36,6 +36,7 @@ export class BcbInput extends LitElement {
     input.id = this.name;
     input.name = this.name;
     input.type = this.type;
+    input.value = this.value;
     this.appendChild(input);
   }
 
@@ -165,7 +166,7 @@ input[type=range]::-moz-range-thumb {
         type="${this.type}"
         id="input"
         class="form-control"
-        value=""
+        value="${this.value}"
         max="${this.max}"
         min="${this.min}"
         @input="${this.input}"
@@ -219,6 +220,19 @@ input[type=range]::-moz-range-thumb {
         value: this.value,
       },
     }));
+  }
+
+  inputChange(e) {
+    if (!e) return;
+    this.value = this.shadowRoot.getElementById('input').value;
+    this.childNodes[0].value = this.value;
+    this.title=this.value;
+  }
+
+
+  updated() {
+    this.shadowRoot.getElementById('input').value = this.value;
+    this.inputChange();
   }
 }
 customElements.define('bcb-input', BcbInput);

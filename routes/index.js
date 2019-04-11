@@ -5,6 +5,7 @@ const {ensureAuthenticated} = require('../config/auth');
 
 // Welcome Page
 router.get('/', (req, res) =>{
+  console.log(req.connection.remoteAddress);
   if (req.user) {
     res.redirect('/dashboard'); // logged in
   } else {
@@ -14,6 +15,7 @@ router.get('/', (req, res) =>{
 
 // Dashboard
 router.get('/dashboard', ensureAuthenticated, async (req, res) =>{
+  console.log(req.connection.remoteAddress);
   res.redirect('/dashboard.html');
   req.app.io.emit('hello', req.user.name + ' Has Joined' );
 });

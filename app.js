@@ -11,10 +11,22 @@ const express = require('express'),
   Image = new (require('./js/image'))(),
   // abstracted image manipulation functions
   socket = require('socket.io'),
+  helmet = require('helmet'),
   https = require('https'),
   uuidv1 = require('uuid/v1'),
-  app = express(),
-  lastFiveMessages = [];
+  app = express();
+// eslint-disable-next-line max-len
+app.use(require('connect-logger')({immediate: true, format: `%date %status %method %url (%route - %time)`}));
+
+// set up plain http server for redirect to https
+const http = express();
+
+// set up a route to redirect http to https
+http.get('*', function(req, res) {
+  console.log(req.connection.remoteAddress, req.url, req.headers.host, new Date());
+  res.redirect('https://' + req.headers.host + req.url );
+});
+http.listen(80);
 
 mongoose.set('useFindAndModify', false);
 
@@ -30,6 +42,7 @@ mongoose
 
 // Express body parser
 app.use(express.urlencoded({extended: true}));
+app.use(helmet());
 
 // mongo store
 const store = new MongoDBStore({
@@ -67,7 +80,7 @@ app.use('/', require('./routes/index.js'));
 app.use('/users', require('./routes/users.js'));
 
 // create the server
-const port = process.env.PORT || 5000,
+const port = process.env.PORT || 443,
   httpsOptions = {
     cert: fs.readFileSync('./ssh/cert.pem'),
     key: fs.readFileSync('./ssh/key.pem'),
@@ -89,7 +102,6 @@ server.listen(port);
 
 // socket routes
 io.on('connection', async (socket) => {
-
   // when socket disconnects, remove it from the list:
   socket.on('disconnect', () => {
     console.info(`Client gone [id=${socket.id}]`);
@@ -103,7 +115,7 @@ io.on('connection', async (socket) => {
       socket.emit('login');
       return;
     }
-    io.emit('hello', result.name + ' ' +result._id+' has joined '+ socket.id)
+    io.emit('hello', result.name + ' ' +result._id+' has joined '+ socket.id);
     socket.handshake.session.userinfo = result;
     socket.handshake.session.save();
   }
@@ -138,9 +150,8 @@ io.on('connection', async (socket) => {
     post.post_id = uuidv1();
     post.postText = data.text;
     post.postTitle = data.title;
-    if (data.image) {
-      post.postImage = await Image.resizeDbImage(data.image);
-    }
+    post.postImage = data.image;
+
     // eslint-disable-next-line max-len
     post.postImage = post.postImage || 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNiYAAAAAkAAxkR2eQAAAAASUVORK5CYII=';
     post.userid = socket.handshake.session.passport.user;
@@ -167,7 +178,6 @@ io.on('connection', async (socket) => {
   });
 
   socket.on('editPost', async (data) => {
-    console.log(data);
     const post = {};
     post.user_id = socket.handshake.session.passport.user;
     post.postText = data.postText;
@@ -227,18 +237,6 @@ io.on('connection', async (socket) => {
     if (!result) return;
     socket.emit('dele', data);
     socket.broadcast.emit('dele', data);
-  });
-
-  socket.on('edit', async (data) => {
-    const result = await DB.getPost(data);
-    if (!result) {
-      socket.emit('hello', 'Something went wrong, no post id');
-      return;
-    }
-    result.userid = socket.handshake.session.passport.user;
-    app.render('postInputForm', {data: result}, (err, html) => {
-      socket.emit('edit', html);
-    });
   });
 
   socket.on('welcome', async (e)=>{

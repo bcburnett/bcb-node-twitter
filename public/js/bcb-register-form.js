@@ -1,5 +1,4 @@
 /* eslint-disable max-len */
-
 /* eslint-disable require-jsdoc */
 import {LitElement, html} from '../node_modules/@polymer/lit-element/lit-element.js';
 import './bcb-input.js';
@@ -153,6 +152,7 @@ h1{
         width="100%"
         type="email"
         @bcbinputchange="${this.checkemail}"
+        fg="grey"
         />
       </p>
       <div style="color:#f55;">${this.emailerror}</div>
@@ -165,6 +165,7 @@ h1{
         width="100%"
         type="name"
         @bcbinputchange="${this.checkusername}"
+        fg="grey"
         />
       </p>
       <div style="color:#f55;">${this.nameerror}</div>
@@ -176,6 +177,7 @@ h1{
         label="Password"
         width="100%"
         type="text"
+        fg="grey"
         />
       </p>
       <p>
@@ -186,6 +188,7 @@ h1{
         label="Repeat Password"
         width="100%"
         type="text"
+        fg="grey"
         />
       </p>
       <div style="color:#f55;">${this.passworderror}</div>

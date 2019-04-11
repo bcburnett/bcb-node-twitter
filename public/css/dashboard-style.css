@@ -21,7 +21,7 @@ body {
   padding:0;
   font-size: 1rem;
   color:var(--primary-color);
-  background-color: var(--primary-light);
+  background-color: var(--background-color);
   overflow-x: hidden;
 }
 
@@ -31,7 +31,7 @@ body {
   top:0;
   left:0;
   width:100%;
-  min-height:72.5%;
+  height:72.5%;
   display:grid;
   grid-template-columns: 250px 1fr 500px;
   justify-content: center;
@@ -60,6 +60,20 @@ bcb-navbar{
 
 .content{
   grid-area: f;
+  height: 85vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+
+
+::-webkit-scrollbar {
+  width: 0px;  /* Remove scrollbar space */
+  background: transparent;  /* Optional: just make scrollbar invisible */
+}
+
+.hide{
+  opacity:0;
 }
 
 .chatdiv{
@@ -72,7 +86,6 @@ bcb-navbar{
 
 .userarea{
   width:200px;
-  height:700px;
   border: 1px solid black;
   border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -89,12 +102,14 @@ bcb-navbar{
 @media (max-width: 890px) {
   .container {
     grid-template-areas:
+    "u"
     "c"
     "f"
-    "u"
     ;
     grid-template-rows:1fr min-content ;
     grid-template-columns:100%;
   }
+
+
 
 }

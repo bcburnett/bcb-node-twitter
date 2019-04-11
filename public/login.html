@@ -1,28 +1,28 @@
-<!DOCTYPE html><html lang="en"><head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="Affordable and professional web design">
-    <meta name="keywords" content="web design, affordable web design, professional web design">
-    <meta name="author" content="Brian Burnett">
-    <title>meetups-frontend</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="Affordable and professional web design">
+  <meta name="keywords" content="web design, affordable web design, professional web design">
+  <meta name="author" content="Brian Burnett">
 
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link rel="stylesheet" href="css/all.css">
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/bcb-navbar.js" type="module"></script>
-    <script src="js/bcb-login-form.js" type="module"></script>
-  </head>
+  <title>Login</title>
 
-  <body>
-    <bcb-navbar branding="Please Log In" nonav="nonav"></bcb-navbar>
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link rel="stylesheet" href="css/all.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
 
-    <div class="container">
-      <bcb-login-form submit="/users/login" method="POST" width="325px" tooltip="Please Log In">
-      </bcb-login-form>
-    </div>
+  <script src="js/bcb-navbar.js" type="module"></script>
+  <script src="js/bcb-login-form.js" type="module"></script>
+</head>
 
-
-
-</body></html>
+<body>
+  <bcb-navbar branding="Please Log In" nonav="nonav"></bcb-navbar>
+  <div class="container">
+    <bcb-login-form submit="/users/login" method="POST" width="325px" tooltip="Please Log In"></bcb-login-form>
+  </div>
+</body>
+</html>

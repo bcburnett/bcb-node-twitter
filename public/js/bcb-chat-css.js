@@ -18,7 +18,7 @@ input{
 
 .chatDiv{
   width:350px;
-  height: 250px;
+  height: 100px;
   overflow:auto;
   border: 1px solid black;
   border-radius: 10px;
@@ -33,7 +33,6 @@ input{
 }
 .chatDivWrapper{
   width:375px;
-  height: 300px;
   margin: 10px auto;
 }
 
